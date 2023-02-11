@@ -1,0 +1,5 @@
+ 
+ - Create entity mapping with database in spring
+ - Status: new
+ - Test: new
+ 
