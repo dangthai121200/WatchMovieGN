@@ -1,4 +1,5 @@
 Table
+
  - MOVIE: PK_ID_MOVIE, NAME, YEAR_OF_BROADCAST, VIEW
  - CATEGORY: PK_CATEGORY, NAME
  - TYPE: PK_TYPE, NAME,
@@ -11,4 +12,30 @@ Table
  
 Relationship
 
+ - a MOVIE has many CATEGORY
+ - a CATEGORY has many MOVIE
+ -> MOVIE * * CATEGORY
  
+ - a MOVIE has many TYPE
+ - a TYPE has many MOVIE
+ -> MOVIE * * TYPE
+ 
+ - a MOVIE has many EPISODE
+ - a EPISODE has one MOVIE
+ -> MOVIE 1 * EPISODE
+
+ - a MOVIE has many COUNTRY
+ - a COUNTRY has many MOVIE
+ -> MOVIE * * COUNTRY
+ 
+ - a MOVIE has one SEASON
+ - a SEASON has many MOVIE
+ -> MOVIE * 1 SEASON
+ 
+ - a MOVIE has many LANGUAGE
+ - a LANGUAGE has many MOVIE
+ -> MOVIE * * LANGUAGE
+ 
+ - a MOVIE has one PRODUCER
+ - a PRODUCER has many MOVIE
+ -> MOVIE * 1 PRODUCER
