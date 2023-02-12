@@ -1,5 +1,5 @@
  
  - Create entity mapping with database in spring
- - Status: new
+ - Status: Done
  - Test: new
  - Assigner: Thai Dang
