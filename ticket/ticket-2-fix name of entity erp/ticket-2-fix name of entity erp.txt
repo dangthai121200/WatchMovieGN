@@ -1,5 +1,5 @@
  
  - ticket-2-fix name of entity erp
- - Status: In-process
+ - Status: Done
  - Test: new
  - Assigner: Thai Dang
