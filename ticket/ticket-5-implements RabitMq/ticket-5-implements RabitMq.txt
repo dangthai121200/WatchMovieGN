@@ -1,0 +1,5 @@
+ 
+ - Implements RabitMq
+ - Status: In-process
+ - Test: new
+ - Assigner: Thai Dang
