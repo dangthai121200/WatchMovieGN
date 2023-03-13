@@ -1,0 +1,5 @@
+ 
+ - ticket-6-Create AWS
+ - Status: In-process
+ - Test: new
+ - Assigner: Thai Dang
