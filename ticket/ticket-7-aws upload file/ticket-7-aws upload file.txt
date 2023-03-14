@@ -1,0 +1,5 @@
+ 
+ - ticket-7-aws upload file
+ - Status: In-process
+ - Test: new
+ - Assigner: Thai Dang
