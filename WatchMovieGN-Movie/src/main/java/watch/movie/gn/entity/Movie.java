@@ -10,9 +10,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity(name = "Movie")
 @Table(name = "Movie")
+@Data
 public class Movie {
 
 	@Id
@@ -29,42 +31,5 @@ public class Movie {
 	@Column(name = "VIEW", length = 10, nullable = true)
 	@ColumnDefault(value = "0")
 	private int view;
-
-	public Movie() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public int getPkIdMovie() {
-		return pkIdMovie;
-	}
-
-	public void setPkIdMovie(int pkIdMovie) {
-		this.pkIdMovie = pkIdMovie;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Date getYearOfBroadcast() {
-		return yearOfBroadcast;
-	}
-
-	public void setYearOfBroadcast(Date yearOfBroadcast) {
-		this.yearOfBroadcast = yearOfBroadcast;
-	}
-
-	public int getView() {
-		return view;
-	}
-
-	public void setView(int view) {
-		this.view = view;
-	}
 
 }
