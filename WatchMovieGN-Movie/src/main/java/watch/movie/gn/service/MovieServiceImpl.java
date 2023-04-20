@@ -17,6 +17,7 @@ import watch.movie.gn.domain.CreateMovieRequest;
 import watch.movie.gn.domain.GetAllMovieReponse;
 import watch.movie.gn.domain.GetAllMovieRequest;
 import watch.movie.gn.domain.MovieDomain;
+import watch.movie.gn.domain.UpdateMovieRequest;
 import watch.movie.gn.entity.Movie;
 import watch.movie.gn.repository.MovieRepository;
 import watch.movie.gn.util.ConvertUtil;
@@ -65,5 +66,11 @@ public class MovieServiceImpl implements MovieService {
 	public void createMovie(CreateMovieRequest createMovieRequest) {
 		List<Movie> movies = ConvertUtil.convertListMovieDomaiToListMovie(createMovieRequest.getMovieDomains());
 		movieRepository.saveAll(movies);
+	}
+
+	@Override
+	public void updateMovie(UpdateMovieRequest updateMovieRequest) {
+		Movie movie = ConvertUtil.converMovieDomainToMovie(updateMovieRequest.getMovieDomain());
+		movieRepository.save(movie);
 	}
 }
