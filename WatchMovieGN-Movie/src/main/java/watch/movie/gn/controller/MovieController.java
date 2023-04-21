@@ -15,29 +15,29 @@ import watch.movie.gn.domain.UpdateMovieRequest;
 import watch.movie.gn.service.MovieService;
 
 @RestController
-@RequestMapping("/movie")
+@RequestMapping("/v1/movie")
 public class MovieController {
-	
+
 	@Autowired
 	public MovieService movieService;
-	
-	@GetMapping
+
+	@PostMapping("/getAll")
 	public ResponseEntity<?> getAllMovie(@RequestBody GetAllMovieRequest getAllMovieRequest) {
 		return ResponseEntity.ok(movieService.getAllMovie(getAllMovieRequest));
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<?> createMovie(@RequestBody CreateMovieRequest createMovieRequest) {
 		movieService.createMovie(createMovieRequest);
 		return ResponseEntity.ok().build();
 	}
-	
+
 	@PutMapping
 	public ResponseEntity<?> updateMovie(@RequestBody UpdateMovieRequest updateMovieRequest) {
 		movieService.updateMovie(updateMovieRequest);
 		return ResponseEntity.ok().build();
 	}
-	
+
 	@GetMapping("/pullMovie")
 	public ResponseEntity<?> pullMovie() {
 		movieService.pullMovie();

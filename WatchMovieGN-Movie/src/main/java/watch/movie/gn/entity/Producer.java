@@ -1,14 +1,20 @@
 package watch.movie.gn.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Data;
 
-@Table(name = "Producer")
-@Entity(name = "Producer")
+@Data
+@Table(name = "producer")
+@Entity(name = "producer")
 public class Producer {
 
 	@Id
@@ -19,25 +25,6 @@ public class Producer {
 	@Column(name = "NAME", nullable = false, unique = true, length = 255)
 	private String name;
 
-	public Producer() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public int getPkIdProducer() {
-		return pkIdProducer;
-	}
-
-	public void setPkIdProducer(int pkIdProducer) {
-		this.pkIdProducer = pkIdProducer;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	@OneToMany(mappedBy = "producer", fetch = FetchType.LAZY)
+	private List<Movie> movies;
 }

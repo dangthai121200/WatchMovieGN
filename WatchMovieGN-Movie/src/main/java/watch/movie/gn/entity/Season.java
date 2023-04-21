@@ -1,14 +1,20 @@
 package watch.movie.gn.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Data;
 
-@Table(name = "Season")
-@Entity(name = "Season")
+@Data
+@Table(name = "season")
+@Entity(name = "season")
 public class Season {
 
 	@Id
@@ -18,26 +24,8 @@ public class Season {
 
 	@Column(name = "NAME", nullable = false, unique = true, length = 255)
 	private String name;
-
-	public Season() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public int getPkIdSeason() {
-		return pkIdSeason;
-	}
-
-	public void setPkIdSeason(int pkIdSeason) {
-		this.pkIdSeason = pkIdSeason;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	
+	@OneToMany(mappedBy = "season", fetch = FetchType.LAZY)
+	private List<Movie> movies;
 
 }

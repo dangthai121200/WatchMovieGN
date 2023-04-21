@@ -10,4 +10,8 @@ public class MovieDomain {
 	private String name;
 	private Date yearOfBroadcast;
 	private int view;
+	private SeasonDomain season;
+	private CountryDomain country;
+	private ProducerDomain producer;
+
 }
