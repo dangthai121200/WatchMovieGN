@@ -25,6 +25,9 @@ public class Country {
 	@Column(name = "NAME", nullable = false, unique = true, length = 255)
 	private String name;
 
+	@Column(name = "CODE", nullable = false, unique = true, length = 4)
+	private String code;
+
 	@OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
 	private List<Movie> movies;
 

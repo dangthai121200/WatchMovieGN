@@ -48,7 +48,26 @@ public class ConvertUtil {
 		CountryDomain countryDomain = modelMapper.map(country, CountryDomain.class);
 		return countryDomain;
 	}
+	
+	public static Country convertCountryDomainToCountry(CountryDomain countryDomain) {
+		Country country = modelMapper.map(countryDomain, Country.class);
+		return country;
+	}
 
+	public static List<CountryDomain> convertListCountryToListCountryDomain(List<Country> countries) {
+		if (!countries.isEmpty()) {
+			return countries.stream().map(ConvertUtil::convertCountryToCountryDomain).collect(Collectors.toList());
+		}
+		return Collections.emptyList();
+	}
+	
+	public static List<Country> convertListCountryDomainToListCountry(List<CountryDomain> countries) {
+		if (!countries.isEmpty()) {
+			return countries.stream().map(ConvertUtil::convertCountryDomainToCountry).collect(Collectors.toList());
+		}
+		return Collections.emptyList();
+	}
+	
 	public static ProducerDomain convertProducerToProducerDomain(Producer producer) {
 		ProducerDomain producerDomain = modelMapper.map(producer, ProducerDomain.class);
 		return producerDomain;
@@ -58,5 +77,7 @@ public class ConvertUtil {
 		SeasonDomain seasonDomain = modelMapper.map(season, SeasonDomain.class);
 		return seasonDomain;
 	}
+
+
 
 }

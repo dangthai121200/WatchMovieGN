@@ -6,9 +6,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
-@Table(name = "Type")
-@Entity(name = "Type")
+import lombok.Data;
+@Data
+@Table(name = "type")
+@Entity(name = "type")
 public class Type {
 
 	@Id
@@ -18,26 +19,4 @@ public class Type {
 
 	@Column(name = "NAME", nullable = false, unique = true, length = 255)
 	private String name;
-
-	public Type() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public int getPkIdType() {
-		return pkIdType;
-	}
-
-	public void setPkIdType(int pkIdType) {
-		this.pkIdType = pkIdType;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 }

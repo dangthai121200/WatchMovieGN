@@ -64,7 +64,7 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public void createMovie(CreateMovieRequest createMovieRequest) {
-		List<Movie> movies = ConvertUtil.convertListMovieDomaiToListMovie(createMovieRequest.getMovieDomains());
+		List<Movie> movies = ConvertUtil.convertListMovieDomaiToListMovie(createMovieRequest.getMovies());
 		movieRepository.saveAll(movies);
 	}
 

@@ -9,5 +9,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateMovieRequest {
-	private List<MovieDomain> movieDomains = new ArrayList<>();
+	private List<MovieDomain> movies = new ArrayList<>();
 }
