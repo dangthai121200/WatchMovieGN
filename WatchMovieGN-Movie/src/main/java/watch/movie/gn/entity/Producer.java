@@ -11,20 +11,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import watch.movie.gn.util.ContainsDatabase;
 
 @Data
-@Table(name = "producer")
-@Entity(name = "producer")
+@Table(name = ContainsDatabase.TABLE_PRODUCER)
+@Entity(name = ContainsDatabase.TABLE_PRODUCER)
 public class Producer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "PK_ID_PRODUCER", length = 10)
+	@Column(name = ContainsDatabase.COLUMN_PRODUCER_PK_ID_PRODUCER, length = 10)
 	private int pkIdProducer;
 
-	@Column(name = "NAME", nullable = false, unique = true, length = 255)
+	@Column(name =  ContainsDatabase.COLUMN_PRODUCER_NAME, nullable = false, unique = true, length = 255)
 	private String name;
 
-	@OneToMany(mappedBy = "producer", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = ContainsDatabase.TABLE_PRODUCER, fetch = FetchType.LAZY)
 	private List<Movie> movies;
 }

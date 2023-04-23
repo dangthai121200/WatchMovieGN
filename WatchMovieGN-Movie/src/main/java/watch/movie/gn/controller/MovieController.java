@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import watch.movie.gn.domain.CreateMovieRequest;
 import watch.movie.gn.domain.GetAllMovieRequest;
 import watch.movie.gn.domain.UpdateMovieRequest;
+import watch.movie.gn.foreignkey.MovieForeign;
 import watch.movie.gn.service.MovieService;
 
 @RestController
@@ -20,6 +21,9 @@ public class MovieController {
 
 	@Autowired
 	public MovieService movieService;
+	
+	@Autowired
+	public MovieForeign movieForeign;
 
 	@PostMapping("/getAll")
 	public ResponseEntity<?> getAllMovie(@RequestBody GetAllMovieRequest getAllMovieRequest) {
@@ -41,6 +45,12 @@ public class MovieController {
 	@GetMapping("/pullMovie")
 	public ResponseEntity<?> pullMovie() {
 		movieService.pullMovie();
+		return ResponseEntity.ok().build();
+	}
+	
+	@GetMapping("/fk")
+	public ResponseEntity<?> fk() {
+		movieForeign.updateFkIdCountryOptinonDeleteToSetNull();
 		return ResponseEntity.ok().build();
 	}
 }

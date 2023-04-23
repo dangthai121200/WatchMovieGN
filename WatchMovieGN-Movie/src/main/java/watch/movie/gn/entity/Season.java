@@ -11,21 +11,22 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import watch.movie.gn.util.ContainsDatabase;
 
 @Data
-@Table(name = "season")
-@Entity(name = "season")
+@Table(name = ContainsDatabase.TABLE_SEASON)
+@Entity(name = ContainsDatabase.TABLE_SEASON)
 public class Season {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "PK_ID_SEASON", length = 10)
+	@Column(name = ContainsDatabase.COLUMN_SEASON_PK_ID_SEASON, length = 10)
 	private int pkIdSeason;
 
-	@Column(name = "NAME", nullable = false, unique = true, length = 255)
+	@Column(name = ContainsDatabase.COLUMN_SEASON_NAME, nullable = false, unique = true, length = 255)
 	private String name;
-	
-	@OneToMany(mappedBy = "season", fetch = FetchType.LAZY)
+
+	@OneToMany(mappedBy = ContainsDatabase.TABLE_SEASON, fetch = FetchType.LAZY)
 	private List<Movie> movies;
 
 }

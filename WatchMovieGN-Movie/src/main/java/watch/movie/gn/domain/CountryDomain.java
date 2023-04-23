@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class CountryDomain {
 
-	private int pkIdCountry;
+	private Integer pkIdCountry;
 	private String name;
 	private String code;
 
