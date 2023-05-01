@@ -8,8 +8,8 @@ public class ContainsDatabase {
 	public static final String INFORMATION_SCHEMA = "information_schema";
 	
 	// Base entity
-	public static final String BASE_ENTITY_COLUMN_DATE_CREATE = "date_create";
-	public static final String BASE_ENTITY_COLUMN_DATE_UPDATE = "date_update";
+	public static final String BASE_ENTITY_COLUMN_DATE_CREATE = "DATE_CREATE";
+	public static final String BASE_ENTITY_COLUMN_DATE_UPDATE = "DATE_UPDATE";
 
 	// REFERENTIAL_CONSTRAINTS
 	public static final String INFORMATION_SCHEMA_REFERENTIAL_CONSTRAINTS = "REFERENTIAL_CONSTRAINTS";
