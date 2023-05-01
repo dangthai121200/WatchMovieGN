@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Table(name = "Episode")
 @Entity(name = "Episode")
-public class Episode {
+public class Episode extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,34 +21,5 @@ public class Episode {
 
 	@Column(name = "LINK", nullable = false, unique = true, length = 255)
 	private String link;
-
-	public Episode() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public int getPkIdEpisode() {
-		return pkIdEpisode;
-	}
-
-	public void setPkIdEpisode(int pkIdEpisode) {
-		this.pkIdEpisode = pkIdEpisode;
-	}
-
-	public int getEpisode() {
-		return episode;
-	}
-
-	public void setEpisode(int episode) {
-		this.episode = episode;
-	}
-
-	public String getLink() {
-		return link;
-	}
-
-	public void setLink(String link) {
-		this.link = link;
-	}
 
 }

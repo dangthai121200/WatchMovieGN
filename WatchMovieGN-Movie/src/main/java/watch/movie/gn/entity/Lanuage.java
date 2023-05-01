@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Table(name = "Lanuage")
 @Entity(name = "Lanuage")
-public class Lanuage {
+public class Lanuage extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,26 +18,5 @@ public class Lanuage {
 
 	@Column(name = "NAME", nullable = false, unique = true, length = 255)
 	private String name;
-
-	public Lanuage() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public int getPkIdLanuage() {
-		return pkIdLanuage;
-	}
-
-	public void setPkIdLanuage(int pkIdLanuage) {
-		this.pkIdLanuage = pkIdLanuage;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 }

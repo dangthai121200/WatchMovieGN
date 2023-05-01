@@ -14,13 +14,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
 import watch.movie.gn.util.ContainsDatabase;
 
-@Data
 @Entity(name = ContainsDatabase.TABLE_MOVIE)
 @Table(name = ContainsDatabase.TABLE_MOVIE)
-public class Movie {
+public class Movie extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,21 +39,21 @@ public class Movie {
 	private int fkIdCountry;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = ContainsDatabase.COLUMN_MOVIE_FK_ID_COUNTRY, referencedColumnName = ContainsDatabase.COLUMN_COUNTRY_PK_ID_COUNTRY, foreignKey = @ForeignKey(name = ContainsDatabase.FOREIGN_MOVIE_FK_ID_COUNTRY, foreignKeyDefinition = ContainsDatabase.ACTION_FOREIGN_MOVIE_FK_ID_COUNTRY))
+	@JoinColumn(name = ContainsDatabase.COLUMN_MOVIE_FK_ID_COUNTRY, referencedColumnName = ContainsDatabase.COLUMN_COUNTRY_PK_ID_COUNTRY, foreignKey = @ForeignKey(name = ContainsDatabase.FOREIGN_MOVIE_FK_ID_COUNTRY))
 	private Country country;
 
 	@Column(name = ContainsDatabase.COLUMN_MOVIE_FK_ID_PRODUCER, length = 10, nullable = true, insertable = false, updatable = false)
 	private int fkIdProducer;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = ContainsDatabase.COLUMN_MOVIE_FK_ID_PRODUCER, referencedColumnName = "PK_ID_PRODUCER", foreignKey = @ForeignKey(name = ContainsDatabase.FOREIGN_MOVIE_FK_ID_PRODUCER, foreignKeyDefinition = ContainsDatabase.ACTION_FOREIGN_MOVIE_FK_ID_PRODUCER))
+	@JoinColumn(name = ContainsDatabase.COLUMN_MOVIE_FK_ID_PRODUCER, referencedColumnName = ContainsDatabase.COLUMN_PRODUCER_PK_ID_PRODUCER, foreignKey = @ForeignKey(name = ContainsDatabase.FOREIGN_MOVIE_FK_ID_PRODUCER))
 	private Producer producer;
 
 	@Column(name = ContainsDatabase.COLUMN_MOVIE_FK_ID_SEASON, length = 10, nullable = true, insertable = false, updatable = false)
 	private int fkIdSeason;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = ContainsDatabase.COLUMN_MOVIE_FK_ID_SEASON, referencedColumnName = "PK_ID_SEASON", foreignKey = @ForeignKey(name = ContainsDatabase.FOREIGN_MOVIE_FK_ID_SEASON, foreignKeyDefinition = ContainsDatabase.ACTION_FOREIGN_MOVIE_FK_ID_SEASON))
+	@JoinColumn(name = ContainsDatabase.COLUMN_MOVIE_FK_ID_SEASON, referencedColumnName = ContainsDatabase.COLUMN_SEASON_PK_ID_SEASON, foreignKey = @ForeignKey(name = ContainsDatabase.FOREIGN_MOVIE_FK_ID_SEASON))
 	private Season season;
 
 }

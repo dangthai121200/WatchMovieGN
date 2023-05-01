@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Table(name = "Category")
 @Entity(name = "Category")
-public class Category {
+public class Category extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,26 +18,5 @@ public class Category {
 
 	@Column(name = "NAME", nullable = false, unique = true, length = 255)
 	private String name;
-
-	public Category() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public int getPkIdCategory() {
-		return pkIdCategory;
-	}
-
-	public void setPkIdCategory(int pkIdCategory) {
-		this.pkIdCategory = pkIdCategory;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 }

@@ -10,13 +10,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.Data;
 import watch.movie.gn.util.ContainsDatabase;
 
-@Data
 @Table(name = ContainsDatabase.TABLE_SEASON)
 @Entity(name = ContainsDatabase.TABLE_SEASON)
-public class Season {
+public class Season extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

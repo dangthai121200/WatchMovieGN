@@ -6,21 +6,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Data;
 
 @Table(name = "ConfigurationType")
 @Entity(name = "ConfigurationType")
-@Data
-public class ConfigurationType {
+public class ConfigurationType extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "PK_ID_CONFIGURATION_TYP", length = 10)
 	private int pkIdConfigurationTyp;
-	
+
 	@Column(name = "NAME")
 	private String name;
-	
+
 	@Column(name = "DESCRIPTIONS")
 	private String descr;
-	
+
 }

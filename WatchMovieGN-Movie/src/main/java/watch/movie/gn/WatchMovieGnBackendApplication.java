@@ -24,7 +24,7 @@ public class WatchMovieGnBackendApplication implements CommandLineRunner {
 	}
 	
 	private void checkForeignDatabase() {
-		movieForeign.updateFkIdCountryOptinonDeleteToSetNull();
+		movieForeign.updateFkOptinonDeleteToSetNull();
 	}
 
 }

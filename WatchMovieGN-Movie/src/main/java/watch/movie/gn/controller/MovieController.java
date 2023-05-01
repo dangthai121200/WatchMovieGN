@@ -50,7 +50,7 @@ public class MovieController {
 	
 	@GetMapping("/fk")
 	public ResponseEntity<?> fk() {
-		movieForeign.updateFkIdCountryOptinonDeleteToSetNull();
+		movieForeign.updateFkOptinonDeleteToSetNull();
 		return ResponseEntity.ok().build();
 	}
 }

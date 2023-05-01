@@ -6,6 +6,10 @@ public class ContainsDatabase {
 	public static final String SCHEMA = "watchmoviegn";
 
 	public static final String INFORMATION_SCHEMA = "information_schema";
+	
+	// Base entity
+	public static final String BASE_ENTITY_COLUMN_DATE_CREATE = "date_create";
+	public static final String BASE_ENTITY_COLUMN_DATE_UPDATE = "date_update";
 
 	// REFERENTIAL_CONSTRAINTS
 	public static final String INFORMATION_SCHEMA_REFERENTIAL_CONSTRAINTS = "REFERENTIAL_CONSTRAINTS";
