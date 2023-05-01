@@ -10,8 +10,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 import watch.movie.gn.util.ContainsDatabase;
 
+@Getter
+@Setter
 @Table(name = ContainsDatabase.TABLE_SEASON)
 @Entity(name = ContainsDatabase.TABLE_SEASON)
 public class Season extends BaseEntity {

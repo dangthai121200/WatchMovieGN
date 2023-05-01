@@ -8,9 +8,13 @@ import org.springframework.data.annotation.CreatedDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import watch.movie.gn.util.ContainsDatabase;
 
 @Data
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class BaseEntity {
 

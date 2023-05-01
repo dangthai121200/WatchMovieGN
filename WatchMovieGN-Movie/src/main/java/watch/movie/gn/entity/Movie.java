@@ -14,8 +14,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 import watch.movie.gn.util.ContainsDatabase;
 
+@Getter
+@Setter
 @Entity(name = ContainsDatabase.TABLE_MOVIE)
 @Table(name = ContainsDatabase.TABLE_MOVIE)
 public class Movie extends BaseEntity {
