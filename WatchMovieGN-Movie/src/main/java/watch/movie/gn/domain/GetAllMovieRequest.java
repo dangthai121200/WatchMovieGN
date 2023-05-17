@@ -6,7 +6,7 @@ import lombok.ToString;
 @Data
 @ToString
 public class GetAllMovieRequest {
-	private int page;
-	private int size;
+	private Integer page;
+	private Integer size;
 
 }
