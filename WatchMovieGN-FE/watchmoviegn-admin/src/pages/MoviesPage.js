@@ -9,13 +9,11 @@ import { useSelector, useDispatch } from 'react-redux'
 // reducers
 import { getAllMovieAction } from '../reducers/movieSlice/movieSlice';
 
-import PRODUCTS from '../_mock/products';
-
 
 
 // ----------------------------------------------------------------------
 
-export default function ProductsPage() {
+export default function MoviesPage() {
 
   const dispatch = useDispatch();
   const movieList = useSelector(state => state.movie.list)
@@ -60,7 +58,7 @@ export default function ProductsPage() {
           </Stack>
         </Stack>
 
-        <ProductList products={PRODUCTS} />
+        {/* <ProductList products={PRODUCTS} /> */}
         <ProductCartWidget />
       </Container>
     </>
