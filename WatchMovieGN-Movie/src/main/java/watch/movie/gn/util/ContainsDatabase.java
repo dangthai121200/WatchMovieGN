@@ -34,7 +34,13 @@ public class ContainsDatabase {
 
 	public static final String COLUMN_MOVIE_NAME = "NAME";
 	public static final String COLUMN_MOVIE_VIEW = "VIEW";
-	public static final String COLUMN_MOVIE_YEAR_OF_BROADCAST = "YEAR_OF_BROADCAST";
+    public static final String COLUMN_MOVIE_YEAR_OF_BROADCAST = "YEAR_OF_BROADCAST";
+	public static final String COLUMN_MOVIE_URL_IMAGE = "URL_IMAGE";
+	public static final String COLUMN_MOVIE_CONTENT = "CONTENT";
+	public static final String COLUMN_MOVIE_STATUS = "STATUS";
+	public static final String COLUMN_MOVIE_TIME = "TIME";
+
+
 
 	public static final String COLUMN_MOVIE_FK_ID_COUNTRY = "FK_ID_COUNTRY";
 	public static final String COLUMN_MOVIE_FK_ID_PRODUCER = "FK_ID_PRODUCER";
@@ -66,6 +72,18 @@ public class ContainsDatabase {
 
 	public static final String COLUMN_SEASON_PK_ID_SEASON = "PK_ID_SEASON";
 	public static final String COLUMN_SEASON_NAME = "NAME";
+	
+	// Table actor
+	public static final String TABLE_ACTOR = "actor";
+	
+	public static final String COLUMN_ACTOR_PK_ID_ACTOR = "PK_ID_ACTOR";
+	public static final String COLUMN_ACTOR_LAST_NAME = "LAST_NAME";
+	public static final String COLUMN_ACTOR_FIRST_NAME = "FIRST_NAME";
+	public static final String COLUMN_ACTOR_BIRTHDAY = "BIRTHDAY";
+	public static final String COLUMN_ACTOR_GENDER = "GENDER";
+	public static final String COLUMN_ACTOR_RANK = "RANK";
+
+
 
 	// Action for foreign key
 	public static final String ACTION_FOREIGN_MOVIE_FK_ID_COUNTRY = "FOREIGN KEY (" + COLUMN_MOVIE_FK_ID_COUNTRY

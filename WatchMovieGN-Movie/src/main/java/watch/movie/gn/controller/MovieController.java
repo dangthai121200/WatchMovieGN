@@ -1,5 +1,7 @@
 package watch.movie.gn.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +10,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.databind.DatabindException;
 
 import watch.movie.gn.domain.CreateMovieRequest;
 import watch.movie.gn.domain.GetAllMovieRequest;
@@ -48,9 +53,15 @@ public class MovieController {
 		return ResponseEntity.ok().build();
 	}
 	
-	@GetMapping("/fk")
-	public ResponseEntity<?> fk() {
-		movieForeign.updateFkOptinonDeleteToSetNull();
+//	@GetMapping("/fk")
+//	public ResponseEntity<?> fk() {
+//		movieForeign.updateFkOptinonDeleteToSetNull();
+//		return ResponseEntity.ok().build();
+//	}
+	
+	@GetMapping("/fakeDataMovie")
+	public ResponseEntity<?> fakeDataMovie() throws StreamReadException, DatabindException, IOException {
+		movieService.fakeDataMovie();
 		return ResponseEntity.ok().build();
 	}
 }
