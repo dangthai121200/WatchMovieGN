@@ -10,10 +10,11 @@ MovieList.propTypes = {
 };
 
 export default function MovieList({ movies, ...other }) {
+  console.log(movies)
   return (
     <Grid container spacing={3} {...other}>
       {movies.map((movie) => (
-        <Grid key={movie.id} item xs={12} sm={6} md={3}>
+        <Grid key={movie.pkIdMovie} item xs={12} sm={6} md={3}>
           <MovieCard movie={movie} />
         </Grid>
       ))}

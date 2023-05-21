@@ -25,7 +25,7 @@ MovieCard.propTypes = {
 };
 
 export default function MovieCard({ movie }) {
-  const { name, cover, price, colors, status, priceSale } = movie;
+  const { pkIdMovie, name, urlImage, colors, status, time } = movie;
 
   return (
     <Card>
@@ -45,7 +45,7 @@ export default function MovieCard({ movie }) {
             {status}
           </Label>
         )}
-        <StyledMovieImg alt={name} src={cover} />
+        <StyledMovieImg alt={name} src={urlImage} loading='lazy'/>
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>
@@ -56,20 +56,9 @@ export default function MovieCard({ movie }) {
         </Link>
 
         <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <ColorPreview colors={colors} />
+          <ColorPreview colors={[1,2,3,4,5]} />
           <Typography variant="subtitle1">
-            <Typography
-              component="span"
-              variant="body1"
-              sx={{
-                color: 'text.disabled',
-                textDecoration: 'line-through',
-              }}
-            >
-              {priceSale && fCurrency(priceSale)}
-            </Typography>
-            &nbsp;
-            {fCurrency(price)}
+            {time}ph
           </Typography>
         </Stack>
       </Stack>

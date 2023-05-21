@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Container, Stack, Typography } from '@mui/material';
 // components
 import { ProductSort, ProductList, ProductCartWidget, ProductFilterSidebar } from '../sections/@dashboard/products';
+import { MovieSort, MovieList, MovieCartWidget, MovieFilterSidebar } from '../sections/@dashboard/movies';
 // react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // reducers
@@ -16,17 +17,19 @@ import { getAllMovieAction } from '../reducers/movieSlice/movieSlice';
 export default function MoviesPage() {
 
   const dispatch = useDispatch();
+
   const movieList = useSelector(state => state.movie.list)
 
-  useEffect(()=>{
-    dispatch(getAllMovieAction({
-      page: 0,
-      size: 10
-    }));
-    console.log(movieList)
-  },[])
-
   const [openFilter, setOpenFilter] = useState(false);
+
+  const getAllMovie = (page, size) => {
+    if (!movieList || movieList.length == 0) {
+      dispatch(getAllMovieAction({
+        page: page,
+        size: size
+      }));
+    }
+  }
 
   const handleOpenFilter = () => {
     setOpenFilter(true);
@@ -35,6 +38,10 @@ export default function MoviesPage() {
   const handleCloseFilter = () => {
     setOpenFilter(false);
   };
+
+  useEffect(() => {
+    getAllMovie(0, 100)
+  }, [])
 
   return (
     <>
@@ -49,17 +56,17 @@ export default function MoviesPage() {
 
         <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }}>
           <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-            <ProductFilterSidebar
+            <MovieFilterSidebar
               openFilter={openFilter}
               onOpenFilter={handleOpenFilter}
               onCloseFilter={handleCloseFilter}
             />
-            <ProductSort />
+            <MovieSort />
           </Stack>
         </Stack>
 
-        {/* <ProductList products={PRODUCTS} /> */}
-        <ProductCartWidget />
+        <MovieList movies={movieList} />
+        <MovieCartWidget />
       </Container>
     </>
   );

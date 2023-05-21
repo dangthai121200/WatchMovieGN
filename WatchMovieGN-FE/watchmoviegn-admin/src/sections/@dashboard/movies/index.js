@@ -1,5 +1,5 @@
-export { default as ProductCard } from './ProductCard';
-export { default as ProductList } from './ProductList';
-export { default as ProductSort } from './ProductSort';
-export { default as ProductCartWidget } from './ProductCartWidget';
-export { default as ProductFilterSidebar } from './ProductFilterSidebar';
+export { default as MovieCard } from './MovieCard';
+export { default as MovieList } from './MovieList';
+export { default as MovieSort } from './MovieSort';
+export { default as MovieCartWidget } from './MovieCartWidget';
+export { default as MovieFilterSidebar } from './MovieFilterSidebar';

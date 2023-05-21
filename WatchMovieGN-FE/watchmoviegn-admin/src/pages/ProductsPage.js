@@ -17,17 +17,6 @@ import PRODUCTS from '../_mock/products';
 
 export default function ProductsPage() {
 
-  const dispatch = useDispatch();
-  const movieList = useSelector(state => state.movie.list)
-
-  useEffect(()=>{
-    dispatch(getAllMovieAction({
-      page: 0,
-      size: 10
-    }));
-    console.log(movieList)
-  },[])
-
   const [openFilter, setOpenFilter] = useState(false);
 
   const handleOpenFilter = () => {
