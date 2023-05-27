@@ -8,8 +8,9 @@ export const movieSlice = createSlice({
     list: [],
     totalPage: 0,
     totalMovie: 0,
-    page: 0,
-    size: 0
+    page: 1,
+    size: 20,
+    listSize: [20, 40, 60]
   },
   reducers: {
 
@@ -38,7 +39,10 @@ export const movieSlice = createSlice({
 
 export const getAllMovieAction = createAsyncThunk(REDUX_GET_ALL_MOVIE_ACTION, async (param) => {
   const { page, size } = param;
-  const response = await getAllMovieRequest(page, size);
+  if(page === 0 || size === 0) {
+    throw new Error('Page and Size than 0');
+  }
+  const response = await getAllMovieRequest(page - 1 , size);
   return response.data
 })
 

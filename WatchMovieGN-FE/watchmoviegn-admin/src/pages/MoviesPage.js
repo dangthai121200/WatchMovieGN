@@ -1,9 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { useState, useEffect } from 'react';
 // @mui
-import { Container, Stack, Typography } from '@mui/material';
+import { Container, Stack, Typography, Pagination } from '@mui/material';
 // components
-import { ProductSort, ProductList, ProductCartWidget, ProductFilterSidebar } from '../sections/@dashboard/products';
 import { MovieSort, MovieList, MovieCartWidget, MovieFilterSidebar } from '../sections/@dashboard/movies';
 // react-redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -18,17 +17,29 @@ export default function MoviesPage() {
 
   const dispatch = useDispatch();
 
-  const movieList = useSelector(state => state.movie.list)
+  const movieList = useSelector(state => state.movies.list);
+
+  const totalPage = useSelector(state => state.movies.totalPage);
+
+  const [page, setPage] = useState(useSelector(state => state.movies.page));
+
+  const [size, setSize] = useState(useSelector(state => state.movies.size));
+  const listSize = useSelector(state => state.movies.size);
 
   const [openFilter, setOpenFilter] = useState(false);
 
   const getAllMovie = (page, size) => {
-    if (!movieList || movieList.length == 0) {
-      dispatch(getAllMovieAction({
-        page: page,
-        size: size
-      }));
-    }
+    dispatch(getAllMovieAction({
+      page: page,
+      size: size
+    }));
+  }
+
+  const changePageMovie = (event,page) => {
+    dispatch(getAllMovieAction({
+      page: page,
+      size: size
+    }));
   }
 
   const handleOpenFilter = () => {
@@ -40,9 +51,10 @@ export default function MoviesPage() {
   };
 
   useEffect(() => {
-    getAllMovie(0, 100)
+    if (movieList.length == 0) {
+      getAllMovie(page, size)
+    }
   }, [])
-
   return (
     <>
       <Helmet>
@@ -66,6 +78,9 @@ export default function MoviesPage() {
         </Stack>
 
         <MovieList movies={movieList} />
+        <Container fixed maxWidth="sm">
+          <Pagination count={totalPage} color="primary" size="large" sx={{ mt: 2 }} onChange={changePageMovie} defaultPage={page + 1}/>
+        </Container>
         <MovieCartWidget />
       </Container>
     </>
