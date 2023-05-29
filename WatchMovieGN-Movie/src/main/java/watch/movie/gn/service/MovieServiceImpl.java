@@ -1,17 +1,9 @@
 package watch.movie.gn.service;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -28,10 +20,7 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DatabindException;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.ArrayType;
 
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -108,21 +97,22 @@ public class MovieServiceImpl implements MovieService {
 				movies.add(movie);
 			}
 		});
-		
+
 		Set<Movie> movieSet = movies.stream()
 				.collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Movie::getName))));
-		
+
 		movieRepository.saveAll(movieSet);
 	}
-	
+
 	public static void main(String[] args) throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		File file = new File("E:\\TuHoc\\Java\\WatchMovieGN\\WatchMovieGN-Movie\\src\\main\\resources\\movies.json");
-		List<Map<String, Object>> myObjects = objectMapper.readValue(file, new TypeReference<List<Map<String, Object>>>() {
-		});
-		
+		List<Map<String, Object>> myObjects = objectMapper.readValue(file,
+				new TypeReference<List<Map<String, Object>>>() {
+				});
+
 		System.out.println(myObjects.get(0));
-		
+
 //		Iterator<JsonNode> iterator = objectMapper.readTree(file).iterator();
 //		System.out.println();
 //		while(iterator.hasNext()) {

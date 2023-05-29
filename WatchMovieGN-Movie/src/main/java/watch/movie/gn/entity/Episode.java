@@ -15,6 +15,11 @@ import lombok.Setter;
 @Entity(name = "Episode")
 public class Episode extends BaseEntity {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3256886363771706573L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "PK_ID_EPISODE", length = 10)

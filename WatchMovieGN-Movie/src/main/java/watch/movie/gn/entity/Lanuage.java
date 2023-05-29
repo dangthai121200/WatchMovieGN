@@ -15,6 +15,11 @@ import lombok.Setter;
 @Entity(name = "Lanuage")
 public class Lanuage extends BaseEntity {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4588543478997939573L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "PK_ID_LANUAGE", length = 10)

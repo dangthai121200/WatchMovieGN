@@ -20,6 +20,11 @@ import watch.movie.gn.util.ContainsDatabase;
 @Entity(name = ContainsDatabase.TABLE_SEASON)
 public class Season extends BaseEntity {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8479931964051506767L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = ContainsDatabase.COLUMN_SEASON_PK_ID_SEASON, length = 10)

@@ -14,8 +14,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -28,6 +26,11 @@ import watch.movie.gn.util.MovieStatus;
 @Entity(name = ContainsDatabase.TABLE_MOVIE)
 @Table(name = ContainsDatabase.TABLE_MOVIE)
 public class Movie extends BaseEntity {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3034941778917542234L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,17 +46,17 @@ public class Movie extends BaseEntity {
 
 	@Column(name = ContainsDatabase.COLUMN_MOVIE_YEAR_OF_BROADCAST, nullable = true)
 	private Date yearOfBroadcast;
-	
+
 	@Column(name = ContainsDatabase.COLUMN_MOVIE_URL_IMAGE, length = 255, nullable = true)
 	private String urlImage;
 
 	@Column(name = ContainsDatabase.COLUMN_MOVIE_CONTENT, nullable = true, columnDefinition = "TEXT")
 	private String content;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = ContainsDatabase.COLUMN_MOVIE_STATUS, nullable = false, length = 10)
 	private MovieStatus status = MovieStatus.NEW;
-	
+
 	@Column(name = ContainsDatabase.COLUMN_MOVIE_TIME, nullable = false, length = 5)
 	private Integer time;
 
@@ -77,5 +80,5 @@ public class Movie extends BaseEntity {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = ContainsDatabase.COLUMN_MOVIE_FK_ID_SEASON, referencedColumnName = ContainsDatabase.COLUMN_SEASON_PK_ID_SEASON, foreignKey = @ForeignKey(name = ContainsDatabase.FOREIGN_MOVIE_FK_ID_SEASON))
 	private Season season;
-	
+
 }

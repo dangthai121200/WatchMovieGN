@@ -15,6 +15,11 @@ import lombok.Setter;
 @Entity(name = "Category")
 public class Category extends BaseEntity {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4313042742322180028L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "PK_ID_CATEGORY", length = 10)

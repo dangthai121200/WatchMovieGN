@@ -20,6 +20,11 @@ import watch.movie.gn.util.ContainsDatabase;
 @Entity(name = ContainsDatabase.TABLE_PRODUCER)
 public class Producer extends BaseEntity {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4520861923552450501L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = ContainsDatabase.COLUMN_PRODUCER_PK_ID_PRODUCER, length = 10)

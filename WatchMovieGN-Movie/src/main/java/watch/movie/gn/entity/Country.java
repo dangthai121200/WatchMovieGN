@@ -21,6 +21,11 @@ import watch.movie.gn.util.ContainsDatabase;
 @Entity(name = ContainsDatabase.TABLE_COUNTRY)
 public class Country extends BaseEntity {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2556807743378934613L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = ContainsDatabase.COLUMN_COUNTRY_PK_ID_COUNTRY, length = 10)
