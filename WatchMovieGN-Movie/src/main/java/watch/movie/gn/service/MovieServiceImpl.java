@@ -11,9 +11,11 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
@@ -32,8 +34,10 @@ import watch.movie.gn.domain.UpdateMovieRequest;
 import watch.movie.gn.elastic.document.MovieDocument;
 import watch.movie.gn.elastic.repository.MovieDocumentRepository;
 import watch.movie.gn.entity.Movie;
+import watch.movie.gn.exception.WatchMovieException;
 import watch.movie.gn.repository.MovieRepository;
 import watch.movie.gn.util.ConvertUtil;
+import watch.movie.gn.util.ProfileActive;
 
 @Slf4j
 @Service
@@ -53,7 +57,7 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public GetAllMovieReponse getAllMovie(GetAllMovieRequest getAllMovieRequest) {
-		log.info("Get all Movie: " + getAllMovieRequest.toString());
+		log.debug("Get all Movie: " + getAllMovieRequest.toString());
 		GetAllMovieReponse getAllMovieReponse = new GetAllMovieReponse();
 		int page = getAllMovieRequest.getPage();
 		int size = getAllMovieRequest.getSize();
@@ -69,18 +73,27 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
+	@Transactional(rollbackOn = Exception.class)
 	public void createMovie(CreateMovieRequest createMovieRequest) {
-		List<Movie> movies = ConvertUtil.convertListMovieDomaiToListMovie(createMovieRequest.getMovies());
-		movieRepository.saveAll(movies);
-	}
-
-	@Override
-	public void updateMovie(UpdateMovieRequest updateMovieRequest) {
-		Movie movie = ConvertUtil.converMovieDomainToMovie(updateMovieRequest.getMovieDomain());
+		Movie movie = ConvertUtil.converCreateMovieRequestToMovie(createMovieRequest);
 		movieRepository.save(movie);
+		MovieDocument movieDocument = ConvertUtil.converMovieToMovieDocument(movie);
+		movieDocumentRepository.save(movieDocument);
 	}
 
 	@Override
+	public void updateMovie(UpdateMovieRequest updateMovieRequest) throws WatchMovieException {
+		if (ObjectUtils.isEmpty(updateMovieRequest.getPkIdMovie())) {
+			throw new WatchMovieException("Movie Id is not null or empty");
+		}
+		Movie movie = ConvertUtil.converUpdateMovieRequestToMovie(updateMovieRequest);
+		movieRepository.save(movie);
+		MovieDocument movieDocument = ConvertUtil.converMovieToMovieDocument(movie);
+		movieDocumentRepository.save(movieDocument);
+	}
+
+	@Override
+	@Profile(ProfileActive.PROFILE_DEV)
 	@Transactional(rollbackOn = Exception.class)
 	public void fakeDataMovie() throws StreamReadException, DatabindException, IOException {
 

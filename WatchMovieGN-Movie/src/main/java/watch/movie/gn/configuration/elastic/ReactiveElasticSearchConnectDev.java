@@ -5,8 +5,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.elc.ReactiveElasticsearchConfiguration;
 
+import watch.movie.gn.util.ProfileActive;
+
 @Configuration
-@Profile("dev")
+@Profile(ProfileActive.PROFILE_DEV)
 public class ReactiveElasticSearchConnectDev extends ReactiveElasticsearchConfiguration {
 
 	@Override

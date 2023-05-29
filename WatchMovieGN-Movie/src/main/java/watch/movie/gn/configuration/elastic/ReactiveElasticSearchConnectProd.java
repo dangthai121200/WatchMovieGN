@@ -5,9 +5,11 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.elc.ElasticsearchConfiguration;
 
+import watch.movie.gn.util.ProfileActive;
+
 @Configuration
-@Profile("prod")
-public class ElasticSearchConnectProd extends ElasticsearchConfiguration {
+@Profile(ProfileActive.PROFILE_PROD)
+public class ReactiveElasticSearchConnectProd extends ElasticsearchConfiguration {
 
 	@Override
 	public ClientConfiguration clientConfiguration() {

@@ -7,8 +7,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Component;
 
+import watch.movie.gn.util.ProfileActive;
+
 @Component
-@Profile("dev")
+@Profile(ProfileActive.PROFILE_DEV)
 public class DataSourceConfigDev {
 
 	private String URL = "jdbc:mysql://localhost:3306/watchmoviegn";

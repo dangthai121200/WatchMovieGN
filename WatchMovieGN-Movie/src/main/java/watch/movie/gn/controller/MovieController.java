@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.DatabindException;
 import watch.movie.gn.domain.CreateMovieRequest;
 import watch.movie.gn.domain.GetAllMovieRequest;
 import watch.movie.gn.domain.UpdateMovieRequest;
+import watch.movie.gn.exception.WatchMovieException;
 import watch.movie.gn.foreignkey.MovieForeign;
 import watch.movie.gn.service.MovieService;
 
@@ -42,7 +43,7 @@ public class MovieController {
 	}
 
 	@PutMapping
-	public ResponseEntity<?> updateMovie(@RequestBody UpdateMovieRequest updateMovieRequest) {
+	public ResponseEntity<?> updateMovie(@RequestBody UpdateMovieRequest updateMovieRequest) throws WatchMovieException {
 		movieService.updateMovie(updateMovieRequest);
 		return ResponseEntity.ok().build();
 	}
