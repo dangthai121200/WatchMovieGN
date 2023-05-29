@@ -17,7 +17,7 @@ public class DataSourceConfigDev {
 	private String DRIVE_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
 
 	@Bean
-	public DataSource dataSourceDev() {
+	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource(URL, USERNAME, PASSWORD);
 		dataSource.setDriverClassName(DRIVE_CLASS_NAME);
 		return dataSource;

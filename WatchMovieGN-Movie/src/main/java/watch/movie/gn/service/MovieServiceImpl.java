@@ -29,6 +29,8 @@ import watch.movie.gn.domain.GetAllMovieReponse;
 import watch.movie.gn.domain.GetAllMovieRequest;
 import watch.movie.gn.domain.MovieDomain;
 import watch.movie.gn.domain.UpdateMovieRequest;
+import watch.movie.gn.elastic.document.MovieDocument;
+import watch.movie.gn.elastic.repository.MovieDocumentRepository;
 import watch.movie.gn.entity.Movie;
 import watch.movie.gn.repository.MovieRepository;
 import watch.movie.gn.util.ConvertUtil;
@@ -39,6 +41,9 @@ public class MovieServiceImpl implements MovieService {
 
 	@Autowired
 	public MovieRepository movieRepository;
+
+	@Autowired
+	public MovieDocumentRepository movieDocumentRepository;
 
 	@Autowired
 	public RestTemplate restTemplate;
@@ -52,8 +57,8 @@ public class MovieServiceImpl implements MovieService {
 		GetAllMovieReponse getAllMovieReponse = new GetAllMovieReponse();
 		int page = getAllMovieRequest.getPage();
 		int size = getAllMovieRequest.getSize();
-		Page<Movie> movies = movieRepository.findAll(PageRequest.of(page, size));
-		Page<MovieDomain> movieDomains = movies.map(movie -> ConvertUtil.convertPageMovieToPageMovieDomain(movie));
+		Page<MovieDocument> movies = movieDocumentRepository.findAll(PageRequest.of(page, size));
+		Page<MovieDomain> movieDomains = movies.map(movie -> ConvertUtil.converMovieDocumentToMovieDomain(movie));
 		getAllMovieReponse.setMovies(movieDomains);
 		return getAllMovieReponse;
 	}
@@ -80,7 +85,7 @@ public class MovieServiceImpl implements MovieService {
 	public void fakeDataMovie() throws StreamReadException, DatabindException, IOException {
 
 		ObjectMapper objectMapper = new ObjectMapper();
-		File file = new File("E:\\TuHoc\\Java\\WatchMovieGN\\WatchMovieGN-Movie\\src\\main\\resources\\movies.json");
+		File file = new File("src/main/resources/movies.json");
 		List<Map<String, Object>> listMovieJson = objectMapper.readValue(file,
 				new TypeReference<List<Map<String, Object>>>() {
 				});
@@ -92,33 +97,20 @@ public class MovieServiceImpl implements MovieService {
 			if (!StringUtils.isEmpty(title) && !StringUtils.isEmpty(extract)) {
 				Movie movie = new Movie();
 				movie.setName(title);
-				movie.setContent(extract);
+				double randomView = Math.random() * 1000;
+				movie.setView((int) randomView);
 				movie.setUrlImage(thumbnail);
+				movie.setContent(extract);
+				movie.setTime(90);
 				movies.add(movie);
 			}
 		});
 
 		Set<Movie> movieSet = movies.stream()
 				.collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Movie::getName))));
-
 		movieRepository.saveAll(movieSet);
+		Set<MovieDocument> movieDocuments = ConvertUtil.convertListMovieDomaiToListMovie(movieSet);
+		movieDocumentRepository.saveAll(movieDocuments);
 	}
 
-	public static void main(String[] args) throws IOException {
-		ObjectMapper objectMapper = new ObjectMapper();
-		File file = new File("E:\\TuHoc\\Java\\WatchMovieGN\\WatchMovieGN-Movie\\src\\main\\resources\\movies.json");
-		List<Map<String, Object>> myObjects = objectMapper.readValue(file,
-				new TypeReference<List<Map<String, Object>>>() {
-				});
-
-		System.out.println(myObjects.get(0));
-
-//		Iterator<JsonNode> iterator = objectMapper.readTree(file).iterator();
-//		System.out.println();
-//		while(iterator.hasNext()) {
-//			JsonNode jsonNode = iterator.next();
-//			System.out.println(jsonNode.toString());
-//		}
-//		System.out.println();
-	}
 }

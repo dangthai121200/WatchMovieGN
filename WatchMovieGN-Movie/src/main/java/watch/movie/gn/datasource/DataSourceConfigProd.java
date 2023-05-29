@@ -16,7 +16,7 @@ public class DataSourceConfigProd {
 	private String DRIVE_CLASS_NAME = "";
 
 	@Bean
-	public DataSource dataSourceProd() {
+	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource(URL, USERNAME, PASSWORD);
 		dataSource.setDriverClassName(DRIVE_CLASS_NAME);
 		return dataSource;

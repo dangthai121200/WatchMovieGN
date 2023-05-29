@@ -2,6 +2,7 @@ package watch.movie.gn.util;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -12,6 +13,7 @@ import watch.movie.gn.domain.CountryDomain;
 import watch.movie.gn.domain.MovieDomain;
 import watch.movie.gn.domain.ProducerDomain;
 import watch.movie.gn.domain.SeasonDomain;
+import watch.movie.gn.elastic.document.MovieDocument;
 import watch.movie.gn.entity.Country;
 import watch.movie.gn.entity.Movie;
 import watch.movie.gn.entity.Producer;
@@ -35,6 +37,23 @@ public class ConvertUtil {
 	public static Movie converMovieDomainToMovie(MovieDomain movieDomain) {
 		Movie movie = modelMapper.map(movieDomain, Movie.class);
 		return movie;
+	}
+	
+	public static MovieDocument converMovieToMovieDocument(Movie movie) {
+		MovieDocument movieDocument = modelMapper.map(movie, MovieDocument.class);
+		return movieDocument;
+	}
+	
+	public static MovieDomain converMovieDocumentToMovieDomain(MovieDocument movieDocument) {
+		MovieDomain movieDomain = modelMapper.map(movieDocument, MovieDomain.class);
+		return movieDomain;
+	}
+	
+	public static Set<MovieDocument> convertListMovieDomaiToListMovie(Set<Movie> movies) {
+		if (!movies.isEmpty()) {
+			return movies.stream().map(ConvertUtil::converMovieToMovieDocument).collect(Collectors.toSet());
+		}
+		return Collections.emptySet();
 	}
 
 	public static List<Movie> convertListMovieDomaiToListMovie(List<MovieDomain> movieDomains) {
