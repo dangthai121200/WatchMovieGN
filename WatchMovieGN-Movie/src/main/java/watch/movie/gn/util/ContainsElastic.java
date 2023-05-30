@@ -14,4 +14,6 @@ public class ContainsElastic {
 	public static final String FIELD_MOVIE_CONTENT = "CONTENT";
 	public static final String FIELD_MOVIE_STATUS = "STATUS";
 	public static final String FIELD_MOVIE_TIME = "TIME";
+	public static final String FIELD_MOVIE_COUNTRY = "COUNTRY";
+
 }

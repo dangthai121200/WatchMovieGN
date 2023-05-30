@@ -43,4 +43,14 @@ public class MovieDocument {
 	@Field(name = ContainsElastic.FIELD_MOVIE_TIME, type = FieldType.Integer, storeNullValue = false)
 	private Integer time;
 
+	@Field(name = ContainsElastic.FIELD_MOVIE_COUNTRY, type = FieldType.Object)
+	private CountryDocument country;
+
+	@Data
+	public static class CountryDocument {
+		private Integer pkIdCountry;
+		private String name;
+		private String code;
+	}
+
 }

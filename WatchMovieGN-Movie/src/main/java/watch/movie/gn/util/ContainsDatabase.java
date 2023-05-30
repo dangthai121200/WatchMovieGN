@@ -72,6 +72,8 @@ public class ContainsDatabase {
 
 	public static final String COLUMN_SEASON_PK_ID_SEASON = "PK_ID_SEASON";
 	public static final String COLUMN_SEASON_NAME = "NAME";
+	public static final String COLUMN_SEASON_YEAR = "YEAR";
+
 	
 	// Table actor
 	public static final String TABLE_ACTOR = "actor";

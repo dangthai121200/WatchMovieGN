@@ -1,5 +1,6 @@
 package watch.movie.gn.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -30,8 +31,11 @@ public class Season extends BaseEntity {
 	@Column(name = ContainsDatabase.COLUMN_SEASON_PK_ID_SEASON, length = 10)
 	private int pkIdSeason;
 
-	@Column(name = ContainsDatabase.COLUMN_SEASON_NAME, nullable = false, unique = true, length = 255)
+	@Column(name = ContainsDatabase.COLUMN_SEASON_NAME, nullable = false, length = 255)
 	private String name;
+	
+	@Column(name = ContainsDatabase.COLUMN_SEASON_YEAR, nullable = false)
+	private Date year;
 
 	@OneToMany(mappedBy = ContainsDatabase.TABLE_SEASON, fetch = FetchType.LAZY)
 	private List<Movie> movies;
