@@ -79,7 +79,7 @@ export default function MoviesPage() {
 
         <MovieList movies={movieList} />
         <Container fixed maxWidth="sm">
-          <Pagination count={totalPage} color="primary" size="large" sx={{ mt: 2 }} onChange={changePageMovie} defaultPage={page + 1}/>
+          <Pagination count={totalPage} color="primary" size="large" sx={{ mt: 2 }} onChange={changePageMovie}/>
         </Container>
         <MovieCartWidget />
       </Container>
