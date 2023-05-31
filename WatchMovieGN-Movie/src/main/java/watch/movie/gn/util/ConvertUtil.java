@@ -74,6 +74,24 @@ public class ConvertUtil {
 		}
 		return Collections.emptyList();
 	}
+	
+	public static List<MovieDomain> converListMovieDocumentToListMovieDomain(List<MovieDocument> movieDocuments) {
+
+		if (!movieDocuments.isEmpty()) {
+			return movieDocuments.stream().map(ConvertUtil::converMovieDocumentToMovieDomain)
+					.collect(Collectors.toList());
+		}
+		return Collections.emptyList();
+	}
+	
+	public static List<MovieDomain> converListMovieDocumentToListMovieDomain(Set<MovieDocument> movieDocuments) {
+
+		if (!movieDocuments.isEmpty()) {
+			return movieDocuments.stream().map(ConvertUtil::converMovieDocumentToMovieDomain)
+					.collect(Collectors.toList());
+		}
+		return Collections.emptyList();
+	}
 
 	public static CountryDomain convertCountryToCountryDomain(Country country) {
 		CountryDomain countryDomain = modelMapper.map(country, CountryDomain.class);

@@ -4,7 +4,8 @@ public class ContainsElastic {
 
 	// Movie
 	public static final String INDEX_MOVIE = "index_movie";
-
+	public static final String ALIAS_MOVE = "MOVIE_DOCUMENT";
+	
 	public static final String FIELD_MOVIE_PK_ID_MOVIE = "PK_ID_MOVIE";
 
 	public static final String FIELD_MOVIE_NAME = "NAME";

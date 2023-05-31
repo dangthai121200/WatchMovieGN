@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -24,6 +24,7 @@ import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.transaction.Transactional;
+import watch.movie.gn.domain.MovieDomain;
 import watch.movie.gn.elastic.document.MovieDocument;
 import watch.movie.gn.elastic.repository.MovieDocumentRepository;
 import watch.movie.gn.entity.Country;
@@ -47,9 +48,62 @@ public class TestServiceImpl implements TestService {
 	@Autowired
 	private CountryRepository countryRepository;
 
+	@SuppressWarnings({ "deprecation", "unused" })
 	@Override
 	@Transactional(rollbackOn = Exception.class)
-	public void fakeDataMovie() throws StreamReadException, DatabindException, IOException {
+	public List<MovieDomain> fakeDataMovie() throws StreamReadException, DatabindException, IOException {
+
+		List<Country> countries = fakeDataCountries();
+		List<Map<String, Object>> listMovieJson = readValueFromMovieJson("src/main/resources/movies.json");
+		List<Movie> movies = new ArrayList<>();
+		if (!ObjectUtils.isEmpty(listMovieJson)) {
+			listMovieJson.forEach(movieJson -> {
+				String title = (String) movieJson.get("title");
+				String extract = (String) movieJson.get("extract");
+				String thumbnail = (String) movieJson.get("thumbnail");
+				if (!ObjectUtils.isEmpty(title) && !ObjectUtils.isEmpty(extract)) {
+					Movie movie = new Movie();
+					movie.setName(title);
+					double randomView = Math.random() * 1000;
+					movie.setView((int) randomView);
+					LocalDate start = LocalDate.of(2020, Month.JANUARY, 1);
+					LocalDate end = LocalDate.now();
+					LocalDate randomDate = DateUtil.randomDate(start, end);
+					movie.setYearOfBroadcast(new Date(randomDate.getYear(), randomDate.getMonth().getValue(),
+							randomDate.getDayOfMonth()));
+					movie.setUrlImage(thumbnail);
+					movie.setContent(extract);
+					double randomTime = Math.random() * 100;
+					movie.setTime(90);
+					movie.setCountry(countries.get(NumberUtil.randomNumber(0, countries.size() - 1)));
+					movies.add(movie);
+				}
+			});
+		}
+		Set<Movie> movieSet = movies.stream()
+				.collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Movie::getName))));
+		movieRepository.saveAll(movieSet);
+		Set<MovieDocument> movieDocuments = ConvertUtil.convertListMovieDomaiToListMovie(movieSet);
+		movieDocumentRepository.saveAll(movieDocuments);
+		List<MovieDomain> movieDomains = ConvertUtil.converListMovieDocumentToListMovieDomain(movieDocuments);
+		return movieDomains;
+	}
+
+	private List<Map<String, Object>> readValueFromMovieJson(String pathFile)
+			throws StreamReadException, DatabindException, IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		File file = new File(pathFile);
+		if (!file.exists()) {
+			return null;
+		}
+		List<Map<String, Object>> listMovieJson = objectMapper.readValue(file,
+				new TypeReference<List<Map<String, Object>>>() {
+				});
+		return listMovieJson;
+	}
+
+	@Override
+	public List<Country> fakeDataCountries() {
 		List<Country> countries = new ArrayList<>();
 		for (Locale locale : ListCountryUtil.getLocales()) {
 			Country country = new Country();
@@ -57,42 +111,7 @@ public class TestServiceImpl implements TestService {
 			country.setCode(locale.getCountry());
 			countries.add(country);
 		}
-		countryRepository.saveAll(countries);
-
-		ObjectMapper objectMapper = new ObjectMapper();
-		File file = new File("src/main/resources/movies.json");
-		List<Map<String, Object>> listMovieJson = objectMapper.readValue(file,
-				new TypeReference<List<Map<String, Object>>>() {
-				});
-		List<Movie> movies = new ArrayList<>();
-		listMovieJson.forEach(movieJson -> {
-			String title = (String) movieJson.get("title");
-			String extract = (String) movieJson.get("extract");
-			String thumbnail = (String) movieJson.get("thumbnail");
-			if (!StringUtils.isEmpty(title) && !StringUtils.isEmpty(extract)) {
-				Movie movie = new Movie();
-				movie.setName(title);
-				double randomView = Math.random() * 1000;
-				movie.setView((int) randomView);
-				LocalDate start = LocalDate.of(2020, Month.JANUARY, 1);
-				LocalDate end = LocalDate.now();
-				LocalDate randomDate = DateUtil.randomDate(start, end);
-				movie.setYearOfBroadcast(
-						new Date(randomDate.getYear(), randomDate.getMonth().getValue(), randomDate.getDayOfMonth()));
-				movie.setUrlImage(thumbnail);
-				movie.setContent(extract);
-				double randomTime = Math.random() * 100;
-				movie.setTime(90);
-				movie.setCountry(countries.get(NumberUtil.randomNumber(0, countries.size() - 1)));
-				movies.add(movie);
-			}
-		});
-
-		Set<Movie> movieSet = movies.stream()
-				.collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Movie::getName))));
-		movieRepository.saveAll(movieSet);
-		Set<MovieDocument> movieDocuments = ConvertUtil.convertListMovieDomaiToListMovie(movieSet);
-		movieDocumentRepository.saveAll(movieDocuments);
+		return countryRepository.saveAll(countries);
 	}
 
 }

@@ -3,6 +3,7 @@ package watch.movie.gn.elastic.document;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.elasticsearch.annotations.DateFormat;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
@@ -15,7 +16,8 @@ import watch.movie.gn.util.MovieStatus;
 
 @Data
 @Document(indexName = ContainsElastic.INDEX_MOVIE)
-@Setting
+@TypeAlias(ContainsElastic.ALIAS_MOVE)
+@Setting(sortFields = { "pkIdMovie" }, sortOrders = { Setting.SortOrder.asc })
 public class MovieDocument {
 
 	@Id

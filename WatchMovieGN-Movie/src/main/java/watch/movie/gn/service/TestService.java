@@ -1,11 +1,15 @@
 package watch.movie.gn.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 
-public interface TestService {
-	void fakeDataMovie() throws StreamReadException, DatabindException, IOException;
+import watch.movie.gn.domain.MovieDomain;
+import watch.movie.gn.entity.Country;
 
+public interface TestService {
+	List<MovieDomain> fakeDataMovie() throws StreamReadException, DatabindException, IOException;
+	List<Country> fakeDataCountries();
 }
