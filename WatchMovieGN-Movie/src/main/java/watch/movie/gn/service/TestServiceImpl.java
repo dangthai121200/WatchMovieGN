@@ -29,12 +29,15 @@ import watch.movie.gn.elastic.document.MovieDocument;
 import watch.movie.gn.elastic.repository.MovieDocumentRepository;
 import watch.movie.gn.entity.Country;
 import watch.movie.gn.entity.Movie;
+import watch.movie.gn.entity.Season;
 import watch.movie.gn.repository.CountryRepository;
 import watch.movie.gn.repository.MovieRepository;
+import watch.movie.gn.repository.SeasonRepository;
 import watch.movie.gn.util.ConvertUtil;
 import watch.movie.gn.util.DateUtil;
 import watch.movie.gn.util.ListCountryUtil;
 import watch.movie.gn.util.NumberUtil;
+import watch.movie.gn.util.SeasonEnum;
 
 @Service
 public class TestServiceImpl implements TestService {
@@ -48,12 +51,16 @@ public class TestServiceImpl implements TestService {
 	@Autowired
 	private CountryRepository countryRepository;
 
+	@Autowired
+	private SeasonRepository seasonRepository;
+
 	@SuppressWarnings({ "deprecation", "unused" })
 	@Override
 	@Transactional(rollbackOn = Exception.class)
 	public List<MovieDomain> fakeDataMovie() throws StreamReadException, DatabindException, IOException {
 
 		List<Country> countries = fakeDataCountries();
+		List<Season> seasons = fakeDataSeasons(2020, 2023);
 		List<Map<String, Object>> listMovieJson = readValueFromMovieJson("src/main/resources/movies.json");
 		List<Movie> movies = new ArrayList<>();
 		if (!ObjectUtils.isEmpty(listMovieJson)) {
@@ -76,6 +83,7 @@ public class TestServiceImpl implements TestService {
 					double randomTime = Math.random() * 100;
 					movie.setTime(90);
 					movie.setCountry(countries.get(NumberUtil.randomNumber(0, countries.size() - 1)));
+					movie.setSeason(seasons.get((NumberUtil.randomNumber(0, seasons.size() - 1))));
 					movies.add(movie);
 				}
 			});
@@ -112,6 +120,42 @@ public class TestServiceImpl implements TestService {
 			countries.add(country);
 		}
 		return countryRepository.saveAll(countries);
+	}
+
+	@Override
+	public List<Season> fakeDataSeasons(int yearStart, int yearEnd) {
+		List<Season> seasons = new ArrayList<>();
+		for (int i = yearStart; i <= yearEnd; i++) {
+			for (int j = 0; j < 4; j++) {
+				SeasonEnum seasonEnum = getSeason(j);
+				Season season = new Season();
+				season.setName(seasonEnum);
+				season.setYear(i);
+				seasons.add(season);
+			}
+		}
+		return seasonRepository.saveAll(seasons);
+	}
+
+	private SeasonEnum getSeason(int numberSeason) {
+		SeasonEnum seasonEnum = null;
+		switch (numberSeason) {
+		case 0:
+			seasonEnum = SeasonEnum.SPRING;
+			break;
+		case 1:
+			seasonEnum = SeasonEnum.SUMMER;
+			break;
+		case 2:
+			seasonEnum = SeasonEnum.FALL;
+			break;
+		case 3:
+			seasonEnum = SeasonEnum.WINTER;
+			break;
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + numberSeason);
+		}
+		return seasonEnum;
 	}
 
 }

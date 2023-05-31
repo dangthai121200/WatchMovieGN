@@ -1,10 +1,11 @@
 package watch.movie.gn.entity;
 
-import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +15,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import watch.movie.gn.util.ContainsDatabase;
+import watch.movie.gn.util.SeasonEnum;
 
 @Getter
 @Setter
@@ -31,11 +33,12 @@ public class Season extends BaseEntity {
 	@Column(name = ContainsDatabase.COLUMN_SEASON_PK_ID_SEASON, length = 10)
 	private int pkIdSeason;
 
-	@Column(name = ContainsDatabase.COLUMN_SEASON_NAME, nullable = false, length = 255)
-	private String name;
-	
+	@Enumerated(EnumType.STRING)
+	@Column(name = ContainsDatabase.COLUMN_SEASON_NAME, nullable = false, length = 10)
+	private SeasonEnum name;
+
 	@Column(name = ContainsDatabase.COLUMN_SEASON_YEAR, nullable = false)
-	private Date year;
+	private Integer year;
 
 	@OneToMany(mappedBy = ContainsDatabase.TABLE_SEASON, fetch = FetchType.LAZY)
 	private List<Movie> movies;
