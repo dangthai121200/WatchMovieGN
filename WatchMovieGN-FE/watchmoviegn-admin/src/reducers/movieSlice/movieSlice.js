@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getAllMovieRequest } from '../../API/movieRequest';
 import { MOVIE, REDUX_GET_ALL_MOVIE_ACTION } from '../../constant/API';
+import { REDUCERS_STATUS_FAILED, REDUCERS_STATUS_LOADING, REDUCERS_STATUS_SUCCEEDED } from '../../constant/REDUCERS';
 
 export const movieSlice = createSlice({
   name: MOVIE,
@@ -18,10 +19,10 @@ export const movieSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(getAllMovieAction.pending, (state, action) => {
-        state.status = 'loading';
+        state.status = REDUCERS_STATUS_LOADING;
       })
       .addCase(getAllMovieAction.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = REDUCERS_STATUS_SUCCEEDED;
         const { content, totalPages, totalElements, pageable} = action.payload.movies;
         state.list = content;
         state.totalPage = totalPages;
@@ -31,7 +32,7 @@ export const movieSlice = createSlice({
 
       })
       .addCase(getAllMovieAction.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = REDUCERS_STATUS_FAILED;
         state.error = action.error.message;
       })
   }

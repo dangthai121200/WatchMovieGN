@@ -8,6 +8,7 @@ import { MovieSort, MovieList, MovieCartWidget, MovieFilterSidebar } from '../se
 import { useSelector, useDispatch } from 'react-redux'
 // reducers
 import { getAllMovieAction } from '../reducers/movieSlice/movieSlice';
+import { REDUCERS_STATUS_SUCCEEDED } from '../constant/REDUCERS';
 
 
 
@@ -18,13 +19,12 @@ export default function MoviesPage() {
   const dispatch = useDispatch();
 
   const movieList = useSelector(state => state.movies.list);
-
   const totalPage = useSelector(state => state.movies.totalPage);
-
   const [page, setPage] = useState(useSelector(state => state.movies.page));
-
   const [size, setSize] = useState(useSelector(state => state.movies.size));
   const listSize = useSelector(state => state.movies.size);
+
+  const statusGetMovie = useSelector(state => state.movies.status)
 
   const [openFilter, setOpenFilter] = useState(false);
 
@@ -35,11 +35,14 @@ export default function MoviesPage() {
     }));
   }
 
-  const changePageMovie = (event,page) => {
+  const changePageMovie = (event, page) => {
     dispatch(getAllMovieAction({
       page: page,
       size: size
     }));
+    if (statusGetMovie === REDUCERS_STATUS_SUCCEEDED) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }
 
   const handleOpenFilter = () => {
@@ -55,6 +58,7 @@ export default function MoviesPage() {
       getAllMovie(page, size)
     }
   }, [])
+
   return (
     <>
       <Helmet>
@@ -65,7 +69,6 @@ export default function MoviesPage() {
         <Typography variant="h4" sx={{ mb: 5 }}>
           Movies
         </Typography>
-
         <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }}>
           <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
             <MovieFilterSidebar
@@ -79,7 +82,7 @@ export default function MoviesPage() {
 
         <MovieList movies={movieList} />
         <Container fixed maxWidth="sm">
-          <Pagination count={totalPage} color="primary" size="large" sx={{ mt: 2 }} onChange={changePageMovie}/>
+          <Pagination count={totalPage} color="primary" size="large" sx={{ mt: 2 }} onChange={changePageMovie} />
         </Container>
         <MovieCartWidget />
       </Container>
