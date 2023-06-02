@@ -1,14 +1,14 @@
 import { Helmet } from 'react-helmet-async';
 import { useState, useEffect } from 'react';
 // @mui
-import { Container, Stack, Typography, Pagination } from '@mui/material';
+import { Container, Stack, Typography, Pagination, LinearProgress } from '@mui/material';
 // components
 import { MovieSort, MovieList, MovieCartWidget, MovieFilterSidebar } from '../sections/@dashboard/movies';
 // react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // reducers
 import { getAllMovieAction } from '../reducers/movieSlice/movieSlice';
-import { REDUCERS_STATUS_SUCCEEDED } from '../constant/REDUCERS';
+import { REDUCERS_STATUS_LOADING, REDUCERS_STATUS_SUCCEEDED } from '../constant/REDUCERS';
 
 
 
@@ -40,9 +40,7 @@ export default function MoviesPage() {
       page: page,
       size: size
     }));
-    if (statusGetMovie === REDUCERS_STATUS_SUCCEEDED) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   const handleOpenFilter = () => {
@@ -66,9 +64,13 @@ export default function MoviesPage() {
       </Helmet>
 
       <Container>
+
         <Typography variant="h4" sx={{ mb: 5 }}>
           Movies
         </Typography>
+
+        {statusGetMovie == REDUCERS_STATUS_LOADING ?  <LinearProgress /> : null}
+
         <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }}>
           <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
             <MovieFilterSidebar
@@ -78,13 +80,16 @@ export default function MoviesPage() {
             />
             <MovieSort />
           </Stack>
+        
         </Stack>
-
+    
         <MovieList movies={movieList} />
         <Container fixed maxWidth="sm">
           <Pagination count={totalPage} color="primary" size="large" sx={{ mt: 2 }} onChange={changePageMovie} />
         </Container>
+        
         <MovieCartWidget />
+        
       </Container>
     </>
   );
