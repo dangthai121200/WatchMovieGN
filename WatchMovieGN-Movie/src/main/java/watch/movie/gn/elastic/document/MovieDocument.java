@@ -51,6 +51,12 @@ public class MovieDocument {
 
 	@Field(name = ContainsElastic.FIELD_MOVIE_SEASON, type = FieldType.Object)
 	private SeasonDocument season;
+	
+	@Field(name = ContainsElastic.FIELD_MOVIE_PRODUCER, type = FieldType.Object)
+	private ProducerDocument producer;
+	
+	@Field(name = ContainsElastic.FIELD_MOVIE_TYPE, type = FieldType.Object)
+	private TypeDocument type;
 
 	@Data
 	public static class CountryDocument {
@@ -64,6 +70,19 @@ public class MovieDocument {
 		private int pkIdSeason;
 		private SeasonEnum name;
 		private Integer year;
+	}
+
+	@Data
+	public static class ProducerDocument {
+		private Integer pkIdProducer;
+		private String name;
+
+	}
+	
+	@Data
+	public static class TypeDocument {
+		private Integer pkIdType;
+		private String name;
 	}
 
 }

@@ -29,10 +29,14 @@ import watch.movie.gn.elastic.document.MovieDocument;
 import watch.movie.gn.elastic.repository.MovieDocumentRepository;
 import watch.movie.gn.entity.Country;
 import watch.movie.gn.entity.Movie;
+import watch.movie.gn.entity.Producer;
 import watch.movie.gn.entity.Season;
+import watch.movie.gn.entity.Type;
 import watch.movie.gn.repository.CountryRepository;
 import watch.movie.gn.repository.MovieRepository;
+import watch.movie.gn.repository.ProducerRepository;
 import watch.movie.gn.repository.SeasonRepository;
+import watch.movie.gn.repository.TypeRepository;
 import watch.movie.gn.util.ConvertUtil;
 import watch.movie.gn.util.DateUtil;
 import watch.movie.gn.util.ListCountryUtil;
@@ -52,7 +56,13 @@ public class TestServiceImpl implements TestService {
 	private CountryRepository countryRepository;
 
 	@Autowired
+	private ProducerRepository producerRepository;
+
+	@Autowired
 	private SeasonRepository seasonRepository;
+	
+	@Autowired
+	private TypeRepository typeRepository;
 
 	@SuppressWarnings({ "deprecation", "unused" })
 	@Override
@@ -61,6 +71,8 @@ public class TestServiceImpl implements TestService {
 
 		List<Country> countries = fakeDataCountries();
 		List<Season> seasons = fakeDataSeasons(2020, 2023);
+		List<Producer> producers = fakeDataProducers();
+		List<Type> types = fakeDataTypes();
 		List<Map<String, Object>> listMovieJson = readValueFromMovieJson("src/main/resources/movies.json");
 		List<Movie> movies = new ArrayList<>();
 		if (!ObjectUtils.isEmpty(listMovieJson)) {
@@ -83,7 +95,9 @@ public class TestServiceImpl implements TestService {
 					double randomTime = Math.random() * 100;
 					movie.setTime(90);
 					movie.setCountry(countries.get(NumberUtil.randomNumber(0, countries.size() - 1)));
-					movie.setSeason(seasons.get((NumberUtil.randomNumber(0, seasons.size() - 1))));
+					movie.setSeason(seasons.get(NumberUtil.randomNumber(0, seasons.size() - 1)));
+					movie.setProducer(producers.get(NumberUtil.randomNumber(0, producers.size() - 1)));
+					movie.setType(types.get(NumberUtil.randomNumber(0, types.size() - 1)));
 					movies.add(movie);
 				}
 			});
@@ -95,6 +109,23 @@ public class TestServiceImpl implements TestService {
 		movieDocumentRepository.saveAll(movieDocuments);
 		List<MovieDomain> movieDomains = ConvertUtil.converListMovieDocumentToListMovieDomain(movieDocuments);
 		return movieDomains;
+	}
+
+	@Override
+	public List<Producer> fakeDataProducers() {
+		List<Producer> producers = new ArrayList<>();
+		producers.add(new Producer(null, "Kevin Feige", null));
+		producers.add(new Producer(null, "Kathleen Kennedy", null));
+		producers.add(new Producer(null, "Jerry Bruckheimer", null));
+		producers.add(new Producer(null, "David Heyman", null));
+		producers.add(new Producer(null, "Neal H. Moritz", null));
+		producers.add(new Producer(null, "Frank Marshall", null));
+		producers.add(new Producer(null, "Chris Meledandri", null));
+		producers.add(new Producer(null, "James Cameron", null));
+		producers.add(new Producer(null, "Charles Roven", null));
+		producers.add(new Producer(null, "Avi Arad", null));
+		producerRepository.saveAll(producers);
+		return producers;
 	}
 
 	private List<Map<String, Object>> readValueFromMovieJson(String pathFile)
@@ -156,6 +187,20 @@ public class TestServiceImpl implements TestService {
 			throw new IllegalArgumentException("Unexpected value: " + numberSeason);
 		}
 		return seasonEnum;
+	}
+
+	@Override
+	public List<Type> fakeDataTypes() {
+		List<Type> types = new ArrayList<>();
+		types.add(new Type(null, "TV Series", null));
+		types.add(new Type(null, "Movies", null));
+		types.add(new Type(null, "OVA", null));
+		types.add(new Type(null, "ONA", null));
+		types.add(new Type(null, "Bluray", null));
+		types.add(new Type(null, "Anime", null));
+		types.add(new Type(null, "Cartoon", null));
+		types.add(new Type(null, "Live Action", null));
+		return typeRepository.saveAll(types);
 	}
 
 }
