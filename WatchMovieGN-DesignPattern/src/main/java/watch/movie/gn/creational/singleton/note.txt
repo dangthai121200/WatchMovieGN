@@ -1,0 +1,15 @@
+Sử dụng Singleton Pattern khi nào?
+- Dưới đây là một số trường hợp sử dụng của Singleton Pattern thường gặp:
+ + Vì class dùng Singleton chỉ tồn tại 1 Instance (thể hiện)
+ nên nó thường được dùng cho các trường hợp giải quyết các bài toán cần truy cập vào các ứng dụng như: Shared resource, Logger, Configuration, Caching, Thread pool, …
+ + Một số design pattern khác cũng sử dụng Singleton
+ để triển khai: Abstract Factory, Builder, Prototype, Facade,…
+ + Đã được sử dụng trong một số class
+ của core java như: java.lang.Runtime, java.awt.Desktop.
+Tổng kết
+    Có rất nhiều cách implement cho Singleton,
+    mình thường sử dụng BillPughSingleton vì có hiệu suất cao,
+    sử dụng LazyInitializedSingleton cho những
+    ứng dụng chỉ làm việc với ứng dụng single-thread
+    và sử dụng DoubleCheckLockingSingleton khi làm việc với ứng dụng multi-thread.
+    Tùy theo trường hợp cụ thể, bạn hãy chọn cho mình cách implement phù hợp.
