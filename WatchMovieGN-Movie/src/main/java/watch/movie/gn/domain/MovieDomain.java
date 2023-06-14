@@ -17,5 +17,7 @@ public class MovieDomain {
 	private SeasonDomain season;
 	private CountryDomain country;
 	private ProducerDomain producer;
+	private TypeDomain type;
+
 
 }

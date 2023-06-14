@@ -19,6 +19,11 @@ import watch.movie.gn.util.ContainsDatabase;
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ContainsDatabase.BASE_ENTITY_COLUMN_DATE_CREATE, nullable = false)
 	@CreationTimestamp
 	private Date dateCreate;

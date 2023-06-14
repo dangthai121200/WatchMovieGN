@@ -6,7 +6,7 @@ public class ContainsDatabase {
 	public static final String SCHEMA = "watchmoviegn";
 
 	public static final String INFORMATION_SCHEMA = "information_schema";
-	
+
 	// Base entity
 	public static final String BASE_ENTITY_COLUMN_DATE_CREATE = "DATE_CREATE";
 	public static final String BASE_ENTITY_COLUMN_DATE_UPDATE = "DATE_UPDATE";
@@ -34,21 +34,21 @@ public class ContainsDatabase {
 
 	public static final String COLUMN_MOVIE_NAME = "NAME";
 	public static final String COLUMN_MOVIE_VIEW = "VIEW";
-    public static final String COLUMN_MOVIE_YEAR_OF_BROADCAST = "YEAR_OF_BROADCAST";
+	public static final String COLUMN_MOVIE_YEAR_OF_BROADCAST = "YEAR_OF_BROADCAST";
 	public static final String COLUMN_MOVIE_URL_IMAGE = "URL_IMAGE";
 	public static final String COLUMN_MOVIE_CONTENT = "CONTENT";
 	public static final String COLUMN_MOVIE_STATUS = "STATUS";
 	public static final String COLUMN_MOVIE_TIME = "TIME";
 
-
-
 	public static final String COLUMN_MOVIE_FK_ID_COUNTRY = "FK_ID_COUNTRY";
 	public static final String COLUMN_MOVIE_FK_ID_PRODUCER = "FK_ID_PRODUCER";
 	public static final String COLUMN_MOVIE_FK_ID_SEASON = "FK_ID_SEASON";
+	public static final String COLUMN_MOVIE_FK_ID_TYPE = "FK_ID_TYPE";
 
 	public static final String FOREIGN_MOVIE_FK_ID_COUNTRY = "FK_ID_COUNTRY";
 	public static final String FOREIGN_MOVIE_FK_ID_PRODUCER = "FK_ID_PRODUCER";
 	public static final String FOREIGN_MOVIE_FK_ID_SEASON = "FK_ID_SEASON";
+	public static final String FOREIGN_MOVIE_FK_ID_TYPE = "FK_ID_TYPE";
 
 	// Table country
 
@@ -72,10 +72,11 @@ public class ContainsDatabase {
 
 	public static final String COLUMN_SEASON_PK_ID_SEASON = "PK_ID_SEASON";
 	public static final String COLUMN_SEASON_NAME = "NAME";
-	
+	public static final String COLUMN_SEASON_YEAR = "YEAR";
+
 	// Table actor
 	public static final String TABLE_ACTOR = "actor";
-	
+
 	public static final String COLUMN_ACTOR_PK_ID_ACTOR = "PK_ID_ACTOR";
 	public static final String COLUMN_ACTOR_LAST_NAME = "LAST_NAME";
 	public static final String COLUMN_ACTOR_FIRST_NAME = "FIRST_NAME";
@@ -83,7 +84,19 @@ public class ContainsDatabase {
 	public static final String COLUMN_ACTOR_GENDER = "GENDER";
 	public static final String COLUMN_ACTOR_RANK = "RANK";
 
+	// Table episode
+	public static final String TABLE_EPISODE = "episode";
 
+	public static final String COLUMN_EPISODE_EPISODE = "EPISODE";
+	public static final String COLUMN_EPISODE_LINK = "LINK";
+	public static final String COLUMN_EPISODE_FK_ID_MOVIE = "FK_ID_MOVIE";
+
+	public static final String FOREIGN_EPISODE_FK_ID_MOVIE = "FK_ID_MOVIE";
+
+	// Table type
+	public static final String TABLE_TYPE = "type";
+	public static final String COLUMN_TYPE_PK_ID_TYPE = "PK_ID_TYPE";
+	public static final String COLUMN_TYPE_NAME = "NAME";
 
 	// Action for foreign key
 	public static final String ACTION_FOREIGN_MOVIE_FK_ID_COUNTRY = "FOREIGN KEY (" + COLUMN_MOVIE_FK_ID_COUNTRY
