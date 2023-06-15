@@ -1,0 +1,24 @@
+JVM (Java Virtual Machine) is an abstract machine
+ - Doesn't physically exist
+ - Provide a runtime environment in which Java bytecode
+ - There are three notions of the JVM: specification, implementation, and instance
+ - The JVM performs the following main tasks:
+  + Loads code
+  + Verifies code
+  + Executes code
+  + Provides runtime environment
+
+JRE (Java Runtime Environment) is a set of software tools which are used for developing Java applications.
+It is used to provide the runtime environment. It is the implementation of JVM. It physically exists.
+It contains a set of libraries + other files that JVM uses at runtime and JVM
+ -> JRE.png
+
+JDK (Java Development Kit) is a software development environment which is used to develop Java applications
+ - It physically exists. It contains JRE + development tools.
+ - JDK is an implementation of any one of the below given Java Platforms released by Oracle Corporation:
+  + Standard Edition Java Platform: Java core
+  + Enterprise Edition Java Platform: Web
+  + Micro Edition Java Platform: application for mobile, embedded
+
+
+
