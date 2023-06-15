@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 // @mui
-import { Box, Card, Link, Typography, Stack } from '@mui/material';
+import { Box, Card, Link, Typography, Stack, Rating } from '@mui/material';
 import { styled } from '@mui/material/styles';
 // utils
 import { fCurrency } from '../../../utils/formatNumber';
@@ -25,8 +25,7 @@ MovieCard.propTypes = {
 };
 
 export default function MovieCard({ movie }) {
-  const { pkIdMovie, name, urlImage, colors, status, time } = movie;
-
+  const { pkIdMovie, name, urlImage, status, time } = movie;
   return (
     <Card>
       <Box sx={{ pt: '100%', position: 'relative' }}>
@@ -56,7 +55,7 @@ export default function MovieCard({ movie }) {
         </Link>
 
         <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <ColorPreview colors={[1,2,3,4,5]} />
+        <Rating name="read-only" value={3} readOnly />
           <Typography variant="subtitle1">
             {time}ph
           </Typography>
