@@ -84,5 +84,4 @@ public class MovieDocument {
 		private Integer pkIdType;
 		private String name;
 	}
-
 }

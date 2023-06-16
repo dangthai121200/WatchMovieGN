@@ -89,9 +89,14 @@ public class Movie extends BaseEntity {
 	@JoinColumn(name = ContainsDatabase.COLUMN_MOVIE_FK_ID_TYPE, referencedColumnName = ContainsDatabase.COLUMN_TYPE_PK_ID_TYPE, foreignKey = @ForeignKey(name = ContainsDatabase.FOREIGN_MOVIE_FK_ID_TYPE))
 	private Type type;
 
-	@OneToMany(mappedBy = ContainsDatabase.TABLE_MOVIE, fetch = FetchType.LAZY)
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
+	@OneToMany(mappedBy = ContainsDatabase.TABLE_MOVIE, fetch = FetchType.LAZY)
 	private List<Episode> episodis;
+
+//	@EqualsAndHashCode.Exclude
+//	@ToString.Exclude
+//	@OneToMany(mappedBy = ContainsDatabase.TABLE_MOVIE, fetch = FetchType.LAZY)
+//	private List<Rating> ratings;
 
 }

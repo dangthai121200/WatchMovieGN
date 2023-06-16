@@ -69,7 +69,7 @@ export default function MoviesPage() {
           Movies
         </Typography>
 
-        {statusGetMovie == REDUCERS_STATUS_LOADING ?  <LinearProgress /> : null}
+        {statusGetMovie == REDUCERS_STATUS_LOADING ? <LinearProgress /> : null}
 
         <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }}>
           <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
@@ -80,16 +80,16 @@ export default function MoviesPage() {
             />
             <MovieSort />
           </Stack>
-        
+
         </Stack>
-    
+
         <MovieList movies={movieList} />
         <Container fixed maxWidth="sm">
           <Pagination count={totalPage} color="primary" size="large" sx={{ mt: 2 }} onChange={changePageMovie} />
         </Container>
-        
+
         <MovieCartWidget />
-        
+
       </Container>
     </>
   );

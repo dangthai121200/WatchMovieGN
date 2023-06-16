@@ -97,6 +97,20 @@ public class ContainsDatabase {
 	public static final String TABLE_TYPE = "type";
 	public static final String COLUMN_TYPE_PK_ID_TYPE = "PK_ID_TYPE";
 	public static final String COLUMN_TYPE_NAME = "NAME";
+	
+	// Table rating
+	public static final String TABLE_RATING = "rating";
+	
+	public static final String COLUMN_RATING_RATING = "RATING";
+	public static final String COLUMN_RATING_COMMENT = "COMMENT";
+	public static final String COLUMN_RATING_FK_ID_MOVIE = "FK_ID_MOVIE";
+	public static final String COLUMN_RATING_FK_ID_USER = "FK_ID_USER";
+	
+	public static final String FOREIGN_RATING_FK_ID_MOVIE = "FK_ID_MOVIE";
+
+
+
+ 
 
 	// Action for foreign key
 	public static final String ACTION_FOREIGN_MOVIE_FK_ID_COUNTRY = "FOREIGN KEY (" + COLUMN_MOVIE_FK_ID_COUNTRY
