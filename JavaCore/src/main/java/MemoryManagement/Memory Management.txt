@@ -1,0 +1,27 @@
+- In Java, memory management is the process of allocation and de-allocation of objects,
+called Memory management. Java does memory management automatically.
+Java uses an automatic memory management system called a garbage collector.
+Thus, we are not required to implement memory management logic in our application.
+Java memory management divides into two major parts:
+  + JVM Memory Structure
+  + Working of the Garbage Collector
+- JVM Memory Structure:
+  + JVM creates various run time data areas in a heap.
+  These areas are used during the program execution.
+  The memory areas are destroyed when JVM exits,
+  whereas the data areas are destroyed when the thread exits
+   -> memory-management-in-java.png
+  + Method Area:
+   . Method Area is a part of the heap memory which is shared among all the threads.
+   It creates when the JVM starts up.
+   It is used to store class structure, superclass name, interface name, and constructors.
+   The JVM stores the following kinds of information in the method area
+    > A Fully qualified name of a type (ex: String)
+    > The type's modifiers
+    > Type's direct superclass name
+    > A structured list of the fully qualified names of super interfaces.
+   + Heap Area:
+
+
+
+
