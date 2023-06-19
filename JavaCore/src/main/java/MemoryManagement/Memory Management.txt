@@ -20,8 +20,37 @@ Java memory management divides into two major parts:
     > The type's modifiers
     > Type's direct superclass name
     > A structured list of the fully qualified names of super interfaces.
-   + Heap Area:
-
-
-
-
+   + Heap Area (-Xms -Xmx):
+    > Stores the actual object
+    > Create when the JVM start
+    > Can control if needed
+    > Can change size
+    > When you use a new keyword, the JVM creates an instance for the object in a heap
+    > The reference of that object stores in the stack
+    > Only one Head for each JVM
+    > Heap full -> the garbage is collected.
+    > Heap is divided into the following parts
+      -> Heap java.png
+      . Young Generation (-Xmn): is divided into three parts: Eden Memory and two Survivor Memory spaces
+       	* Most of the newly created objects are located in the Eden memory space
+       	* When Eden space is filled with objects, Minor GC is performed and all the survivor objects are moved to one of the survivor spaces
+       	* Minor GC also checks the survivor objects and move them to the other survivor space. So at a time, one of the survivor space is always empty
+        * Objects that are survived after many cycles of GC, are moved to the Old generation memory space. 
+        Usually, it’s done by setting a threshold for the age of the young generation objects before they become eligible to promote to Old generation
+      . Old Generation
+        * Old Generation memory contains the objects that are long-lived and survived after many rounds of Minor GC. 
+        Usually, garbage collection is performed in Old Generation memory when it’s full. 
+        Old Generation Garbage Collection is called Major GC and usually takes a longer time
+    > Stop the World Event:
+      . All the Garbage Collections are “Stop the World” events because all application threads are stopped until the operation completes
+      . Young generation keeps short-lived objects, Minor GC is very fast and the application doesn’t get affected by this
+      . Major GC takes a long time because it checks all the live objects.
+         Major GC should be minimized because it will make your application unresponsive for the garbage collection duration
+    > Permanent Generation
+      . Contains the application metadata required by the JVM to describe the classes and methods used in the application
+      . Perm Gen is not part of Java Heap memory
+      . Perm Gen is populated by JVM at runtime based on the classes used by the application
+      . Perm Gen also contains Java SE library classes and methods
+      . Perm Gen objects are garbage collected in a full garbage collection
+    > Code Cache: JVM Code Cache is an area where JVM stores its bytecode compiled into native code
+   + Reference Type
