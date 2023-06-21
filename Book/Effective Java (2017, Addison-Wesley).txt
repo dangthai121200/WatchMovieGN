@@ -30,3 +30,13 @@ Item 2: Consider a builder when faced with many constructor parameters: page 31
 Item 3: Enforce the singleton property with a private constructor or an enum type
  + Making a class a singleton can make it difficult to test its clients
  + A single-element enum type is often the best way to implement a singleton
+ 
+Item 4: Enforce noninstantiability with a private constructor
+ + Attempting to enforce noninstantiability by making a class abstract does not work.
+ + a class can be made noninstantiable by including a private constructor
+
+Item 5: Prefer dependency injection to hardwiring resources
+ + Static utility classes and singletons are inappropriate for classes whose behavior is parameterized by an underlying resource
+ + pass the resource into the constructor when creating a new instance
+ 
+Item 6: Avoid creating unnecessary objects
