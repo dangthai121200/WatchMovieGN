@@ -54,3 +54,11 @@ Java memory management divides into two major parts:
       . Perm Gen objects are garbage collected in a full garbage collection
     > Code Cache: JVM Code Cache is an area where JVM stores its bytecode compiled into native code
    + Reference Type
+     > Strong reference: Any object which has Strong reference attached to it is not eligible for garbage collection
+      . ex: StringBuilder sb = new StringBuilder();
+     > Weak Reference: the garbage collector processes, it destroys the object
+      . ex: WeakReference<StringBuilder> reference = new WeakReference<>(new StringBuilder())
+     > Soft Reference: It is collected when the application is running low on memory. All soft referenced object s are collected before it throws an OutOfMemoryError
+      . ex: SoftReference<StringBuilder> reference = new SoftReference<>(new StringBuilder())
+     > Phantom Reference: The object which has only phantom reference pointing them can be collected whenever garbage collector wants to collect
+      . ex: PhantomReference<StringBuilder> reference = new PhantomReference<>(new StringBuilder());
