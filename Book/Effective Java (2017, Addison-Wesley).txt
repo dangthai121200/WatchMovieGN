@@ -40,3 +40,12 @@ Item 5: Prefer dependency injection to hardwiring resources
  + pass the resource into the constructor when creating a new instance
  
 Item 6: Avoid creating unnecessary objects
+ + While String.matches is the easiest way to check if a string matches
+a regular expression, it’s not suitable for repeated use in performance-critical
+situations
+ + Autoboxing blurs but does not erase the distinction between primitive and boxed primitive types
+ + prefer primitives to boxed primitives, and watch out for unintentional autoboxing
+ + Don’t create a new object when you should reuse an existing one
+ + Don’t reuse an existing object when you should create a new one
+ 
+Item 7: Eliminate obsolete object references
