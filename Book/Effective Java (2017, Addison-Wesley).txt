@@ -49,3 +49,6 @@ situations
  + Don’t reuse an existing object when you should create a new one
  
 Item 7: Eliminate obsolete object references
+ + Nulling out object references should be the exception rather than the norm
+ + Another common source of memory leaks is caches
+ + A third common source of memory leaks is listeners and other callbacks
