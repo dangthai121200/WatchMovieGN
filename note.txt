@@ -1,1 +1,6 @@
 sc.exe create <new_service_name> binPath= "<path_to_the_service_executable>" : add new service for windows
+
+
+C:\Program Files\Apache Software Foundation\Tomcat 8.0\bin\Tomcat8w.exe //MS// : add tray icon
+
+sc delete "SERVICE NAME" : removew service
