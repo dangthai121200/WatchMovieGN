@@ -24,7 +24,7 @@ public abstract class BaseEntity implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = ContainsDatabase.BASE_ENTITY_COLUMN_DATE_CREATE, nullable = false)
+	@Column(name = ContainsDatabase.BASE_ENTITY_COLUMN_DATE_CREATE, nullable = false, updatable = false)
 	@CreationTimestamp
 	private Date dateCreate;
 

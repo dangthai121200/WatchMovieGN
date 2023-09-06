@@ -40,10 +40,4 @@ public class Country extends BaseEntity {
 	@OneToMany(mappedBy = ContainsDatabase.TABLE_COUNTRY, fetch = FetchType.LAZY)
 	private List<Movie> movies;
 	
-	@PreRemove
-	public void PreRemove() {
-		this.movies.stream().forEach(movie -> System.out.println(ContainsDatabase.COLUMN_MOVIE_PK_ID_MOVIE + " = "
-				+ movie.getPkIdMovie() + ", UPDATE " + ContainsDatabase.FOREIGN_MOVIE_FK_ID_COUNTRY + "TO NULL"));
-	}
-
 }

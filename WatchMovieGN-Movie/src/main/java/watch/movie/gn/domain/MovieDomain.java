@@ -3,7 +3,7 @@ package watch.movie.gn.domain;
 import java.util.Date;
 
 import lombok.Data;
-import watch.movie.gn.util.MovieStatus;
+import watch.movie.gn.enums.MovieStatusEnums;
 
 @Data
 public class MovieDomain {
@@ -12,12 +12,11 @@ public class MovieDomain {
 	private Date yearOfBroadcast;
 	private int view;
 	private String urlImage;
-	private MovieStatus status;
+	private MovieStatusEnums status;
 	private Integer time;
 	private SeasonDomain season;
 	private CountryDomain country;
 	private ProducerDomain producer;
 	private TypeDomain type;
-
 
 }

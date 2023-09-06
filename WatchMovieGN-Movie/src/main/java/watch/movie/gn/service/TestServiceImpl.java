@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -39,9 +38,7 @@ import watch.movie.gn.repository.SeasonRepository;
 import watch.movie.gn.repository.TypeRepository;
 import watch.movie.gn.util.ConvertUtil;
 import watch.movie.gn.util.DateUtil;
-import watch.movie.gn.util.ListCountryUtil;
 import watch.movie.gn.util.NumberUtil;
-import watch.movie.gn.util.SeasonEnum;
 
 @Service
 public class TestServiceImpl implements TestService {
@@ -60,7 +57,7 @@ public class TestServiceImpl implements TestService {
 
 	@Autowired
 	private SeasonRepository seasonRepository;
-	
+
 	@Autowired
 	private TypeRepository typeRepository;
 
@@ -69,8 +66,8 @@ public class TestServiceImpl implements TestService {
 	@Transactional(rollbackOn = Exception.class)
 	public List<MovieDomain> fakeDataMovie() throws StreamReadException, DatabindException, IOException {
 
-		List<Country> countries = fakeDataCountries();
-		List<Season> seasons = fakeDataSeasons(2020, 2023);
+		List<Country> countries = countryRepository.findAll();
+		List<Season> seasons = seasonRepository.findAll();
 		List<Producer> producers = fakeDataProducers();
 		List<Type> types = fakeDataTypes();
 		List<Map<String, Object>> listMovieJson = readValueFromMovieJson("src/main/resources/movies.json");
@@ -139,54 +136,6 @@ public class TestServiceImpl implements TestService {
 				new TypeReference<List<Map<String, Object>>>() {
 				});
 		return listMovieJson;
-	}
-
-	@Override
-	public List<Country> fakeDataCountries() {
-		List<Country> countries = new ArrayList<>();
-		for (Locale locale : ListCountryUtil.getLocales()) {
-			Country country = new Country();
-			country.setName(locale.getDisplayCountry());
-			country.setCode(locale.getCountry());
-			countries.add(country);
-		}
-		return countryRepository.saveAll(countries);
-	}
-
-	@Override
-	public List<Season> fakeDataSeasons(int yearStart, int yearEnd) {
-		List<Season> seasons = new ArrayList<>();
-		for (int i = yearStart; i <= yearEnd; i++) {
-			for (int j = 0; j < 4; j++) {
-				SeasonEnum seasonEnum = getSeason(j);
-				Season season = new Season();
-				season.setName(seasonEnum);
-				season.setYear(i);
-				seasons.add(season);
-			}
-		}
-		return seasonRepository.saveAll(seasons);
-	}
-
-	private SeasonEnum getSeason(int numberSeason) {
-		SeasonEnum seasonEnum = null;
-		switch (numberSeason) {
-		case 0:
-			seasonEnum = SeasonEnum.SPRING;
-			break;
-		case 1:
-			seasonEnum = SeasonEnum.SUMMER;
-			break;
-		case 2:
-			seasonEnum = SeasonEnum.FALL;
-			break;
-		case 3:
-			seasonEnum = SeasonEnum.WINTER;
-			break;
-		default:
-			throw new IllegalArgumentException("Unexpected value: " + numberSeason);
-		}
-		return seasonEnum;
 	}
 
 	@Override

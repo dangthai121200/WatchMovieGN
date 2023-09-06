@@ -9,6 +9,8 @@ import org.springframework.data.elasticsearch.repository.config.EnableReactiveEl
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import watch.movie.gn.foreignkey.MovieForeign;
+import watch.movie.gn.service.CountryService;
+import watch.movie.gn.service.SeasonService;
 
 @EnableReactiveElasticsearchRepositories
 @EnableJpaRepositories
@@ -16,7 +18,13 @@ import watch.movie.gn.foreignkey.MovieForeign;
 public class WatchMovieGnBackendApplication implements CommandLineRunner {
 
 	@Autowired
-	public MovieForeign movieForeign;
+	private MovieForeign movieForeign;
+
+	@Autowired
+	private CountryService countryService;
+	
+	@Autowired
+	private SeasonService seasonService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(WatchMovieGnBackendApplication.class, args);
@@ -25,10 +33,16 @@ public class WatchMovieGnBackendApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		checkForeignDatabase();
+		updateDataEnumIntoDatabase();
 	}
 
 	private void checkForeignDatabase() {
 		movieForeign.updateFkOptinonDeleteToSetNull();
+	}
+
+	private void updateDataEnumIntoDatabase() {
+		countryService.updateCountryEnumsIntoDatabase();
+		seasonService.updateSeasonEnumsIntoDatabase();
 	}
 
 }

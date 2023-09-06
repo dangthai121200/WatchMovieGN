@@ -11,9 +11,9 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.elasticsearch.annotations.Setting;
 
 import lombok.Data;
+import watch.movie.gn.enums.MovieStatusEnums;
+import watch.movie.gn.enums.SeasonEnum;
 import watch.movie.gn.util.ContainsElastic;
-import watch.movie.gn.util.MovieStatus;
-import watch.movie.gn.util.SeasonEnum;
 
 @Data
 @Document(indexName = ContainsElastic.INDEX_MOVIE)
@@ -41,7 +41,7 @@ public class MovieDocument {
 	private String content;
 
 	@Field(name = ContainsElastic.FIELD_MOVIE_STATUS, storeNullValue = false)
-	private MovieStatus status;
+	private MovieStatusEnums status;
 
 	@Field(name = ContainsElastic.FIELD_MOVIE_TIME, type = FieldType.Integer, storeNullValue = false)
 	private Integer time;
@@ -51,10 +51,10 @@ public class MovieDocument {
 
 	@Field(name = ContainsElastic.FIELD_MOVIE_SEASON, type = FieldType.Object)
 	private SeasonDocument season;
-	
+
 	@Field(name = ContainsElastic.FIELD_MOVIE_PRODUCER, type = FieldType.Object)
 	private ProducerDocument producer;
-	
+
 	@Field(name = ContainsElastic.FIELD_MOVIE_TYPE, type = FieldType.Object)
 	private TypeDocument type;
 
@@ -78,7 +78,7 @@ public class MovieDocument {
 		private String name;
 
 	}
-	
+
 	@Data
 	public static class TypeDocument {
 		private Integer pkIdType;

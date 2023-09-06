@@ -4,18 +4,13 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import watch.movie.gn.util.ContainsDatabase;
-import watch.movie.gn.util.SeasonEnum;
 
 @Getter
 @Setter
@@ -29,13 +24,11 @@ public class Season extends BaseEntity {
 	private static final long serialVersionUID = -8479931964051506767L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = ContainsDatabase.COLUMN_SEASON_PK_ID_SEASON, length = 10)
 	private int pkIdSeason;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = ContainsDatabase.COLUMN_SEASON_NAME, nullable = false, length = 10)
-	private SeasonEnum name;
+	@Column(name = ContainsDatabase.COLUMN_SEASON_NAME, nullable = false, length = 20)
+	private String name;
 
 	@Column(name = ContainsDatabase.COLUMN_SEASON_YEAR, nullable = false)
 	private Integer year;

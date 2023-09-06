@@ -22,8 +22,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import watch.movie.gn.enums.MovieStatusEnums;
 import watch.movie.gn.util.ContainsDatabase;
-import watch.movie.gn.util.MovieStatus;
 
 @Getter
 @Setter
@@ -59,7 +59,7 @@ public class Movie extends BaseEntity {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = ContainsDatabase.COLUMN_MOVIE_STATUS, nullable = false, length = 10)
-	private MovieStatus status = MovieStatus.NEW;
+	private MovieStatusEnums status = MovieStatusEnums.NEW;
 
 	@Column(name = ContainsDatabase.COLUMN_MOVIE_TIME, nullable = false, length = 5)
 	private Integer time;

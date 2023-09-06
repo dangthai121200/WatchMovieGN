@@ -3,7 +3,7 @@ package watch.movie.gn.domain;
 import java.util.Date;
 
 import lombok.Data;
-import watch.movie.gn.util.MovieStatus;
+import watch.movie.gn.enums.MovieStatusEnums;
 
 @Data
 public class UpdateMovieRequest {
@@ -13,7 +13,7 @@ public class UpdateMovieRequest {
 	private Date yearOfBroadcast;
 	private String urlImage;
 	private String content;
-	private MovieStatus status = MovieStatus.NEW;
+	private MovieStatusEnums status = MovieStatusEnums.NEW;
 	private Integer time;
 	private Integer fkIdCountry;
 	private Integer fkIdProducer;
