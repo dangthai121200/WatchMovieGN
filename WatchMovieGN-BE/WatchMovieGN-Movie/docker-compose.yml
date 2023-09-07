@@ -44,3 +44,11 @@ services:
       - elasticsearch
     ports:
       - 5601:5601
+  watchmoviegn-admin:
+    container_name: watchmoviegn-admin
+    image: gaonet567/watchmoviegn-admin
+    networks:
+      - local-nextwork
+    ports:
+      - 3000:3000
+  
