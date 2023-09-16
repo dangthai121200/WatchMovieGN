@@ -6,6 +6,20 @@ volumes:
 networks:
   local-nextwork:
 services:
+  watchmoviegn-movie:
+    container_name: watchmoviegn-movie
+    image: gaonet567/watchmoviegn-movie
+    networks:
+      - local-nextwork
+    ports:
+      - 8080:8080
+  watchmoviegn-admin:
+    container_name: watchmoviegn-admin
+    image: gaonet567/watchmoviegn-admin
+    networks:
+      - local-nextwork
+    ports:
+      - 3000:3000
   mysql:
     image: mysql:8.0
     container_name: mysql-container
@@ -44,3 +58,4 @@ services:
       - elasticsearch
     ports:
       - 5601:5601
+  
