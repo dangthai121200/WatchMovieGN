@@ -15,9 +15,10 @@ import watch.movie.gn.domain.UpdateMovieRequest;
 import watch.movie.gn.exception.WatchMovieException;
 import watch.movie.gn.foreignkey.MovieForeign;
 import watch.movie.gn.service.MovieService;
+import watch.movie.gn.util.UrlUtil;
 
 @RestController
-@RequestMapping("/v1/movie")
+@RequestMapping(UrlUtil.MOVIE_CONTROLLER_V1)
 public class MovieController {
 
 	@Autowired
@@ -26,7 +27,7 @@ public class MovieController {
 	@Autowired
 	public MovieForeign movieForeign;
 
-	@PostMapping("/getAll")
+	@PostMapping(UrlUtil.MOVIE_CONTROLLER_V1_GET_ALL_MOVIE)
 	public ResponseEntity<?> getAllMovie(@RequestBody GetAllMovieRequest getAllMovieRequest) {
 		return ResponseEntity.ok(movieService.getAllMovie(getAllMovieRequest));
 	}

@@ -8,11 +8,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import watch.movie.gn.util.ContainsDatabase;
 
 @Getter
 @Setter
-@Table(name = "Lanuage")
-@Entity(name = "Lanuage")
+@Table(name = ContainsDatabase.TABLE_LANGUAGE)
+@Entity(name = ContainsDatabase.TABLE_LANGUAGE)
 public class Lanuage extends BaseEntity {
 
 	/**
@@ -22,10 +23,10 @@ public class Lanuage extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "PK_ID_LANUAGE", length = 10)
+	@Column(name = ContainsDatabase.COLUMN_LANGUAGE_PK_ID_LANGUAGE, length = 10)
 	private int pkIdLanuage;
 
-	@Column(name = "NAME", nullable = false, unique = true, length = 255)
+	@Column(name = ContainsDatabase.COLUMN_LANGUAGE_NAME, nullable = false, unique = true, length = 255)
 	private String name;
 
 }

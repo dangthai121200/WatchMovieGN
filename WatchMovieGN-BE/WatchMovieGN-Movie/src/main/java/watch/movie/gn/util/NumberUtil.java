@@ -5,6 +5,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class NumberUtil {
 
+	public NumberUtil() {
+
+	}
+
 	public static int randomNumber(int min, int max) {
 		return (int) Math.floor(Math.random() * (max - min + 1) + min);
 	}

@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DateUtil {
+
+	public DateUtil() {
+
+	}
+
 	public static LocalDate randomDate(LocalDate startInclusive, LocalDate endExclusive) {
 		long startEpochDay = startInclusive.toEpochDay();
 		long endEpochDay = endExclusive.toEpochDay();

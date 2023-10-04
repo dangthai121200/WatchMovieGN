@@ -2,6 +2,10 @@ package watch.movie.gn.util;
 
 public class ContainsDatabase {
 
+	private ContainsDatabase() {
+
+	}
+
 	// Schema
 	public static final String SCHEMA = "watchmoviegn";
 
@@ -97,20 +101,32 @@ public class ContainsDatabase {
 	public static final String TABLE_TYPE = "type";
 	public static final String COLUMN_TYPE_PK_ID_TYPE = "PK_ID_TYPE";
 	public static final String COLUMN_TYPE_NAME = "NAME";
-	
+
 	// Table rating
 	public static final String TABLE_RATING = "rating";
-	
+
 	public static final String COLUMN_RATING_RATING = "RATING";
 	public static final String COLUMN_RATING_COMMENT = "COMMENT";
 	public static final String COLUMN_RATING_FK_ID_MOVIE = "FK_ID_MOVIE";
 	public static final String COLUMN_RATING_FK_ID_USER = "FK_ID_USER";
-	
+
 	public static final String FOREIGN_RATING_FK_ID_MOVIE = "FK_ID_MOVIE";
 
+	// table language
+	public static final String TABLE_LANGUAGE = "language";
+	public static final String COLUMN_LANGUAGE_PK_ID_LANGUAGE = "PK_ID_LANGUAGE";
+	public static final String COLUMN_LANGUAGE_NAME = "NAME";
 
+	// table role
+	public static final String TABLE_ROLE = "role";
+	public static final String COLUMN_ROLE_PK_ID_ROLE = "PK_ID_ROLE";
+	public static final String COLUMN_ROLE_NAME = "NAME";
 
- 
+	// table account
+	public static final String TABLE_ACCOUNT = "account";
+	public static final String COLUMN_ACCOUNT_PK_ID_ACCOUNT = "PK_ID_ACCOUNT";
+	public static final String COLUMN_ACCOUNT_USERNAME = "USERNAME";
+	public static final String COLUMN_ACCOUNT_PASSWORD = "PASSWORD";
 
 	// Action for foreign key
 	public static final String ACTION_FOREIGN_MOVIE_FK_ID_COUNTRY = "FOREIGN KEY (" + COLUMN_MOVIE_FK_ID_COUNTRY

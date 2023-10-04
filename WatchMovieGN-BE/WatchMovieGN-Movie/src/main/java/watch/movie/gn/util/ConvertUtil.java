@@ -24,6 +24,9 @@ import watch.movie.gn.entity.Season;
 @Service
 public class ConvertUtil {
 
+	private ConvertUtil() {
+	}
+
 	public static ModelMapper modelMapper;
 
 	@Autowired
