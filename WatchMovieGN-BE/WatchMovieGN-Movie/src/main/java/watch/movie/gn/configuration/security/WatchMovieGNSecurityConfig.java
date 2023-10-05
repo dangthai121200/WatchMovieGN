@@ -1,8 +1,11 @@
 package watch.movie.gn.configuration.security;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -17,8 +20,6 @@ import watch.movie.gn.enums.RoleEnum;
 import watch.movie.gn.util.ProfileActive;
 import watch.movie.gn.util.UrlUtil;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 @Configuration
 @EnableWebSecurity
 public class WatchMovieGNSecurityConfig {
@@ -27,8 +28,7 @@ public class WatchMovieGNSecurityConfig {
 	@Profile(ProfileActive.PROFILE_DEV)
 	public UserDetailsService userDetailsService() {
 		// @formatter:off
-		UserDetails user = User.withDefaultPasswordEncoder()
-				.username("watchmoviegndev")
+		UserDetails user = User.withUsername("watchmoviegndev")
 				.password("watchmoviegndev")
 				.passwordEncoder(s -> noOpPasswordEncoder().encode(s))
 				.roles(RoleEnum.ADMIN.getName())
@@ -48,10 +48,14 @@ public class WatchMovieGNSecurityConfig {
 		// @formatter:off
 		http
 				.authorizeHttpRequests((authorize) -> authorize
+						.requestMatchers(UrlUtil.MOVIE_CONTROLLER_V1 + UrlUtil.FINALLY_SLASH_URL).permitAll()
+						.requestMatchers(HttpMethod.POST, UrlUtil.MOVIE_CONTROLLER_V1 + UrlUtil.MOVIE_CONTROLLER_V1_GET_ALL_MOVIE).hasRole(RoleEnum.ADMIN.getName())
+						.requestMatchers(HttpMethod.PUT, UrlUtil.MOVIE_CONTROLLER_V1 + UrlUtil.MOVIE_CONTROLLER_V1_GET_ALL_MOVIE).hasRole(RoleEnum.ADMIN.getName())
 						.anyRequest().authenticated()
 				)
 				.httpBasic(withDefaults())
-				.formLogin(withDefaults());
+				.formLogin(withDefaults())
+				.csrf().disable();
 		// @formatter:on
 		return http.build();
 	}

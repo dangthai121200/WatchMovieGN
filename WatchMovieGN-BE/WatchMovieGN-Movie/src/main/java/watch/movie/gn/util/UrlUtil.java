@@ -5,6 +5,8 @@ public class UrlUtil {
 	private UrlUtil() {
 
 	}
+	
+	public static final String FINALLY_SLASH_URL ="/**";
 
 	// movie - v1
 	public static final String MOVIE_CONTROLLER_V1 = "/v1/movie";
