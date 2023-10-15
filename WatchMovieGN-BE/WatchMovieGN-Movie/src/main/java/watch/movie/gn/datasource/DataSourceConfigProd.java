@@ -12,7 +12,7 @@ import watch.movie.gn.util.ProfileActive;
 @Component
 @Profile(ProfileActive.PROFILE_PROD)
 public class DataSourceConfigProd {
-	
+
 	private String URL = "jdbc:mysql://localhost:3306/watchmoviegn";
 	private String USERNAME = "watchmoviegn";
 	private String PASSWORD = "watchmoviegn";

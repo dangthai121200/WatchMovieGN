@@ -1,25 +1,19 @@
 package watch.movie.gn.util;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import watch.movie.gn.domain.CountryDomain;
-import watch.movie.gn.domain.CreateMovieRequest;
-import watch.movie.gn.domain.MovieDomain;
-import watch.movie.gn.domain.ProducerDomain;
-import watch.movie.gn.domain.SeasonDomain;
-import watch.movie.gn.domain.UpdateMovieRequest;
+import watch.movie.gn.domain.*;
 import watch.movie.gn.elastic.document.MovieDocument;
 import watch.movie.gn.entity.Country;
 import watch.movie.gn.entity.Movie;
 import watch.movie.gn.entity.Producer;
 import watch.movie.gn.entity.Season;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class ConvertUtil {

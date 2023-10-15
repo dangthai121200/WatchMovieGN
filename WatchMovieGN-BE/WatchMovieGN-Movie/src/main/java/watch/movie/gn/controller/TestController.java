@@ -25,7 +25,7 @@ public class TestController {
 
 	@GetMapping("/fakeDataMovie")
 	public ResponseEntity<?> fakeDataMovie() throws StreamReadException, DatabindException, IOException {
-		
+
 		return ResponseEntity.ok().body(testService.fakeDataMovie());
 	}
 }

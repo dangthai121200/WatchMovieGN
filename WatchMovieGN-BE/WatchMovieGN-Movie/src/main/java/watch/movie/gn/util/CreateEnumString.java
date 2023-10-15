@@ -1,12 +1,8 @@
 package watch.movie.gn.util;
 
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-
 import watch.movie.gn.entity.Country;
+
+import java.util.*;
 
 public class CreateEnumString {
 	public static String reaplaceSpace(String text) {
