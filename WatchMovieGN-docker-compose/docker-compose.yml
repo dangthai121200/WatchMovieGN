@@ -3,6 +3,8 @@ version: "2.2"
 volumes:
     volume-mysql:
     volume-elasticsearch:
+    volume-rabbitmq-data:
+    volume-rabbitmq-log:
 networks:
   local-nextwork:
 services:
@@ -13,6 +15,9 @@ services:
       - local-nextwork
     ports:
       - 8080:8080
+    depends_on:
+      - elasticsearch
+      - mysql
   watchmoviegn-admin:
     container_name: watchmoviegn-admin
     image: gaonet567/watchmoviegn-admin
@@ -20,6 +25,8 @@ services:
       - local-nextwork
     ports:
       - 3000:3000
+    depends_on:
+    - watchmoviegn-movie
   mysql:
     image: mysql:8.0
     container_name: mysql-container
@@ -58,4 +65,15 @@ services:
       - elasticsearch
     ports:
       - 5601:5601
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - volume-rabbitmq-data:/var/lib/rabbitmq/
+        - volume-rabbitmq-log:/var/log/rabbitmq
+    networks:
+        - local-nextwork
   
