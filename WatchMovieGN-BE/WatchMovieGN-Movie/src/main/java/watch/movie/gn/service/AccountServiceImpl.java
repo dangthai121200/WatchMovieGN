@@ -11,7 +11,7 @@ import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.stereotype.Service;
 
-import watch.movie.gn.domain.LoginReponse;
+import watch.movie.gn.domain.account.LoginReponse;
 
 @Service
 public class AccountServiceImpl implements AccountService {

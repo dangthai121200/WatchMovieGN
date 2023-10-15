@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import watch.movie.gn.domain.LoginReponse;
+import watch.movie.gn.domain.account.LoginReponse;
 import watch.movie.gn.service.AccountService;
 import watch.movie.gn.util.UrlUtil;
 

@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.transaction.Transactional;
-import watch.movie.gn.domain.MovieDomain;
+import watch.movie.gn.domain.movie.MovieDomain;
 import watch.movie.gn.elastic.document.MovieDocument;
 import watch.movie.gn.elastic.repository.MovieDocumentRepository;
 import watch.movie.gn.entity.Country;

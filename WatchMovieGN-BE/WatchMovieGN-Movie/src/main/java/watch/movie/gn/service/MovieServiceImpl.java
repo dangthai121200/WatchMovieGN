@@ -11,11 +11,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
-import watch.movie.gn.domain.CreateMovieRequest;
-import watch.movie.gn.domain.GetAllMovieReponse;
-import watch.movie.gn.domain.GetAllMovieRequest;
-import watch.movie.gn.domain.MovieDomain;
-import watch.movie.gn.domain.UpdateMovieRequest;
+import watch.movie.gn.domain.movie.CreateMovieRequest;
+import watch.movie.gn.domain.movie.GetAllMovieReponse;
+import watch.movie.gn.domain.movie.GetAllMovieRequest;
+import watch.movie.gn.domain.movie.MovieDomain;
+import watch.movie.gn.domain.movie.UpdateMovieRequest;
 import watch.movie.gn.elastic.document.MovieDocument;
 import watch.movie.gn.elastic.repository.MovieDocumentRepository;
 import watch.movie.gn.entity.Movie;

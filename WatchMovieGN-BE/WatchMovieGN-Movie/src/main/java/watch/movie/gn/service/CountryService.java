@@ -1,6 +1,6 @@
 package watch.movie.gn.service;
 
-import watch.movie.gn.domain.GetAllCountryReponse;
+import watch.movie.gn.domain.country.GetAllCountryReponse;
 
 public interface CountryService {
 
