@@ -1,23 +1,25 @@
 package watch.movie.gn.util;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import watch.movie.gn.domain.*;
+
 import watch.movie.gn.domain.country.CountryDomain;
 import watch.movie.gn.domain.movie.CreateMovieRequest;
 import watch.movie.gn.domain.movie.MovieDomain;
 import watch.movie.gn.domain.movie.UpdateMovieRequest;
+import watch.movie.gn.domain.producer.ProducerDomain;
+import watch.movie.gn.domain.season.SeasonDomain;
 import watch.movie.gn.elastic.document.MovieDocument;
 import watch.movie.gn.entity.Country;
 import watch.movie.gn.entity.Movie;
 import watch.movie.gn.entity.Producer;
 import watch.movie.gn.entity.Season;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class ConvertUtil {
@@ -75,7 +77,7 @@ public class ConvertUtil {
 		}
 		return Collections.emptyList();
 	}
-	
+
 	public static List<MovieDomain> converListMovieDocumentToListMovieDomain(List<MovieDocument> movieDocuments) {
 
 		if (!movieDocuments.isEmpty()) {
@@ -84,7 +86,7 @@ public class ConvertUtil {
 		}
 		return Collections.emptyList();
 	}
-	
+
 	public static List<MovieDomain> converListMovieDocumentToListMovieDomain(Set<MovieDocument> movieDocuments) {
 
 		if (!movieDocuments.isEmpty()) {
