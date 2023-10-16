@@ -60,6 +60,7 @@ public class CreateEnumString {
 					+ locale.getCountry() + "\"" + ", " + "\"" + locale.getDisplayCountry() + "\"" + ")" + ",");
 			i++;
 		}
+		
 	}
 	
 	public static void printEnumSeason() {
