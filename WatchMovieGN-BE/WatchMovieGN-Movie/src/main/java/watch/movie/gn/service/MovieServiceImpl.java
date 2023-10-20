@@ -31,9 +31,6 @@ public class MovieServiceImpl implements MovieService {
 	public MovieRepository movieRepository;
 
 	@Autowired
-	public MovieDocumentRepository movieDocumentRepository;
-
-	@Autowired
 	public RestTemplate restTemplate;
 
 	@Autowired
