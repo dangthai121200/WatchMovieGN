@@ -28,8 +28,7 @@ public class WatchMovieGnRabbitMqConfigDev {
 
 	@Bean
 	RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-		RabbitTemplate rabbitTemplate = new RabbitTemplate();
-		rabbitTemplate.setConnectionFactory(connectionFactory);
+		RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory());
 		return rabbitTemplate;
 	}
 }
