@@ -2,7 +2,6 @@ package watch.movie.gn.util;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -15,7 +14,6 @@ import watch.movie.gn.domain.movie.MovieDomain;
 import watch.movie.gn.domain.movie.UpdateMovieRequest;
 import watch.movie.gn.domain.producer.ProducerDomain;
 import watch.movie.gn.domain.season.SeasonDomain;
-import watch.movie.gn.elastic.document.MovieDocument;
 import watch.movie.gn.entity.Country;
 import watch.movie.gn.entity.Movie;
 import watch.movie.gn.entity.Producer;
@@ -44,16 +42,6 @@ public class ConvertUtil {
 		return movie;
 	}
 
-	public static MovieDocument converMovieToMovieDocument(Movie movie) {
-		MovieDocument movieDocument = modelMapper.map(movie, MovieDocument.class);
-		return movieDocument;
-	}
-
-	public static MovieDomain converMovieDocumentToMovieDomain(MovieDocument movieDocument) {
-		MovieDomain movieDomain = modelMapper.map(movieDocument, MovieDomain.class);
-		return movieDomain;
-	}
-
 	public static Movie converCreateMovieRequestToMovie(CreateMovieRequest createMovieRequest) {
 		Movie movie = modelMapper.map(createMovieRequest, Movie.class);
 		return movie;
@@ -64,34 +52,9 @@ public class ConvertUtil {
 		return movie;
 	}
 
-	public static Set<MovieDocument> convertListMovieDomaiToListMovie(Set<Movie> movies) {
-		if (!movies.isEmpty()) {
-			return movies.stream().map(ConvertUtil::converMovieToMovieDocument).collect(Collectors.toSet());
-		}
-		return Collections.emptySet();
-	}
-
 	public static List<Movie> convertListMovieDomaiToListMovie(List<MovieDomain> movieDomains) {
 		if (!movieDomains.isEmpty()) {
 			return movieDomains.stream().map(ConvertUtil::converMovieDomainToMovie).collect(Collectors.toList());
-		}
-		return Collections.emptyList();
-	}
-
-	public static List<MovieDomain> converListMovieDocumentToListMovieDomain(List<MovieDocument> movieDocuments) {
-
-		if (!movieDocuments.isEmpty()) {
-			return movieDocuments.stream().map(ConvertUtil::converMovieDocumentToMovieDomain)
-					.collect(Collectors.toList());
-		}
-		return Collections.emptyList();
-	}
-
-	public static List<MovieDomain> converListMovieDocumentToListMovieDomain(Set<MovieDocument> movieDocuments) {
-
-		if (!movieDocuments.isEmpty()) {
-			return movieDocuments.stream().map(ConvertUtil::converMovieDocumentToMovieDomain)
-					.collect(Collectors.toList());
 		}
 		return Collections.emptyList();
 	}

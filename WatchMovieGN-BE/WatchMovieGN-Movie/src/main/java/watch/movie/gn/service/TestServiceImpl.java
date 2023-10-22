@@ -24,8 +24,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.transaction.Transactional;
 import watch.movie.gn.domain.movie.MovieDomain;
-import watch.movie.gn.elastic.document.MovieDocument;
-import watch.movie.gn.elastic.repository.MovieDocumentRepository;
 import watch.movie.gn.entity.Country;
 import watch.movie.gn.entity.Movie;
 import watch.movie.gn.entity.Producer;
@@ -36,7 +34,6 @@ import watch.movie.gn.repository.MovieRepository;
 import watch.movie.gn.repository.ProducerRepository;
 import watch.movie.gn.repository.SeasonRepository;
 import watch.movie.gn.repository.TypeRepository;
-import watch.movie.gn.util.ConvertUtil;
 import watch.movie.gn.util.DateUtil;
 import watch.movie.gn.util.NumberUtil;
 
@@ -45,9 +42,6 @@ public class TestServiceImpl implements TestService {
 
 	@Autowired
 	private MovieRepository movieRepository;
-
-	@Autowired
-	private MovieDocumentRepository movieDocumentRepository;
 
 	@Autowired
 	private CountryRepository countryRepository;
@@ -102,10 +96,11 @@ public class TestServiceImpl implements TestService {
 		Set<Movie> movieSet = movies.stream()
 				.collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Movie::getName))));
 		movieRepository.saveAll(movieSet);
-		Set<MovieDocument> movieDocuments = ConvertUtil.convertListMovieDomaiToListMovie(movieSet);
-		movieDocumentRepository.saveAll(movieDocuments);
-		List<MovieDomain> movieDomains = ConvertUtil.converListMovieDocumentToListMovieDomain(movieDocuments);
-		return movieDomains;
+//		Set<MovieDocument> movieDocuments = ConvertUtil.convertListMovieDomaiToListMovie(movieSet);
+		// movieDocumentRepository.saveAll(movieDocuments);
+//		List<MovieDomain> movieDomains = ConvertUtil.converListMovieDocumentToListMovieDomain(movieDocuments);
+//		return movieDomains;
+		return null;
 	}
 
 	@Override

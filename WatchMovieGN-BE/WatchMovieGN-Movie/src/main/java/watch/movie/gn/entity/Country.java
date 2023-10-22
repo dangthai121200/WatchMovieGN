@@ -9,7 +9,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.PreRemove;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,5 +38,5 @@ public class Country extends BaseEntity {
 
 	@OneToMany(mappedBy = ContainsDatabase.TABLE_COUNTRY, fetch = FetchType.LAZY)
 	private List<Movie> movies;
-	
+
 }

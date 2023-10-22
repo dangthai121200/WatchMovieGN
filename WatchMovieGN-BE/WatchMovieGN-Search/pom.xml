@@ -23,6 +23,14 @@
 		<dependency>
 			<groupId>watch.movie.gn</groupId>
 			<artifactId>WatchMovieGN-Util</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>
+						spring-boot-starter-data-jpa
+					</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- End WatchMovieGN dependency -->
 		<dependency>
@@ -41,10 +49,18 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!--
+                https://mvnrepository.com/artifact/io.projectreactor/reactor-core -->
 		<dependency>
-			<groupId>
-				org.springframework.data</groupId>
-			<artifactId>spring-data-elasticsearch</artifactId>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-core</artifactId>
+		</dependency>
+
+		<!--
+		https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-elasticsearch -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
 		</dependency>
 	</dependencies>
 

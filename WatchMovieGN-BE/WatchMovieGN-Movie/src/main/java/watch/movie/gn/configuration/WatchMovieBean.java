@@ -11,17 +11,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class WatchMovieBean {
 
 	@Bean
-	public ModelMapper modelMapper() {
+	ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
 
 	@Bean
-	public RestTemplate restTemplate() {
+	RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
 
 	@Bean
-	public ObjectMapper objectMapper() {
+	ObjectMapper objectMapper() {
 		return new ObjectMapper();
 	}
 }
