@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import watch.movie.gn.domain.CountryDomain;
-import watch.movie.gn.domain.GetAllCountryReponse;
+import watch.movie.gn.domain.country.CountryDomain;
+import watch.movie.gn.domain.country.GetAllCountryReponse;
 import watch.movie.gn.entity.Country;
 import watch.movie.gn.enums.CountryEnum;
 import watch.movie.gn.repository.CountryRepository;

@@ -1,0 +1,9 @@
+
+server:
+  port: 8999
+  
+#Spring cloud
+#spring:
+# cloud:
+#  gateway:
+#   enabled: false

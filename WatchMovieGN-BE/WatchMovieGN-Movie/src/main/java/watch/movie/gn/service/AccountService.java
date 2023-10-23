@@ -1,8 +1,9 @@
 package watch.movie.gn.service;
 
-import watch.movie.gn.domain.LoginReponse;
-import watch.movie.gn.domain.LoginRequest;
+import org.springframework.security.core.Authentication;
+
+import watch.movie.gn.domain.account.LoginReponse;
 
 public interface AccountService {
-    LoginReponse login(LoginRequest loginRequest);
+	LoginReponse createToken(Authentication authentication);
 }

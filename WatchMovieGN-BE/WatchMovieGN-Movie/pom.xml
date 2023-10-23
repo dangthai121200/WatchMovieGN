@@ -4,16 +4,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
+		<groupId>watch.movie.gn</groupId>
+		<artifactId>WatchMovieGN-Parent</artifactId>
 		<version>
-			3.0.2</version>
-		<relativePath /> <!-- lookup parent from repository -->
+			0.0.1-SNAPSHOT</version>
+		<relativePath>../WatchMovieGN-Parent</relativePath>
 	</parent>
-	<groupId>watch.movie.gn</groupId>
 	<artifactId>WatchMovieGN-Movie</artifactId>
-	<version>
-		0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>WatchMovieGN-backend</name>
 	<description>Demo
@@ -21,169 +18,29 @@
 	<properties>
 		<java.version>17</java.version>
 	</properties>
-
-	<profiles>
-		<profile>
-			<id>dev</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<spring.profiles.active>dev</spring.profiles.active>
-			</properties>
-		</profile>
-		<profile>
-			<id>prod</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<spring.profiles.active>prod</spring.profiles.active>
-			</properties>
-		</profile>
-	</profiles>
-
 	<dependencies>
 
+		<!-- Start WatchMovieGN dependency -->
 		<dependency>
-			<groupId>
-				org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<groupId>watch.movie.gn</groupId>
+			<artifactId>WatchMovieGN-Util</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>
+						spring-boot-starter-data-elasticsearch
+					</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
+		<!-- End WatchMovieGN dependency -->
 
-		<dependency>
-			<groupId>
-				org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>
-				org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>
-				org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>
-				org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>
-				provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>
-				spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>
-				org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>
-				test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>
-				spring-boot-starter-jdbc</artifactId>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>
-				mysql-connector-java</artifactId>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-		<dependency>
-			<groupId>
-				org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
-		<dependency>
-			<groupId>
-				org.modelmapper</groupId>
-			<artifactId>modelmapper</artifactId>
-			<version>3.1.1</version>
-		</dependency>
-
-		<!-- 		<dependency>
-			<groupId>io.springfox</groupId>
-		<artifactId>springfox-swagger2</artifactId>
-			<version>3.0.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.springfox</groupId>
-		<artifactId>springfox-swagger-ui</artifactId>
-			<version>3.0.0</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>io.springfox</groupId>
-		<artifactId>springfox-bean-validators</artifactId>
-		<version>2.9.2</version>
-		</dependency>
-		-->
-
-
-		<dependency>
-			<groupId>
-				org.springframework.data</groupId>
-			<artifactId>spring-data-elasticsearch</artifactId>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/io.projectreactor/reactor-core -->
-		<dependency>
-			<groupId>io.projectreactor</groupId>
-			<artifactId>reactor-core</artifactId>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-resource-server -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-oauth2-resource-server</artifactId>
-			<version>6.1.4</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-jose -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-oauth2-jose</artifactId>
-			<version>6.1.4</version>
-		</dependency>
-
-
-
-
-
-		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-
-    </dependencies>
+	</dependencies>
 
 	<build>
 		<resources>
 			<resource>
-				<directory>
-					src/main/resources</directory>
+				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
 			</resource>
 		</resources>

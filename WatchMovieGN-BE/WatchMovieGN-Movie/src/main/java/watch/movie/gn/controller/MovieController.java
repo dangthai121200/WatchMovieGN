@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import watch.movie.gn.domain.CreateMovieRequest;
-import watch.movie.gn.domain.GetAllMovieRequest;
-import watch.movie.gn.domain.UpdateMovieRequest;
+import watch.movie.gn.domain.movie.CreateMovieRequest;
+import watch.movie.gn.domain.movie.GetAllMovieRequest;
+import watch.movie.gn.domain.movie.UpdateMovieRequest;
 import watch.movie.gn.exception.WatchMovieException;
 import watch.movie.gn.foreignkey.MovieForeign;
 import watch.movie.gn.service.MovieService;
