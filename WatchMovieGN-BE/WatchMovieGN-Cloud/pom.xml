@@ -10,9 +10,7 @@
 			0.0.1-SNAPSHOT</version>
 		<relativePath>../WatchMovieGN-Parent</relativePath>
 	</parent>
-	<groupId>watch.movie.gn</groupId>
 	<artifactId>WatchMovieGN-Cloud</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>WatchMovieGN-Cloud</name>
 	<description>Cloud of WatchMovieGN</description>

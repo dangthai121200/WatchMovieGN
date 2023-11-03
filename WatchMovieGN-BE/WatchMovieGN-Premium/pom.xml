@@ -10,7 +10,6 @@
 			0.0.1-SNAPSHOT</version>
 		<relativePath>../WatchMovieGN-Parent</relativePath>
 	</parent>
-	<groupId>watch.movie.gn</groupId>
 	<artifactId>WatchMovieGN-Premium</artifactId>
 	<packaging>war</packaging>
 	<name>WatchMovieGN-Premium</name>
