@@ -15,13 +15,13 @@
 	<packaging>pom</packaging>
 	<name>WatchMovieGN-Parent</name>
 	<properties>
-		<WatchMovieGN-Util.version>0.0.1-SNAPSHOT</WatchMovieGN-Util.version>
+		<WatchMovieGN-Util-Module.version>0.0.1-SNAPSHOT</WatchMovieGN-Util-Module.version>
 		<spring-cloud.version>2022.0.1</spring-cloud.version>
 
 	</properties>
 
 	<modules>
-		<module>WatchMovieGN-Util</module>
+		<module>WatchMovieGN-Util-Module</module>
 		<module>../WatchMovieGN-Cloud</module>
 		<module>../WatchMovieGN-Movie</module>
 		<module>../WatchMovieGN-Premium</module>
@@ -154,8 +154,8 @@
 		<dependencies>
 			<dependency>
 				<groupId>watch.movie.gn</groupId>
-				<artifactId>WatchMovieGN-Util</artifactId>
-				<version>${WatchMovieGN-Util.version}</version>
+				<artifactId>WatchMovieGN-Util-Module</artifactId>
+				<version>${WatchMovieGN-Util-Module.version}</version>
 			</dependency>
 
 			<dependency>

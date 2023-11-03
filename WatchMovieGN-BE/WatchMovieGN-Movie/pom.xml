@@ -23,7 +23,7 @@
 		<!-- Start WatchMovieGN dependency -->
 		<dependency>
 			<groupId>watch.movie.gn</groupId>
-			<artifactId>WatchMovieGN-Util</artifactId>
+			<artifactId>WatchMovieGN-Util-Module</artifactId>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>

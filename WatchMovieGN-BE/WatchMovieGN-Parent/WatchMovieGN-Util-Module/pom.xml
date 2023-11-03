@@ -9,9 +9,9 @@
 			0.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>WatchMovieGN-Util</artifactId>
+	<artifactId>WatchMovieGN-Util-Module</artifactId>
 	<packaging>jar</packaging>
-	<name>WatchMovieGN-Util</name>
+	<name>WatchMovieGN-Util-Module</name>
 	<dependencies>
 		<!--https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-elasticsearch -->
 		<dependency>
