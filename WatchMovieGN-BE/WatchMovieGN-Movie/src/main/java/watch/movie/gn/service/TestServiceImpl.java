@@ -29,11 +29,14 @@ import watch.movie.gn.entity.Movie;
 import watch.movie.gn.entity.Producer;
 import watch.movie.gn.entity.Season;
 import watch.movie.gn.entity.Type;
+import watch.movie.gn.rabbitmq.domain.movie.CreateMovieRabbitMqSender;
+import watch.movie.gn.rabbitmq.sender.WatchMovieGnSenderSearch;
 import watch.movie.gn.repository.CountryRepository;
 import watch.movie.gn.repository.MovieRepository;
 import watch.movie.gn.repository.ProducerRepository;
 import watch.movie.gn.repository.SeasonRepository;
 import watch.movie.gn.repository.TypeRepository;
+import watch.movie.gn.util.ConvertUtil;
 import watch.movie.gn.util.DateUtil;
 import watch.movie.gn.util.NumberUtil;
 
@@ -54,6 +57,9 @@ public class TestServiceImpl implements TestService {
 
 	@Autowired
 	private TypeRepository typeRepository;
+
+	@Autowired
+	private WatchMovieGnSenderSearch watchMovieGnSenderSearch;
 
 	@SuppressWarnings({ "deprecation", "unused" })
 	@Override
@@ -96,11 +102,11 @@ public class TestServiceImpl implements TestService {
 		Set<Movie> movieSet = movies.stream()
 				.collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Movie::getName))));
 		movieRepository.saveAll(movieSet);
-//		Set<MovieDocument> movieDocuments = ConvertUtil.convertListMovieDomaiToListMovie(movieSet);
-		// movieDocumentRepository.saveAll(movieDocuments);
-//		List<MovieDomain> movieDomains = ConvertUtil.converListMovieDocumentToListMovieDomain(movieDocuments);
-//		return movieDomains;
-		return null;
+		List<MovieDomain> movieDomains = ConvertUtil.convertMovieToListDomain(movieSet);
+		CreateMovieRabbitMqSender createMovieRabbitMqSender = new CreateMovieRabbitMqSender();
+		createMovieRabbitMqSender.setMovies(movieDomains);
+		watchMovieGnSenderSearch.createMovies(createMovieRabbitMqSender);
+		return movieDomains;
 	}
 
 	@Override

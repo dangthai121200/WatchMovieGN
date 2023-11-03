@@ -21,7 +21,12 @@
 	</properties>
 
 	<modules>
-		<module>../WatchMovieGN-Util</module>
+		<module>WatchMovieGN-Util</module>
+		<module>../WatchMovieGN-Cloud</module>
+		<module>../WatchMovieGN-Movie</module>
+		<module>../WatchMovieGN-Premium</module>
+		<module>../WatchMovieGN-Search</module>
+		<module>../WatchMovieGN-User</module>
 	</modules>
 
 	<profiles>
@@ -163,5 +168,31 @@
 
 		</dependencies>
 	</dependencyManagement>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.springframework.boot</groupId>-->
+<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<configuration>-->
+<!--							<classifier>exe</classifier>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
+		</plugins>
+	</build>
 
 </project>

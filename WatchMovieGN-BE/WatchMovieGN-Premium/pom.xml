@@ -10,7 +10,7 @@
 			0.0.1-SNAPSHOT</version>
 		<relativePath>../WatchMovieGN-Parent</relativePath>
 	</parent>
-	<groupId>watch.com.gn</groupId>
+	<groupId>watch.movie.gn</groupId>
 	<artifactId>WatchMovieGN-Premium</artifactId>
 	<packaging>war</packaging>
 	<name>WatchMovieGN-Premium</name>
@@ -32,14 +32,5 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

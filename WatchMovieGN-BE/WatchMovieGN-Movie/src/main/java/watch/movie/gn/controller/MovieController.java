@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import watch.movie.gn.domain.movie.CreateMovieRequest;
-import watch.movie.gn.domain.movie.GetAllMovieRequest;
 import watch.movie.gn.domain.movie.UpdateMovieRequest;
 import watch.movie.gn.exception.WatchMovieException;
 import watch.movie.gn.foreignkey.MovieForeign;
@@ -26,11 +25,6 @@ public class MovieController {
 
 	@Autowired
 	public MovieForeign movieForeign;
-
-	@PostMapping(UrlUtil.MOVIE_CONTROLLER_V1_GET_ALL_MOVIE)
-	public ResponseEntity<?> getAllMovie(@RequestBody GetAllMovieRequest getAllMovieRequest) {
-		return ResponseEntity.ok(movieService.getAllMovie(getAllMovieRequest));
-	}
 
 	@PostMapping
 	public ResponseEntity<?> createMovie(@RequestBody CreateMovieRequest createMovieRequest) {

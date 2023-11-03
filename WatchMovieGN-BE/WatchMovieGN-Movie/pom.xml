@@ -12,7 +12,7 @@
 	</parent>
 	<artifactId>WatchMovieGN-Movie</artifactId>
 	<packaging>war</packaging>
-	<name>WatchMovieGN-backend</name>
+	<name>WatchMovieGN-Movie</name>
 	<description>Demo
 		project for Spring Boot</description>
 	<properties>
@@ -36,21 +36,5 @@
 		<!-- End WatchMovieGN dependency -->
 
 	</dependencies>
-
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-		<plugins>
-			<plugin>
-				<groupId>
-					org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

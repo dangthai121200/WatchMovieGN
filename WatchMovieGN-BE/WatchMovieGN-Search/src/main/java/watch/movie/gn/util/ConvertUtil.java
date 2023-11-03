@@ -18,7 +18,7 @@ public class ConvertUtil {
 	private ConvertUtil() {
 	}
 
-	public static ModelMapper modelMapper;
+	private static ModelMapper modelMapper;
 
 	@Autowired
 	public void setSomeThing(ModelMapper modelMapper) {
@@ -28,6 +28,11 @@ public class ConvertUtil {
 	public static MovieDomain converMovieDocumentToMovieDomain(MovieDocument movieDocument) {
 		MovieDomain movieDomain = modelMapper.map(movieDocument, MovieDomain.class);
 		return movieDomain;
+	}
+
+	public static MovieDocument converMovieDocumentToMovieDomain(MovieDomain movieDomain) {
+		MovieDocument movieDocument = modelMapper.map(movieDomain, MovieDocument.class);
+		return movieDocument;
 	}
 
 	public static List<MovieDomain> converListMovieDocumentToListMovieDomain(List<MovieDocument> movieDocuments) {
@@ -43,6 +48,14 @@ public class ConvertUtil {
 
 		if (!movieDocuments.isEmpty()) {
 			return movieDocuments.stream().map(ConvertUtil::converMovieDocumentToMovieDomain)
+					.collect(Collectors.toList());
+		}
+		return Collections.emptyList();
+	}
+
+	public static List<MovieDocument> convertListMovieDomainToListMovieDocument(List<MovieDomain> movieDomains) {
+		if (!movieDomains.isEmpty()) {
+			return movieDomains.stream().map(ConvertUtil::converMovieDocumentToMovieDomain)
 					.collect(Collectors.toList());
 		}
 		return Collections.emptyList();

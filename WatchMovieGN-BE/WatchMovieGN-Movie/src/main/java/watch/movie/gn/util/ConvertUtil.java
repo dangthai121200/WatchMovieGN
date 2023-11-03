@@ -2,6 +2,7 @@ package watch.movie.gn.util;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -25,7 +26,7 @@ public class ConvertUtil {
 	private ConvertUtil() {
 	}
 
-	public static ModelMapper modelMapper;
+	private static ModelMapper modelMapper;
 
 	@Autowired
 	public void setSomeThing(ModelMapper modelMapper) {
@@ -52,9 +53,21 @@ public class ConvertUtil {
 		return movie;
 	}
 
+	public static MovieDomain convertMovieToMovieDomain(Movie movie) {
+		MovieDomain movieDomain = modelMapper.map(movie, MovieDomain.class);
+		return movieDomain;
+	}
+
 	public static List<Movie> convertListMovieDomaiToListMovie(List<MovieDomain> movieDomains) {
 		if (!movieDomains.isEmpty()) {
 			return movieDomains.stream().map(ConvertUtil::converMovieDomainToMovie).collect(Collectors.toList());
+		}
+		return Collections.emptyList();
+	}
+
+	public static List<MovieDomain> convertMovieToListDomain(Set<Movie> movies) {
+		if (!movies.isEmpty()) {
+			return movies.stream().map(ConvertUtil::convertMovieToMovieDomain).collect(Collectors.toList());
 		}
 		return Collections.emptyList();
 	}

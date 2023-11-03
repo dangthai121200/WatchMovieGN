@@ -27,16 +27,14 @@ public class MovieServiceImpl implements MovieService {
 
 	@Autowired
 	private ObjectMapper objectMapper;
-	
+
 	@Autowired
 	private WatchMovieGnSenderSearch satchMovieGnSenderSearch;
-	
-	
 
 	@Override
 	public GetAllMovieReponse getAllMovie(GetAllMovieRequest getAllMovieRequest) {
 		log.debug("message = Get all Movie: " + getAllMovieRequest.toString());
-		return satchMovieGnSenderSearch.getAllMovie(getAllMovieRequest);
+		return null;
 	}
 
 	@Override

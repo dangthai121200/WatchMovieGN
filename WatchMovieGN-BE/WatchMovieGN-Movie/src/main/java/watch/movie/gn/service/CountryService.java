@@ -1,10 +1,10 @@
 package watch.movie.gn.service;
 
-import watch.movie.gn.domain.country.GetAllCountryReponse;
+import watch.movie.gn.domain.country.GetAllCountryResponse;
 
 public interface CountryService {
 
-	GetAllCountryReponse getAllCountry();
+	GetAllCountryResponse getAllCountry();
 
 	void updateCountryEnumsIntoDatabase();
 }

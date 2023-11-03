@@ -10,8 +10,9 @@
 			0.0.1-SNAPSHOT</version>
 		<relativePath>../WatchMovieGN-Parent</relativePath>
 	</parent>
-	<groupId>watch.com.gn</groupId>
+	<groupId>watch.movie.gn</groupId>
 	<artifactId>WatchMovieGN-Cloud</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>WatchMovieGN-Cloud</name>
 	<description>Cloud of WatchMovieGN</description>
@@ -29,14 +30,5 @@
 			<artifactId>spring-cloud-starter-gateway</artifactId>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

@@ -1,8 +1,11 @@
 package watch.movie.gn.service;
 
-import watch.movie.gn.rabbitmq.domain.movie.GetAllMovieRabbitMqReceive;
-import watch.movie.gn.rabbitmq.domain.movie.GetAllMovieRabbitMqSender;
+import watch.movie.gn.domain.movie.GetAllMovieReponse;
+import watch.movie.gn.domain.movie.GetAllMovieRequest;
+import watch.movie.gn.rabbitmq.domain.movie.CreateMovieRabbitMqSender;
 
 public interface MovieDocumentService {
-	GetAllMovieRabbitMqReceive getAllMovie(GetAllMovieRabbitMqSender getAllMovieRabbitMqSender);
+	GetAllMovieReponse getAllMovie(GetAllMovieRequest getAllMovieRequest);
+
+	void createMovies(CreateMovieRabbitMqSender createMovieRabbitMqSender);
 }
