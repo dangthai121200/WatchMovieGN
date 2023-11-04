@@ -22,7 +22,7 @@
 
 	<modules>
 		<module>WatchMovieGN-Util-Module</module>
-		<module>../WatchMovieGN-Cloud</module>
+		<module>../WatchMovieGN-GateWay</module>
 		<module>../WatchMovieGN-Movie</module>
 		<module>../WatchMovieGN-Premium</module>
 		<module>../WatchMovieGN-Search</module>

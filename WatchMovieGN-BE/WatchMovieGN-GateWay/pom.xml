@@ -10,9 +10,9 @@
 			0.0.1-SNAPSHOT</version>
 		<relativePath>../WatchMovieGN-Parent</relativePath>
 	</parent>
-	<artifactId>WatchMovieGN-Cloud</artifactId>
+	<artifactId>WatchMovieGN-GateWay</artifactId>
 	<packaging>war</packaging>
-	<name>WatchMovieGN-Cloud</name>
+	<name>WatchMovieGN-GateWay</name>
 	<description>Cloud of WatchMovieGN</description>
 	<properties>
 		<java.version>17</java.version>
