@@ -2,7 +2,7 @@ package watch.movie.gn.util;
 
 public class ProfileActive {
 
-	public ProfileActive() {
+	private ProfileActive() {
 
 	}
 

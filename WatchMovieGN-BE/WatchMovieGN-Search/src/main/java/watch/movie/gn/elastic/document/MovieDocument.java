@@ -13,49 +13,49 @@ import org.springframework.data.elasticsearch.annotations.Setting;
 import lombok.Data;
 import watch.movie.gn.enums.MovieStatusEnums;
 import watch.movie.gn.enums.SeasonEnum;
-import watch.movie.gn.util.ContainsElastic;
+import watch.movie.gn.util.ConstantElastic;
 
 @Data
-@Document(indexName = ContainsElastic.INDEX_MOVIE)
-@TypeAlias(ContainsElastic.ALIAS_MOVE)
+@Document(indexName = ConstantElastic.INDEX_MOVIE)
+@TypeAlias(ConstantElastic.ALIAS_MOVE)
 @Setting(sortFields = { "pkIdMovie" }, sortOrders = { Setting.SortOrder.asc })
 public class MovieDocument {
 
 	@Id
-	@Field(name = ContainsElastic.FIELD_MOVIE_PK_ID_MOVIE, type = FieldType.Integer, storeNullValue = false)
+	@Field(name = ConstantElastic.FIELD_MOVIE_PK_ID_MOVIE, type = FieldType.Integer, storeNullValue = false)
 	private int pkIdMovie;
 
-	@Field(name = ContainsElastic.FIELD_MOVIE_NAME, type = FieldType.Text, storeNullValue = false)
+	@Field(name = ConstantElastic.FIELD_MOVIE_NAME, type = FieldType.Text, storeNullValue = false)
 	private String name;
 
-	@Field(name = ContainsElastic.FIELD_MOVIE_VIEW, type = FieldType.Integer)
+	@Field(name = ConstantElastic.FIELD_MOVIE_VIEW, type = FieldType.Integer)
 	private int view = 0;
 
-	@Field(name = ContainsElastic.FIELD_MOVIE_YEAR_OF_BROADCAST, format = DateFormat.basic_date, storeNullValue = true)
+	@Field(name = ConstantElastic.FIELD_MOVIE_YEAR_OF_BROADCAST, format = DateFormat.basic_date, storeNullValue = true)
 	private Date yearOfBroadcast;
 
-	@Field(name = ContainsElastic.FIELD_MOVIE_URL_IMAGE, type = FieldType.Text, storeNullValue = true)
+	@Field(name = ConstantElastic.FIELD_MOVIE_URL_IMAGE, type = FieldType.Text, storeNullValue = true)
 	private String urlImage;
 
-	@Field(name = ContainsElastic.FIELD_MOVIE_CONTENT, type = FieldType.Text, storeNullValue = true)
+	@Field(name = ConstantElastic.FIELD_MOVIE_CONTENT, type = FieldType.Text, storeNullValue = true)
 	private String content;
 
-	@Field(name = ContainsElastic.FIELD_MOVIE_STATUS, storeNullValue = false)
+	@Field(name = ConstantElastic.FIELD_MOVIE_STATUS, storeNullValue = false)
 	private MovieStatusEnums status;
 
-	@Field(name = ContainsElastic.FIELD_MOVIE_TIME, type = FieldType.Integer, storeNullValue = false)
+	@Field(name = ConstantElastic.FIELD_MOVIE_TIME, type = FieldType.Integer, storeNullValue = false)
 	private Integer time;
 
-	@Field(name = ContainsElastic.FIELD_MOVIE_COUNTRY, type = FieldType.Object)
+	@Field(name = ConstantElastic.FIELD_MOVIE_COUNTRY, type = FieldType.Object)
 	private CountryDocument country;
 
-	@Field(name = ContainsElastic.FIELD_MOVIE_SEASON, type = FieldType.Object)
+	@Field(name = ConstantElastic.FIELD_MOVIE_SEASON, type = FieldType.Object)
 	private SeasonDocument season;
 
-	@Field(name = ContainsElastic.FIELD_MOVIE_PRODUCER, type = FieldType.Object)
+	@Field(name = ConstantElastic.FIELD_MOVIE_PRODUCER, type = FieldType.Object)
 	private ProducerDocument producer;
 
-	@Field(name = ContainsElastic.FIELD_MOVIE_TYPE, type = FieldType.Object)
+	@Field(name = ConstantElastic.FIELD_MOVIE_TYPE, type = FieldType.Object)
 	private TypeDocument type;
 
 	@Data

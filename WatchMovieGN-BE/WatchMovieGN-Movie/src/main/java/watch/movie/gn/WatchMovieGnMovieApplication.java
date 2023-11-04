@@ -10,43 +10,48 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import watch.movie.gn.foreignkey.MovieForeign;
 import watch.movie.gn.service.CountryService;
+import watch.movie.gn.service.MovieTypeService;
 import watch.movie.gn.service.RoleService;
 import watch.movie.gn.service.SeasonService;
 
 @EnableJpaRepositories
-@SpringBootApplication(exclude = { SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class })
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class})
 public class WatchMovieGnMovieApplication implements CommandLineRunner {
 
-	@Autowired
-	private MovieForeign movieForeign;
+    @Autowired
+    private MovieForeign movieForeign;
 
-	@Autowired
-	private CountryService countryService;
+    @Autowired
+    private CountryService countryService;
 
-	@Autowired
-	private SeasonService seasonService;
+    @Autowired
+    private SeasonService seasonService;
 
-	@Autowired
-	private RoleService roleService;
+    @Autowired
+    private RoleService roleService;
 
-	public static void main(String[] args) {
-		SpringApplication.run(WatchMovieGnMovieApplication.class, args);
-	}
+    @Autowired
+    private MovieTypeService movieTypeService;
 
-	@Override
-	public void run(String... args) throws Exception {
-		checkForeignDatabase();
-		updateDataEnumIntoDatabase();
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WatchMovieGnMovieApplication.class, args);
+    }
 
-	private void checkForeignDatabase() {
-		movieForeign.updateFkOptinonDeleteToSetNull();
-	}
+    @Override
+    public void run(String... args) throws Exception {
+        checkForeignDatabase();
+        updateDataEnumIntoDatabase();
+    }
 
-	private void updateDataEnumIntoDatabase() {
-		countryService.updateCountryEnumsIntoDatabase();
-		seasonService.updateSeasonEnumsIntoDatabase();
-		roleService.updateRoleEnumsIntoDatabase();
-	}
+    private void checkForeignDatabase() {
+        movieForeign.updateFkOptinonDeleteToSetNull();
+    }
+
+    private void updateDataEnumIntoDatabase() {
+        countryService.updateCountryEnumsIntoDatabase();
+        seasonService.updateSeasonEnumsIntoDatabase();
+        roleService.updateRoleEnumsIntoDatabase();
+        movieTypeService.updateMovieTypeEnumsIntoDatabase();
+    }
 
 }

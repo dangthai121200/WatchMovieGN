@@ -1,8 +1,8 @@
 package watch.movie.gn.util;
 
-public class ContainsElastic {
+public class ConstantElastic {
 
-	private ContainsElastic() {
+	private ConstantElastic() {
 	}
 
 	// Movie

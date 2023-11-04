@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import lombok.Data;
-import watch.movie.gn.util.ContainsDatabase;
+import watch.movie.gn.util.ConstantDatabase;
 
 @Data
 public class ReferentialConstraints implements RowMapper<ReferentialConstraints> {
@@ -48,17 +48,17 @@ public class ReferentialConstraints implements RowMapper<ReferentialConstraints>
 	public ReferentialConstraints mapRow(ResultSet rs, int rowNum) throws SQLException {
 
 		return new ReferentialConstraints(
-				rs.getString(ContainsDatabase.COLUMN_REFERENTIAL_CONSTRAINTS_CONSTRAINT_CATALOG),
-				rs.getString(ContainsDatabase.COLUMN_REFERENTIAL_CONSTRAINT_SCHEMA),
-				rs.getString(ContainsDatabase.COLUMN_REFERENTIAL_CONSTRAINT_NAME),
-				rs.getString(ContainsDatabase.COLUMN_REFERENTIAL_UNIQUE_CONSTRAINT_CATALOG),
-				rs.getString(ContainsDatabase.COLUMN_REFERENTIAL_UNIQUE_CONSTRAINT_SCHEMA),
-				rs.getString(ContainsDatabase.COLUMN_REFERENTIAL_UNIQUE_CONSTRAINT_NAME),
-				rs.getString(ContainsDatabase.COLUMN_REFERENTIAL_MATCH_OPTION),
-				rs.getString(ContainsDatabase.COLUMN_REFERENTIAL_UPDATE_RULE),
-				rs.getString(ContainsDatabase.COLUMN_REFERENTIAL_DELETE_RULE),
-				rs.getString(ContainsDatabase.COLUMN_REFERENTIAL_TABLE_NAME),
-				rs.getString(ContainsDatabase.COLUMN_REFERENTIAL_REFERENCED_TABLE_NAME));
+				rs.getString(ConstantDatabase.COLUMN_REFERENTIAL_CONSTRAINTS_CONSTRAINT_CATALOG),
+				rs.getString(ConstantDatabase.COLUMN_REFERENTIAL_CONSTRAINT_SCHEMA),
+				rs.getString(ConstantDatabase.COLUMN_REFERENTIAL_CONSTRAINT_NAME),
+				rs.getString(ConstantDatabase.COLUMN_REFERENTIAL_UNIQUE_CONSTRAINT_CATALOG),
+				rs.getString(ConstantDatabase.COLUMN_REFERENTIAL_UNIQUE_CONSTRAINT_SCHEMA),
+				rs.getString(ConstantDatabase.COLUMN_REFERENTIAL_UNIQUE_CONSTRAINT_NAME),
+				rs.getString(ConstantDatabase.COLUMN_REFERENTIAL_MATCH_OPTION),
+				rs.getString(ConstantDatabase.COLUMN_REFERENTIAL_UPDATE_RULE),
+				rs.getString(ConstantDatabase.COLUMN_REFERENTIAL_DELETE_RULE),
+				rs.getString(ConstantDatabase.COLUMN_REFERENTIAL_TABLE_NAME),
+				rs.getString(ConstantDatabase.COLUMN_REFERENTIAL_REFERENCED_TABLE_NAME));
 	}
 
 }

@@ -1,4 +1,4 @@
-package watch.movie.gn.rabbitmq;
+package watch.movie.gn.rabbitmq.configuration;
 
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
@@ -45,7 +45,7 @@ public class WatchMovieGnRabbitMqConfigProd {
 
 	@Bean
 	RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-		RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory());
+		RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
 		RetryTemplate retryTemplate = new RetryTemplate();
 		ExponentialBackOffPolicy backOffPolicy = new ExponentialBackOffPolicy();
 		backOffPolicy.setInitialInterval(500);

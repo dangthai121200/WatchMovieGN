@@ -15,13 +15,13 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import watch.movie.gn.util.ContainsDatabase;
+import watch.movie.gn.util.ConstantDatabase;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@Table(name = ContainsDatabase.TABLE_TYPE)
-@Entity(name = ContainsDatabase.TABLE_TYPE)
+@Table(name = ConstantDatabase.TABLE_TYPE)
+@Entity(name = ConstantDatabase.TABLE_TYPE)
 public class Type extends BaseEntity {
 
 	/**
@@ -31,14 +31,18 @@ public class Type extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = ContainsDatabase.COLUMN_TYPE_PK_ID_TYPE, length = 10)
+	@Column(name = ConstantDatabase.COLUMN_TYPE_PK_ID_TYPE, length = 10)
 	private Integer pkIdType;
 
-	@Column(name = ContainsDatabase.COLUMN_TYPE_NAME, nullable = false, unique = true, length = 255)
+	@Column(name = ConstantDatabase.COLUMN_TYPE_NAME, nullable = false, unique = true, length = 255)
 	private String name;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = ContainsDatabase.TABLE_TYPE)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = ConstantDatabase.TABLE_TYPE)
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	private List<Movie> movies;
+
+	public Type() {
+
+	}
 }

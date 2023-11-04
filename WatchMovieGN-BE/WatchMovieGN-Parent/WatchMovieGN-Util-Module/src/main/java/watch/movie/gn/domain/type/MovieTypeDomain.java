@@ -5,7 +5,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 @Data
-public class TypeDomain implements Serializable {
+public class MovieTypeDomain implements Serializable {
 	/**
 	 * 
 	 */

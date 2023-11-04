@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import watch.movie.gn.informationschema.ReferentialConstraints;
-import watch.movie.gn.util.ContainsDatabase;
+import watch.movie.gn.util.ConstantDatabase;
 import watch.movie.gn.util.ForeignKeyDatabaseSql;
 
 @Service
@@ -29,7 +29,7 @@ public class MovieForeignImpl implements MovieForeign {
 				.query(ForeignKeyDatabaseSql.GET_ALL_INFORMATION_FOREIGN_TABLE_MOVIE, new ReferentialConstraints());
 		for (ReferentialConstraints referentialConstraints : referentialConstraintsList) {
 			if (!referentialConstraints.getDeleteRule().equals("SET NULL") && referentialConstraints.getConstraintName()
-					.equals(ContainsDatabase.FOREIGN_MOVIE_FK_ID_COUNTRY)) {
+					.equals(ConstantDatabase.FOREIGN_MOVIE_FK_ID_COUNTRY)) {
 				deleteFkIdCountry();
 				jdbcTemplate.execute(ForeignKeyDatabaseSql.UPDATE_FORGEIGN_MOVIE_FK_ID_COUNTRY);
 				log.info("SQL: " + ForeignKeyDatabaseSql.UPDATE_FORGEIGN_MOVIE_FK_ID_COUNTRY);

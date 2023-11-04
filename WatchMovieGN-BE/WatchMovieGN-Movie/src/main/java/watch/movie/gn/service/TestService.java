@@ -15,6 +15,4 @@ public interface TestService {
 
 	List<Producer> fakeDataProducers();
 
-	List<Type> fakeDataTypes();
-
 }

@@ -1,8 +1,8 @@
 package watch.movie.gn.util;
 
-public class ContainsDatabase {
+public class ConstantDatabase {
 
-	private ContainsDatabase() {
+	private ConstantDatabase() {
 
 	}
 
