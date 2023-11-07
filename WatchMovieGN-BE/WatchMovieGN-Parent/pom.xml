@@ -18,6 +18,12 @@
 		<WatchMovieGN-Util-Module.version>0.0.1-SNAPSHOT</WatchMovieGN-Util-Module.version>
 		<spring-cloud.version>2022.0.1</spring-cloud.version>
 
+		<!-- PORT -->
+		<WatchMovieGN-GateWay.port>8080</WatchMovieGN-GateWay.port>
+		<WatchMovieGN-Movie.port>8081</WatchMovieGN-Movie.port>
+		<WatchMovieGN-Premium.port>8082</WatchMovieGN-Premium.port>
+		<WatchMovieGN-Search.port>8083</WatchMovieGN-Search.port>
+		<WatchMovieGN-User.port>8084</WatchMovieGN-User.port>
 	</properties>
 
 	<modules>

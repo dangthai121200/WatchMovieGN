@@ -1,8 +1,7 @@
 package watch.movie.gn.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.JpaRepository;
 import watch.movie.gn.entity.Role;
 
 @Transactional

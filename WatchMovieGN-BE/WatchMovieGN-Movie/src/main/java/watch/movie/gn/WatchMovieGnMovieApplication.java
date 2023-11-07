@@ -11,7 +11,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import watch.movie.gn.foreignkey.MovieForeign;
 import watch.movie.gn.service.CountryService;
 import watch.movie.gn.service.MovieTypeService;
-import watch.movie.gn.service.RoleService;
 import watch.movie.gn.service.SeasonService;
 
 @EnableJpaRepositories
@@ -26,9 +25,6 @@ public class WatchMovieGnMovieApplication implements CommandLineRunner {
 
     @Autowired
     private SeasonService seasonService;
-
-    @Autowired
-    private RoleService roleService;
 
     @Autowired
     private MovieTypeService movieTypeService;
@@ -50,7 +46,6 @@ public class WatchMovieGnMovieApplication implements CommandLineRunner {
     private void updateDataEnumIntoDatabase() {
         countryService.updateCountryEnumsIntoDatabase();
         seasonService.updateSeasonEnumsIntoDatabase();
-        roleService.updateRoleEnumsIntoDatabase();
         movieTypeService.updateMovieTypeEnumsIntoDatabase();
     }
 
