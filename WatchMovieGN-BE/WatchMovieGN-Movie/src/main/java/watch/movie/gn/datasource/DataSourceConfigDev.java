@@ -13,7 +13,7 @@ import watch.movie.gn.util.ProfileActive;
 @Profile(ProfileActive.PROFILE_DEV)
 public class DataSourceConfigDev {
 
-	private String URL = "jdbc:mysql://localhost:3306/watchmoviegn-movie";
+	private String URL = "jdbc:mysql://localhost:3306/watchmoviegn-movie?createDatabaseIfNotExist=true";
 	private String USERNAME = "root";
 	private String PASSWORD = "";
 	private String DRIVE_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
