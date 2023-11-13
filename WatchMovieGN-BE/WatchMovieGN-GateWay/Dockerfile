@@ -2,7 +2,7 @@
 
 FROM eclipse-temurin:17-jdk-jammy
 
-WORKDIR /app
+WORKDIR /WatchMovieGN-GateWay
 
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./

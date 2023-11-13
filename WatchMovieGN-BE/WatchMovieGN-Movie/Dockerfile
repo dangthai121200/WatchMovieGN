@@ -1,15 +1,13 @@
 # syntax=docker/dockerfile:1
 
-FROM eclipse-temurin:17-jdk-jammy
+FROM maven:3.9-amazoncorretto-8-al2023
 
-WORKDIR /app
+WORKDIR /WatchMovieGN-Movie
 
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-# clean up the file
-RUN sed -i 's/\r$//' ./mvnw
-RUN ./mvnw dependency:resolve -Pdev
-
+COPY pom.xml ./
 COPY src ./src
 
-CMD ["./mvnw", "spring-boot:run"]
+RUN --mount=type=secret,id=mvnsettings,target=/root/.m2/settings.xml \
+RUN mvn clean package -Pdev
+
+CMD ["mvn", "spring-boot:run"]
