@@ -5,10 +5,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>watch.movie.gn</groupId>
-		<artifactId>WatchMovieGN-Parent</artifactId>
+		<artifactId>WatchMovieGN-Webservice-Parent</artifactId>
 		<version>
 			0.0.1-SNAPSHOT</version>
-		<relativePath>../WatchMovieGN-Parent</relativePath>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>WatchMovieGN-GateWay</artifactId>
 	<packaging>war</packaging>

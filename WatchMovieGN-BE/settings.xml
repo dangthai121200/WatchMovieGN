@@ -43,16 +43,16 @@ under the License.
  | values (values used when the setting is not specified) are provided.
  |
  |-->
-<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 https://maven.apache.org/xsd/settings-1.2.0.xsd">
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
   <!-- localRepository
    | The path to the local repository maven will use to store artifacts.
    |
    | Default: ${user.home}/.m2/repository
   <localRepository>/path/to/local/repo</localRepository>
   -->
-
+	<localRepository>C:\Users\thai.dang\.m2\repository</localRepository>
   <!-- interactiveMode
    | This will determine whether maven prompts you when it needs input. If set to false,
    | maven will use a sensible default value, perhaps based on some other setting, for
@@ -130,6 +130,19 @@ under the License.
       <passphrase>optional; leave empty if not used.</passphrase>
     </server>
     -->
+	
+	<server>
+      <id>xifin-libs-release</id>
+      <username>xifinreadonly</username>
+      <password>APZC1YAqNSC3JRrJUzBLPNcWxfw6BrpzRgAPP</password>
+    </server>
+
+	<server>
+      <id>xifin-libs-snapshot</id>
+      <username>xifinreadonly</username>
+      <password>APZC1YAqNSC3JRrJUzBLPNcWxfw6BrpzRgAPP</password>
+    </server>	
+	
   </servers>
 
   <!-- mirrors
@@ -156,13 +169,13 @@ under the License.
       <url>http://my.repository.com/repo/path</url>
     </mirror>
      -->
-    <mirror>
-      <id>maven-default-http-blocker</id>
-      <mirrorOf>external:http:*</mirrorOf>
-      <name>Pseudo repository to mirror external repositories initially using HTTP.</name>
-      <url>http://0.0.0.0/</url>
-      <blocked>true</blocked>
-    </mirror>
+	<mirror> 
+		<id>maven-default-http-blocker</id>
+		<mirrorOf>dummy</mirrorOf>
+		<name>Pseudo repository to mirror external repositories initially using HTTP.</name>
+		<url>http://0.0.0.0/</url>
+		<!-- <blocked>false</blocked> -->
+	</mirror>
   </mirrors>
 
   <!-- profiles
@@ -251,6 +264,88 @@ under the License.
       </properties>
     </profile>
     -->
+	<profile>
+		<id>xifin-profile</id>
+		<repositories>
+			<repository>
+				<id>xifin-libs-release</id>
+				<url>http://cartifactory01.mba.xifin.com:8081/artifactory/xifin-libs-release</url>
+			</repository>
+			
+			<repository>
+				<id>xifin-libs-snapshot</id>
+				<url>http://cartifactory01.mba.xifin.com:8081/artifactory/xifin-libs-snapshot</url>
+				<snapshots>
+					<enabled>true</enabled>
+				</snapshots>
+			</repository>
+		</repositories>
+    </profile>
+	
+	<profile>
+		<id>ip-profile</id>
+		<repositories>
+			<repository>
+			  <id>maven22</id>
+			  <name>Maven 2</name>
+			  <url>http://central.maven.org/maven2/</url>
+			</repository>
+			
+			<repository>
+			  <id>IP_PROFILE</id>
+			  <name>IP PROFILE</name>
+			  
+			<!--  A.Thanh -->
+			<!--<url>file:\\10.20.29.121\.m2\repository</url>-->
+			
+			<!-- A.Cuong
+			<url>file:\\10.20.29.178\.m2\repository</url>--> 
+			
+			<!--<url>file:\\10.20.29.154\Users\han.huynh\.m2\repository</url> -->
+			
+			<!-- <url>file:\\10.20.29.135\Users\minh.tra\.m2\repository2</url> -->
+			
+			<!--<url>file:\\10.20.29.102\Users\cuong.hoang\.m2\repository</url>-->
+			
+			<!----><url>file:\\10.20.29.215\Users\hien.pham\.m2\repository</url>
+			
+			</repository>
+		</repositories>
+    </profile>
+	
+	<profile>
+		<id>home-profile</id>
+		<repositories>
+			<repository>
+			  <id>home_repository</id>
+			  <name>Get dependency from home PC</name>
+			  <url>file:\\tsclient\I\repository</url>
+			  <snapshots>
+				<enabled>true</enabled>
+			  </snapshots>
+			</repository>
+		</repositories>
+    </profile>
+	
+	<profile>
+		<id>online-profile</id>
+		<repositories>
+			 <repository>
+                <id>1_maven.apache.org</id>
+                <releases>  <enabled>true</enabled>  </releases>
+                <snapshots> <enabled>true</enabled> </snapshots>
+                <url>https://repo.maven.apache.org/maven2</url>
+            </repository>
+		</repositories>
+    </profile>
+	
+<!-- 	<profile>
+		<id>spring</id>
+		<properties>
+			<xifin.corporate.repo>file://S:/repository/</xifin.corporate.repo>
+			<xifin.corporate.snapshot.repo>file://S:/repository/</xifin.corporate.snapshot.repo>
+		</properties>
+    </profile> -->
   </profiles>
 
   <!-- activeProfiles

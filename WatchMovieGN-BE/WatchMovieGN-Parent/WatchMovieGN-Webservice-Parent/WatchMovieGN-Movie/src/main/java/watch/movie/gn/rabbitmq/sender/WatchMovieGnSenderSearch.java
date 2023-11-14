@@ -3,14 +3,11 @@ package watch.movie.gn.rabbitmq.sender;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 import watch.movie.gn.rabbitmq.domain.movie.CreateMovieRabbitMqSender;
-import watch.movie.gn.rabbitmq.util.RabbitMQConstant;
 import watch.movie.gn.rabbitmq.util.RabbitMQConstantGlobal;
-import watch.movie.gn.util.ProfileActive;
 
 @Slf4j
 @Component

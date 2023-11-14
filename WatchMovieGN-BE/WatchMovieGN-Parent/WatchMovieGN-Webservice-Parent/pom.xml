@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>watch.movie.gn</groupId>
+        <artifactId>WatchMovieGN-Parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>WatchMovieGN-Webservice-Parent</artifactId>
+    <packaging>pom</packaging>
+    <name>WatchMovieGN-Webservice-Parent</name>
+
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- PORT -->
+        <WatchMovieGN-GateWay.port>8080</WatchMovieGN-GateWay.port>
+        <WatchMovieGN-Movie.port>8081</WatchMovieGN-Movie.port>
+        <WatchMovieGN-Premium.port>8082</WatchMovieGN-Premium.port>
+        <WatchMovieGN-Search.port>8083</WatchMovieGN-Search.port>
+        <WatchMovieGN-User.port>8084</WatchMovieGN-User.port>
+    </properties>
+
+    <modules>
+        <module>WatchMovieGN-GateWay</module>
+        <module>WatchMovieGN-Movie</module>
+        <module>WatchMovieGN-Premium</module>
+        <module>WatchMovieGN-Search</module>
+        <module>WatchMovieGN-User</module>
+    </modules>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
