@@ -29,11 +29,11 @@
     </properties>
 
     <modules>
-        <module>WatchMovieGN-GateWay</module>
-        <module>WatchMovieGN-Movie</module>
-        <module>WatchMovieGN-Premium</module>
-        <module>WatchMovieGN-Search</module>
-        <module>WatchMovieGN-User</module>
+        <module>WatchMovieGN-GateWay-Webservice</module>
+        <module>WatchMovieGN-Movie-Webservice</module>
+        <module>WatchMovieGN-Premium-Webservice</module>
+        <module>WatchMovieGN-Search-Webserivce</module>
+        <module>WatchMovieGN-User-Webservice</module>
     </modules>
 
     <build>

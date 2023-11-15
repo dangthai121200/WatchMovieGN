@@ -11,18 +11,14 @@
         </version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>WatchMovieGN-Movie</artifactId>
+    <artifactId>WatchMovieGN-Premium-Webservice</artifactId>
     <packaging>war</packaging>
-    <name>WatchMovieGN-Movie</name>
-    <description>Demo
-        project for Spring Boot
-    </description>
+    <name>WatchMovieGN-Premium-Webservice</name>
+    <description>Premium of WatchMovieGN</description>
     <properties>
         <java.version>17</java.version>
     </properties>
     <dependencies>
-
-        <!-- Start WatchMovieGN dependency -->
         <dependency>
             <groupId>watch.movie.gn</groupId>
             <artifactId>WatchMovieGN-Util-Module</artifactId>
@@ -35,7 +31,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- End WatchMovieGN dependency -->
     </dependencies>
 
 </project>
