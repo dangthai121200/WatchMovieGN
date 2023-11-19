@@ -1,15 +1,10 @@
 # syntax=docker/dockerfile:1
 
-FROM eclipse-temurin:17-jdk-jammy
+FROM maven:3.8.5-openjdk-17
 
-WORKDIR /WatchMovieGN-GateWay
+WORKDIR /WatchMovieGN-GateWay-Webservice
 
-COPY .mvn .mvn
-COPY mvnw pom.xml ./
-# clean up the file
-RUN sed -i 's/\r$//' ./mvnw
-RUN ./mvnw dependency:resolve -Pdev
+ADD target/WatchMovieGN-GateWay-Webservice.war ./
 
-COPY src ./src
+CMD  ["java", "-jar", "WatchMovieGN-GateWay-Webservice.war"]
 
-CMD ["./mvnw", "spring-boot:run"]

@@ -1,11 +1,10 @@
 package watch.movie.gn.rabbitmq.domain.movie;
 
-import java.io.Serializable;
-
-import org.springframework.data.domain.Page;
-
 import lombok.Data;
+import org.springframework.data.domain.Page;
 import watch.movie.gn.domain.movie.MovieDomain;
+
+import java.io.Serializable;
 
 @Data
 public class GetAllMovieRabbitMqReceive implements Serializable {

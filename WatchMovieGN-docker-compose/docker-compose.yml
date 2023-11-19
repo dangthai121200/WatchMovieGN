@@ -8,12 +8,12 @@ volumes:
 networks:
   local-nextwork:
 services:
-  watchmoviegn-gateway:
-    container_name: watchmoviegn-gateway
+  watchmoviegn-gateway-webservice:
+    container_name: watchmoviegn-gateway-webservice
     build: 
-      context: ..\WatchMovieGN-BE\WatchMovieGN-GateWay
+      context: ..\WatchMovieGN-BE\WatchMovieGN-Parent\WatchMovieGN-Webservice-Parent\WatchMovieGN-GateWay-Webservice
       dockerfile: Dockerfile
-    image: gaonet567/watchmoviegn-gateway
+    image: gaonet567/watchmoviegn-gateway-webservice
     networks:
       - local-nextwork
     ports:
@@ -22,39 +22,60 @@ services:
       - elasticsearch
       - mysql
       - rabbitmq
-  watchmoviegn-movie:
-    container_name: watchmoviegn-movie
+  watchmoviegn-movie-webservice:
+    container_name: watchmoviegn-movie-webservice
     build:
-      context: ..\WatchMovieGN-BE\WatchMovieGN-Movie
+      context: ..\WatchMovieGN-BE\WatchMovieGN-Parent\WatchMovieGN-Webservice-Parent\WatchMovieGN-Movie-Webservice
       dockerfile: Dockerfile
-    image: gaonet567/watchmoviegn-movie
-    networks:
-      - local-nextwork
+    image: gaonet567/watchmoviegn-movie-webservice
+    network_mode: host
     ports:
       - 8081:8081
     depends_on:
-      - watchmoviegn-gateway
-  watchmoviegn-search:
-    container_name: watchmoviegn-search
+      - watchmoviegn-gateway-webservice
+  watchmoviegn-premium-webservice:
+    container_name: watchmoviegn-premium-webservice
     build:
-      context: ..\WatchMovieGN-BE\WatchMovieGN-Search
+      context: ..\WatchMovieGN-BE\WatchMovieGN-Parent\WatchMovieGN-Webservice-Parent\WatchMovieGN-Premium-Webservice
       dockerfile: Dockerfile
-    image: gaonet567/watchmoviegn-movie
-    networks:
-      - local-nextwork
+    image: gaonet567/watchmoviegn-premium-webservice
+    network_mode: host
+    ports:
+      - 8082:8082
+    depends_on:
+      - watchmoviegn-gateway-webservice
+  watchmoviegn-search-webservice:
+    container_name: watchmoviegn-search-service
+    build:
+      context: ..\WatchMovieGN-BE\WatchMovieGN-Parent\WatchMovieGN-Webservice-Parent\WatchMovieGN-Search-Webservice
+      dockerfile: Dockerfile
+    image: gaonet567/watchmoviegn-search-webservice
+    network_mode: host
+    ports:
+      - 8083:8083
+    depends_on:
+      - watchmoviegn-gateway-webservice
+  watchmoviegn-user-webservice:
+    container_name: watchmoviegn-user-service
+    build:
+      context: ..\WatchMovieGN-BE\WatchMovieGN-Parent\WatchMovieGN-Webservice-Parent\WatchMovieGN-User-Webservice
+      dockerfile: Dockerfile
+    image: gaonet567/watchmoviegn-user-webservice
+    network_mode: host
     ports:
       - 8084:8084
     depends_on:
-      - watchmoviegn-gateway
-  watchmoviegn-admin:
-    container_name: watchmoviegn-admin
-    image: gaonet567/watchmoviegn-admin
+      - watchmoviegn-gateway-webservice
+  watchmoviegn-admin-page:
+    container_name: watchmoviegn-admin-page
+    build:
+      context: ..\WatchMovieGN-FE\watchmoviegn-admin-page
+      dockerfile: Dockerfile
+    image: gaonet567/watchmoviegn-admin-page
     networks:
       - local-nextwork
     ports:
       - 3000:3000
-    depends_on:
-    - watchmoviegn-movie
   mysql:
     image: mysql:8.0
     container_name: mysql-container

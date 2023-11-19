@@ -15,15 +15,35 @@
     <packaging>pom</packaging>
     <name>WatchMovieGN-Parent</name>
     <properties>
+
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!--NAME MODULE-->
+        <WatchMovieGN-Util-Module.name>WatchMovieGN-Util-Module</WatchMovieGN-Util-Module.name>
         <WatchMovieGN-Util-Module.version>0.0.1-SNAPSHOT</WatchMovieGN-Util-Module.version>
+
+        <WatchMovieGN-RabbitMq-Module.name>WatchMovieGN-RabbitMq-Module</WatchMovieGN-RabbitMq-Module.name>
+        <WatchMovieGN-RabbitMq-Module.version>0.0.1-SNAPSHOT</WatchMovieGN-RabbitMq-Module.version>
+
+        <!-- NAME WEBSERVICE -->
+        <WatchMovieGN-GateWay.name>WatchMovieGN-GateWay-Webservice</WatchMovieGN-GateWay.name>
+        <WatchMovieGN-Movie.name>WatchMovieGN-Movie-Webservice</WatchMovieGN-Movie.name>
+        <WatchMovieGN-Premium.name>WatchMovieGN-Premium-Webservice</WatchMovieGN-Premium.name>
+        <WatchMovieGN-Search.name>WatchMovieGN-Search-Webservice</WatchMovieGN-Search.name>
+        <WatchMovieGN-User.name>WatchMovieGN-User-Webservice</WatchMovieGN-User.name>
+
+        <!-- SPRING VERSION -->
         <spring-cloud.version>2022.0.1</spring-cloud.version>
+
     </properties>
 
     <modules>
         <module>WatchMovieGN-Module-Parent</module>
         <module>WatchMovieGN-Webservice-Parent</module>
     </modules>
-
 
     <profiles>
         <profile>
@@ -48,108 +68,22 @@
 
     <dependencies>
 
-        <!--
-        https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-amqp -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>
-                org.springframework.boot
-            </groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>
-                org.springframework.boot
-            </groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>
-                org.springframework.boot
-            </groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>
-                org.springframework.boot
-            </groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>
-                spring-boot-starter-jdbc
-            </artifactId>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!--
-        https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-resource-server -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-oauth2-resource-server</artifactId>
-        </dependency>
-
-        <!--
-        https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-jose -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-oauth2-jose</artifactId>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-        <dependency>
-            <groupId>
-                org.projectlombok
-            </groupId>
+            <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
+
         <dependency>
-            <groupId>
-                org.modelmapper
-            </groupId>
+            <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
             <version>3.1.1</version>
         </dependency>
-
 
     </dependencies>
 
@@ -157,8 +91,14 @@
         <dependencies>
             <dependency>
                 <groupId>watch.movie.gn</groupId>
-                <artifactId>WatchMovieGN-Util-Module</artifactId>
+                <artifactId>${WatchMovieGN-Util-Module.name}</artifactId>
                 <version>${WatchMovieGN-Util-Module.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>watch.movie.gn</groupId>
+                <artifactId>${WatchMovieGN-RabbitMq-Module.name}</artifactId>
+                <version>${WatchMovieGN-RabbitMq-Module.version}</version>
             </dependency>
 
             <dependency>

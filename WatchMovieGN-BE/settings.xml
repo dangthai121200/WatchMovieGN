@@ -264,88 +264,18 @@ under the License.
       </properties>
     </profile>
     -->
+	
 	<profile>
-		<id>xifin-profile</id>
+		<id>dev</id>
 		<repositories>
 			<repository>
-				<id>xifin-libs-release</id>
-				<url>http://cartifactory01.mba.xifin.com:8081/artifactory/xifin-libs-release</url>
-			</repository>
-			
-			<repository>
-				<id>xifin-libs-snapshot</id>
-				<url>http://cartifactory01.mba.xifin.com:8081/artifactory/xifin-libs-snapshot</url>
-				<snapshots>
-					<enabled>true</enabled>
-				</snapshots>
+				<id>local</id>
+				<name>local</name>			
+				<url>file:\\192.168.0.108\Users\Thai Dang\.m2\repository</url>			
 			</repository>
 		</repositories>
     </profile>
-	
-	<profile>
-		<id>ip-profile</id>
-		<repositories>
-			<repository>
-			  <id>maven22</id>
-			  <name>Maven 2</name>
-			  <url>http://central.maven.org/maven2/</url>
-			</repository>
-			
-			<repository>
-			  <id>IP_PROFILE</id>
-			  <name>IP PROFILE</name>
-			  
-			<!--  A.Thanh -->
-			<!--<url>file:\\10.20.29.121\.m2\repository</url>-->
-			
-			<!-- A.Cuong
-			<url>file:\\10.20.29.178\.m2\repository</url>--> 
-			
-			<!--<url>file:\\10.20.29.154\Users\han.huynh\.m2\repository</url> -->
-			
-			<!-- <url>file:\\10.20.29.135\Users\minh.tra\.m2\repository2</url> -->
-			
-			<!--<url>file:\\10.20.29.102\Users\cuong.hoang\.m2\repository</url>-->
-			
-			<!----><url>file:\\10.20.29.215\Users\hien.pham\.m2\repository</url>
-			
-			</repository>
-		</repositories>
-    </profile>
-	
-	<profile>
-		<id>home-profile</id>
-		<repositories>
-			<repository>
-			  <id>home_repository</id>
-			  <name>Get dependency from home PC</name>
-			  <url>file:\\tsclient\I\repository</url>
-			  <snapshots>
-				<enabled>true</enabled>
-			  </snapshots>
-			</repository>
-		</repositories>
-    </profile>
-	
-	<profile>
-		<id>online-profile</id>
-		<repositories>
-			 <repository>
-                <id>1_maven.apache.org</id>
-                <releases>  <enabled>true</enabled>  </releases>
-                <snapshots> <enabled>true</enabled> </snapshots>
-                <url>https://repo.maven.apache.org/maven2</url>
-            </repository>
-		</repositories>
-    </profile>
-	
-<!-- 	<profile>
-		<id>spring</id>
-		<properties>
-			<xifin.corporate.repo>file://S:/repository/</xifin.corporate.repo>
-			<xifin.corporate.snapshot.repo>file://S:/repository/</xifin.corporate.snapshot.repo>
-		</properties>
-    </profile> -->
+
   </profiles>
 
   <!-- activeProfiles

@@ -10,23 +10,48 @@
 			0.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>WatchMovieGN-GateWay-Webservice</artifactId>
+	<artifactId>${WatchMovieGN-GateWay.name}</artifactId>
 	<packaging>war</packaging>
-	<name>WatchMovieGN-GateWay-Webservice</name>
-	<description>Cloud of WatchMovieGN</description>
-	<properties>
-		<java.version>17</java.version>
-	</properties>
+	<name>${WatchMovieGN-GateWay.name}</name>
+	<description>${WatchMovieGN-GateWay.name}</description>
+	<properties></properties>
 	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-gateway</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
+
+	<build>
+		<finalName>${WatchMovieGN-GateWay.name}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<imageName>test</imageName>
+					<executable>true</executable>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

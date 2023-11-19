@@ -14,15 +14,13 @@
     <packaging>pom</packaging>
     <name>WatchMovieGN-Module-Parent</name>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <properties></properties>
 
     <modules>
-        <module>WatchMovieGN-Util-Module</module>
+        <module>${WatchMovieGN-Util-Module.name}</module>
+        <module>${WatchMovieGN-RabbitMq-Module.name}</module>
     </modules>
+
     <build>
         <resources>
             <resource>

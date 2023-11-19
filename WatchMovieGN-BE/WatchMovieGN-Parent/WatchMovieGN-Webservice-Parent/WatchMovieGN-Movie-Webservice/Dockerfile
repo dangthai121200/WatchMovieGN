@@ -1,11 +1,10 @@
 # syntax=docker/dockerfile:1
-FROM eclipse-temurin:17-jre-alpine AS builder
-COPY ./target/app.jar ./app.jar
-RUN java -Djarmode=layertools -jar ./app.jar extract
 
-FROM eclipse-temurin:17-jre-alpine
-COPY --from=builder /dependencies/ ./
-COPY --from=builder /spring-boot-loader/ ./
-COPY --from=builder /snapshot-dependencies/ ./
-COPY --from=builder /application/ ./
-ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
+FROM maven:3.8.5-openjdk-17
+
+WORKDIR /WatchMovieGN-Movie-Webservice
+
+ADD target/WatchMovieGN-Movie-Webservice.war ./
+
+CMD  ["java", "-jar", "WatchMovieGN-Movie-Webservice.war"]
+

@@ -14,7 +14,7 @@ import watch.movie.gn.service.MovieTypeService;
 import watch.movie.gn.service.SeasonService;
 
 @EnableJpaRepositories
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class})
+@SpringBootApplication
 public class WatchMovieGnMovieApplication implements CommandLineRunner {
 
     @Autowired

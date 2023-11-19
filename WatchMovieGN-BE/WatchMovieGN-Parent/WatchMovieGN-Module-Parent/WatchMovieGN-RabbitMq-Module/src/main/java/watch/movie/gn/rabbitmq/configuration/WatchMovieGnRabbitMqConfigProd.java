@@ -13,12 +13,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.retry.backoff.ExponentialBackOffPolicy;
 import org.springframework.retry.support.RetryTemplate;
-
 import watch.movie.gn.util.ProfileActive;
 
 @Configuration
-@Profile(ProfileActive.PROFILE_DEV)
-public class WatchMovieGnRabbitMqConfigDev {
+@Profile(ProfileActive.PROFILE_PROD)
+public class WatchMovieGnRabbitMqConfigProd {
 
 	private static final String USERNAME = "guest";
 	private static final String PASSWORD = "guest";

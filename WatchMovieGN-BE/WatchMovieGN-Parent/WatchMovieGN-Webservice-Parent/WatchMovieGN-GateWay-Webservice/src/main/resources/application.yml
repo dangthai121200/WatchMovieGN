@@ -1,9 +1,11 @@
-
 server:
   port: 8999
-  
+
+
 #Spring cloud
-#spring:
-# cloud:
-#  gateway:
-#   enabled: false
+spring:
+  cloud:
+    config:
+      enabled: false
+  main:
+    web-application-type: reactive

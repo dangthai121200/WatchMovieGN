@@ -2,8 +2,6 @@ package watch.movie.gn.rabbitmq.util;
 
 import watch.movie.gn.util.ConstantGlobal;
 
-import java.util.Arrays;
-
 public class RabbitMQUtil {
     private RabbitMQUtil() {
     }

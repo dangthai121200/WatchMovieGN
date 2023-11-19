@@ -16,10 +16,6 @@
 
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
         <!-- PORT -->
         <WatchMovieGN-GateWay.port>8080</WatchMovieGN-GateWay.port>
         <WatchMovieGN-Movie.port>8081</WatchMovieGN-Movie.port>
@@ -29,11 +25,11 @@
     </properties>
 
     <modules>
-        <module>WatchMovieGN-GateWay-Webservice</module>
-        <module>WatchMovieGN-Movie-Webservice</module>
-        <module>WatchMovieGN-Premium-Webservice</module>
-        <module>WatchMovieGN-Search-Webserivce</module>
-        <module>WatchMovieGN-User-Webservice</module>
+        <module>${WatchMovieGN-GateWay.name}</module>
+        <module>${WatchMovieGN-Movie.name}</module>
+        <module>${WatchMovieGN-Premium.name}</module>
+        <module>${WatchMovieGN-Search.name}</module>
+        <module>${WatchMovieGN-User.name}</module>
     </modules>
 
     <build>
@@ -47,6 +43,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
             </plugin>
         </plugins>
     </build>
