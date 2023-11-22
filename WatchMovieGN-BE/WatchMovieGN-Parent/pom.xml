@@ -28,6 +28,9 @@
         <WatchMovieGN-RabbitMq-Module.name>WatchMovieGN-RabbitMq-Module</WatchMovieGN-RabbitMq-Module.name>
         <WatchMovieGN-RabbitMq-Module.version>0.0.1-SNAPSHOT</WatchMovieGN-RabbitMq-Module.version>
 
+        <WatchMovieGN-Security-Module.name>WatchMovieGN-Security-Module</WatchMovieGN-Security-Module.name>
+        <WatchMovieGN-Security-Module.version>0.0.1-SNAPSHOT</WatchMovieGN-Security-Module.version>
+
         <!-- NAME WEBSERVICE -->
         <WatchMovieGN-GateWay.name>WatchMovieGN-GateWay-Webservice</WatchMovieGN-GateWay.name>
         <WatchMovieGN-Movie.name>WatchMovieGN-Movie-Webservice</WatchMovieGN-Movie.name>
@@ -99,6 +102,12 @@
                 <groupId>watch.movie.gn</groupId>
                 <artifactId>${WatchMovieGN-RabbitMq-Module.name}</artifactId>
                 <version>${WatchMovieGN-RabbitMq-Module.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>watch.movie.gn</groupId>
+                <artifactId>${WatchMovieGN-Security-Module.name}</artifactId>
+                <version>${WatchMovieGN-Security-Module.version}</version>
             </dependency>
 
             <dependency>

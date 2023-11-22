@@ -19,6 +19,7 @@
     <modules>
         <module>${WatchMovieGN-Util-Module.name}</module>
         <module>${WatchMovieGN-RabbitMq-Module.name}</module>
+        <module>${WatchMovieGN-Security-Module.name}</module>
     </modules>
 
     <build>
