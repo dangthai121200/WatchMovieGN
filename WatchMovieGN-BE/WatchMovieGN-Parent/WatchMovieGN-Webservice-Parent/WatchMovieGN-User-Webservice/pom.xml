@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>watch.movie.gn</groupId>
-        <artifactId>WatchMovieGN-Parent</artifactId>
+        <artifactId>WatchMovieGN-Webservice-Parent</artifactId>
         <version>
             0.0.1-SNAPSHOT
         </version>
-        <relativePath>../../pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>${WatchMovieGN-User.name}</artifactId>
     <packaging>war</packaging>
@@ -21,6 +21,10 @@
         <dependency>
             <groupId>watch.movie.gn</groupId>
             <artifactId>${WatchMovieGN-Util-Module.name}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>watch.movie.gn</groupId>
+            <artifactId>WatchMovieGN-RabbitMq-Module</artifactId>
         </dependency>
         <!-- End WatchMovieGN dependency -->
 

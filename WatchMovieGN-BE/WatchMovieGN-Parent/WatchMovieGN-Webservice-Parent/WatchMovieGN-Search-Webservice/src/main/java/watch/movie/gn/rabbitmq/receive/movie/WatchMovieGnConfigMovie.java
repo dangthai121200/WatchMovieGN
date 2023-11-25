@@ -19,13 +19,11 @@ public class WatchMovieGnConfigMovie {
 
     @Bean
     Queue createMoviesQueue() {
-        String queueName = RabbitMQUtil.getQueueName(RabbitMQConstantGlobal.SEARCH_SERVICE,
-                RabbitMQConstantGlobal.SEARCH_SERVICE_MOVIE_CREATE_ACTION);
-        return new Queue(queueName);
+        return new Queue(RabbitMQConstantGlobal.SEARCH_SERVICE_MOVE_CREATE_QUEUE);
     }
 
     @Bean
-    Binding bindingCreateMovies() {
+    Binding createMoviesBinding() {
         return BindingBuilder.bind(createMoviesQueue()).to(movieCrudDirectExchange())
                 .with(RabbitMQConstantGlobal.SEARCH_SERVICE_MOVIE_CREATE_ROUTING);
     }

@@ -15,14 +15,10 @@ public class RabbitMQUtil {
         return stringBuilder.toString();
     }
 
-    public static String getExchange(String serviceName, String exchangeName, String type) {
+    public static String getExchange(String serviceName, String exchangeName) {
         StringBuilder stringBuilder = new StringBuilder(serviceName);
         stringBuilder.append(ConstantGlobal.UNDERSCORE);
         stringBuilder.append( exchangeName);
-        stringBuilder.append(ConstantGlobal.DOT);
-        stringBuilder.append(type);
-        stringBuilder.append(ConstantGlobal.DOT);
-        stringBuilder.append(RabbitMQConstantGlobal.EXCHANGE);
         return stringBuilder.toString();
     }
 
