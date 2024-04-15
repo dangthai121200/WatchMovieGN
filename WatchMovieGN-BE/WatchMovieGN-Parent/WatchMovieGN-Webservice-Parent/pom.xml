@@ -22,10 +22,12 @@
         <WatchMovieGN-Premium.port>8082</WatchMovieGN-Premium.port>
         <WatchMovieGN-Search.port>8083</WatchMovieGN-Search.port>
         <WatchMovieGN-User.port>8084</WatchMovieGN-User.port>
+        <WatchMovieGN-Eureka.port>8085</WatchMovieGN-Eureka.port>
     </properties>
 
     <modules>
         <module>${WatchMovieGN-GateWay.name}</module>
+        <module>${WatchMovieGN-Eureka.name}</module>
         <module>${WatchMovieGN-Movie.name}</module>
         <module>${WatchMovieGN-Premium.name}</module>
         <module>${WatchMovieGN-Search.name}</module>

@@ -15,7 +15,7 @@ public class DataSourceConfigDev {
 
 	private String URL = "jdbc:mysql://localhost:3306/watchmoviegn-movie?createDatabaseIfNotExist=true";
 	private String USERNAME = "root";
-	private String PASSWORD = "";
+	private String PASSWORD = "Thai0913442325.";
 	private String DRIVE_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
 
 	@Bean

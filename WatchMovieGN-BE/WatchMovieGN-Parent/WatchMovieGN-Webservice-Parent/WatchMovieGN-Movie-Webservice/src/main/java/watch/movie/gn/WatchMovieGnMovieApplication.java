@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import watch.movie.gn.foreignkey.MovieForeign;
@@ -14,6 +15,7 @@ import watch.movie.gn.service.MovieTypeService;
 import watch.movie.gn.service.SeasonService;
 
 @EnableJpaRepositories
+@EnableDiscoveryClient
 @SpringBootApplication (exclude = {SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class})
 public class WatchMovieGnMovieApplication implements CommandLineRunner {
 

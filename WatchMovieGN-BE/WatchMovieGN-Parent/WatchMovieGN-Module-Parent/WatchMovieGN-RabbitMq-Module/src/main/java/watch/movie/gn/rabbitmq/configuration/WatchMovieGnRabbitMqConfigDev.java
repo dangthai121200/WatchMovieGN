@@ -19,8 +19,8 @@ import watch.movie.gn.util.ProfileActive;
 @Profile(ProfileActive.PROFILE_DEV)
 public class WatchMovieGnRabbitMqConfigDev {
 
-	private static final String USERNAME = "guest";
-	private static final String PASSWORD = "guest";
+	private static final String USERNAME = "watchmoviegn";
+	private static final String PASSWORD = "watchmoviegn";
 //	private static final String HOST = "http://localhost";
 //	private static final int PORT = 15672;
 

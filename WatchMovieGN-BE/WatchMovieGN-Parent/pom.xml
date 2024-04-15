@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.2</version>
+        <version>3.2.4</version>
     </parent>
 
     <groupId>watch.movie.gn</groupId>
@@ -32,6 +32,7 @@
         <WatchMovieGN-Security-Module.version>0.0.1-SNAPSHOT</WatchMovieGN-Security-Module.version>
 
         <!-- NAME WEBSERVICE -->
+        <WatchMovieGN-Eureka.name>WatchMovieGN-Eureka-Webservice</WatchMovieGN-Eureka.name>
         <WatchMovieGN-GateWay.name>WatchMovieGN-GateWay-Webservice</WatchMovieGN-GateWay.name>
         <WatchMovieGN-Movie.name>WatchMovieGN-Movie-Webservice</WatchMovieGN-Movie.name>
         <WatchMovieGN-Premium.name>WatchMovieGN-Premium-Webservice</WatchMovieGN-Premium.name>
@@ -39,7 +40,7 @@
         <WatchMovieGN-User.name>WatchMovieGN-User-Webservice</WatchMovieGN-User.name>
 
         <!-- SPRING VERSION -->
-        <spring-cloud.version>2022.0.1</spring-cloud.version>
+        <spring-cloud.version>2023.0.1</spring-cloud.version>
 
     </properties>
 
@@ -116,6 +117,12 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.33</version>
             </dependency>
 
         </dependencies>
