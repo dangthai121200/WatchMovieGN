@@ -11,8 +11,9 @@
     </parent>
 
     <artifactId>${WatchMovieGN-RabbitMq-Module.name}</artifactId>
-    <packaging>jar</packaging>
+    <version>${WatchMovieGN-RabbitMq-Module.version}</version>
     <name>${WatchMovieGN-RabbitMq-Module.name}</name>
+    <packaging>jar</packaging>
 
     <properties></properties>
 

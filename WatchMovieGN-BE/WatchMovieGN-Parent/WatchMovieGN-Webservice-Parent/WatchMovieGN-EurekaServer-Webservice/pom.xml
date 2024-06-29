@@ -11,9 +11,9 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<groupId>watch.movie.gn</groupId>
-	<artifactId>WatchMovieGN-Eureka-Webservice</artifactId>
+	<artifactId>${WatchMovieGN-EurekaServer.name}</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>${WatchMovieGN-Eureka.name}</name>
+	<name>${WatchMovieGN-EurekaServer.name}</name>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2023.0.1</spring-cloud.version>
