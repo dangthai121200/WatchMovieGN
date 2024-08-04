@@ -34,13 +34,31 @@
         <WatchMovieGN-EurekaClient-Module.name>WatchMovieGN-EurekaClient-Module</WatchMovieGN-EurekaClient-Module.name>
         <WatchMovieGN-EurekaClient-Module.version>0.0.1-SNAPSHOT</WatchMovieGN-EurekaClient-Module.version>
 
+        <WatchMovieGN-Database-Module.name>WatchMovieGN-Database-Module</WatchMovieGN-Database-Module.name>
+        <WatchMovieGN-Database-Module.version>0.0.1-SNAPSHOT</WatchMovieGN-Database-Module.version>
+
         <!-- NAME WEBSERVICE -->
         <WatchMovieGN-EurekaServer.name>WatchMovieGN-EurekaServer-Webservice</WatchMovieGN-EurekaServer.name>
+        <WatchMovieGN-Eureka.context-path>/eurekaservice</WatchMovieGN-Eureka.context-path>
+        <WatchMovieGN-Eureka.port>8761</WatchMovieGN-Eureka.port>
+
         <WatchMovieGN-GateWay.name>WatchMovieGN-GateWay-Webservice</WatchMovieGN-GateWay.name>
+        <WatchMovieGN-GateWay.context-path>/eurekaservice</WatchMovieGN-GateWay.context-path>
+        <WatchMovieGN-GateWay.port>8080</WatchMovieGN-GateWay.port>
+
         <WatchMovieGN-Movie.name>WatchMovieGN-Movie-Webservice</WatchMovieGN-Movie.name>
+        <WatchMovieGN-Movie.context-path>/movie</WatchMovieGN-Movie.context-path>
+        <WatchMovieGN-Movie.port>8081</WatchMovieGN-Movie.port>
+
         <WatchMovieGN-Premium.name>WatchMovieGN-Premium-Webservice</WatchMovieGN-Premium.name>
+        <WatchMovieGN-Premium.port>8082</WatchMovieGN-Premium.port>
+
         <WatchMovieGN-Search.name>WatchMovieGN-Search-Webservice</WatchMovieGN-Search.name>
+        <WatchMovieGN-Search.context-path>/searchservice</WatchMovieGN-Search.context-path>
+        <WatchMovieGN-Search.port>8083</WatchMovieGN-Search.port>
+
         <WatchMovieGN-User.name>WatchMovieGN-User-Webservice</WatchMovieGN-User.name>
+        <WatchMovieGN-User.port>8084</WatchMovieGN-User.port>
 
         <!-- SPRING VERSION -->
         <spring-cloud.version>2023.0.1</spring-cloud.version>
@@ -91,7 +109,6 @@
             <artifactId>modelmapper</artifactId>
             <version>3.1.1</version>
         </dependency>
-
     </dependencies>
 
     <dependencyManagement>
@@ -121,19 +138,19 @@
             </dependency>
 
             <dependency>
+                <groupId>watch.movie.gn</groupId>
+                <artifactId>${WatchMovieGN-Database-Module.name}</artifactId>
+                <version>${WatchMovieGN-Database-Module.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.33</version>
-            </dependency>
-
         </dependencies>
     </dependencyManagement>
 

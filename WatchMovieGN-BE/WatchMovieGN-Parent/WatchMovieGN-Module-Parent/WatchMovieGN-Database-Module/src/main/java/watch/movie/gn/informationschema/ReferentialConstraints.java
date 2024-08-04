@@ -1,12 +1,11 @@
 package watch.movie.gn.informationschema;
 
+import lombok.Data;
+import org.springframework.jdbc.core.RowMapper;
+import watch.movie.gn.util.ConstantDatabase;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import org.springframework.jdbc.core.RowMapper;
-
-import lombok.Data;
-import watch.movie.gn.util.ConstantDatabase;
 
 @Data
 public class ReferentialConstraints implements RowMapper<ReferentialConstraints> {
@@ -23,8 +22,8 @@ public class ReferentialConstraints implements RowMapper<ReferentialConstraints>
 	private String ReferencedTableName;
 
 	public ReferentialConstraints(String constraintCataLog, String constraintSchema, String constraintName,
-			String uniqueConstraintCataLog, String uniqueConstraintSchema, String uniqueConstraintname,
-			String matchOption, String updateRule, String deleteRule, String tableName, String referencedTableName) {
+                                  String uniqueConstraintCataLog, String uniqueConstraintSchema, String uniqueConstraintname,
+                                  String matchOption, String updateRule, String deleteRule, String tableName, String referencedTableName) {
 		super();
 		ConstraintCataLog = constraintCataLog;
 		ConstraintSchema = constraintSchema;

@@ -29,6 +29,11 @@
             <groupId>watch.movie.gn</groupId>
             <artifactId>${WatchMovieGN-RabbitMq-Module.name}</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>watch.movie.gn</groupId>
+            <artifactId>${WatchMovieGN-EurekaClient-Module.name}</artifactId>
+        </dependency>
         <!-- End WatchMovieGN dependency -->
 
         <dependency>

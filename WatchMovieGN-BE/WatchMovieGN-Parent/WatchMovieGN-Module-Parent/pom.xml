@@ -14,13 +14,12 @@
     <packaging>pom</packaging>
     <name>WatchMovieGN-Module-Parent</name>
 
-    <properties></properties>
-
     <modules>
         <module>${WatchMovieGN-Util-Module.name}</module>
         <module>${WatchMovieGN-RabbitMq-Module.name}</module>
         <module>${WatchMovieGN-Security-Module.name}</module>
         <module>${WatchMovieGN-EurekaClient-Module.name}</module>
+        <module>${WatchMovieGN-Database-Module.name}</module>
     </modules>
 
     <build>
@@ -30,10 +29,12 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
             </plugin>
         </plugins>
     </build>

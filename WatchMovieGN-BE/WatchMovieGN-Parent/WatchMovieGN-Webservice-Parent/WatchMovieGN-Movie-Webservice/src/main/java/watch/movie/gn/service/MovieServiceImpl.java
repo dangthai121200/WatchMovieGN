@@ -14,7 +14,6 @@ import watch.movie.gn.domain.movie.GetAllMovieRequest;
 import watch.movie.gn.domain.movie.UpdateMovieRequest;
 import watch.movie.gn.entity.Movie;
 import watch.movie.gn.exception.WatchMovieException;
-import watch.movie.gn.rabbitmq.sender.WatchMovieGnSenderSearch;
 import watch.movie.gn.repository.MovieRepository;
 import watch.movie.gn.util.ConvertUtil;
 
@@ -27,9 +26,6 @@ public class MovieServiceImpl implements MovieService {
 
 	@Autowired
 	private ObjectMapper objectMapper;
-
-	@Autowired
-	private WatchMovieGnSenderSearch satchMovieGnSenderSearch;
 
 	@Override
 	public GetAllMovieReponse getAllMovie(GetAllMovieRequest getAllMovieRequest) {
@@ -45,10 +41,8 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	@Transactional(rollbackOn = Exception.class)
 	public void createMovie(CreateMovieRequest createMovieRequest) {
-//		Movie movie = ConvertUtil.converCreateMovieRequestToMovie(createMovieRequest);
-//		movieRepository.save(movie);
-//		MovieDocument movieDocument = ConvertUtil.converMovieToMovieDocument(movie);
-//		movieDocumentRepository.save(movieDocument);
+		Movie movie = ConvertUtil.converCreateMovieRequestToMovie(createMovieRequest);
+		movieRepository.save(movie);
 	}
 
 	@Override
@@ -56,9 +50,8 @@ public class MovieServiceImpl implements MovieService {
 		if (ObjectUtils.isEmpty(updateMovieRequest.getPkIdMovie())) {
 			throw new WatchMovieException("Movie Id is not null or empty");
 		}
+
 		Movie movie = ConvertUtil.converUpdateMovieRequestToMovie(updateMovieRequest);
 		movieRepository.save(movie);
-//		MovieDocument movieDocument = ConvertUtil.converMovieToMovieDocument(movie);
-//		movieDocumentRepository.save(movieDocument);
 	}
 }

@@ -18,10 +18,9 @@
     <properties></properties>
 
     <dependencies>
-
         <dependency>
             <groupId>watch.movie.gn</groupId>
-            <artifactId>${WatchMovieGN-Util-Module.name}</artifactId>
+            <artifactId>WatchMovieGN-Util-Module</artifactId>
         </dependency>
 
         <dependency>
@@ -33,7 +32,6 @@
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit</artifactId>
         </dependency>
-
     </dependencies>
 
 </project>

@@ -9,10 +9,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${WatchMovieGN-EurekaClient-Module.name}</artifactId>
-    <version>${WatchMovieGN-EurekaClient-Module.version}</version>
-    <name>${WatchMovieGN-EurekaClient-Module.name}</name>
-    <packaging>jar</packaging>
+    <artifactId>${WatchMovieGN-Database-Module.name}</artifactId>
+    <version>${WatchMovieGN-Database-Module.version}</version>
+    <name>${WatchMovieGN-Database-Module.name}</name>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -21,15 +20,29 @@
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>watch.movie.gn</groupId>
             <artifactId>WatchMovieGN-Util-Module</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
         </dependency>
 
     </dependencies>

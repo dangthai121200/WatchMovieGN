@@ -1,19 +1,16 @@
 package watch.movie.gn.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import watch.movie.gn.util.ConstantDatabase;
+
 import java.io.Serializable;
 import java.util.Date;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.MappedSuperclass;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import watch.movie.gn.util.ConstantDatabase;
-
-@Data
 @Getter
 @Setter
 @MappedSuperclass

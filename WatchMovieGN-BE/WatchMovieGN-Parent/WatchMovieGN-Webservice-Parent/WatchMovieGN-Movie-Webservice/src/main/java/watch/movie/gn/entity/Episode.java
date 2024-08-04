@@ -2,15 +2,7 @@ package watch.movie.gn.entity;
 
 import java.io.Serializable;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ForeignKey;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,7 +31,7 @@ public class Episode extends BaseEntity {
 	@Column(name = ConstantDatabase.COLUMN_EPISODE_FK_ID_MOVIE, length = 10, nullable = false, insertable = false, updatable = false)
 	private String fkIdMovie;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = ConstantDatabase.COLUMN_EPISODE_FK_ID_MOVIE, referencedColumnName = ConstantDatabase.COLUMN_MOVIE_PK_ID_MOVIE, foreignKey = @ForeignKey(name = ConstantDatabase.FOREIGN_EPISODE_FK_ID_MOVIE), insertable = false, updatable = false)
 	private Movie movie;
 

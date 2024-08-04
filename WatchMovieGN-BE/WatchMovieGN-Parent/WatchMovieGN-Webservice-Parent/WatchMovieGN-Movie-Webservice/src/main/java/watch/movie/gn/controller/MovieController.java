@@ -14,10 +14,10 @@ import watch.movie.gn.domain.movie.UpdateMovieRequest;
 import watch.movie.gn.exception.WatchMovieException;
 import watch.movie.gn.foreignkey.MovieForeign;
 import watch.movie.gn.service.MovieService;
-import watch.movie.gn.util.UrlUtil;
+import watch.movie.gn.util.UrlConstant;
 
 @RestController
-@RequestMapping(UrlUtil.MOVIE_CONTROLLER_V1)
+@RequestMapping(UrlConstant.MOVIE_CONTROLLER_V1)
 public class MovieController {
 
 	@Autowired

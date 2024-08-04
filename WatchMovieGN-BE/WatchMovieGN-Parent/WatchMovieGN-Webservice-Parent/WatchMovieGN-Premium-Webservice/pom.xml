@@ -18,10 +18,6 @@
     <properties></properties>
     <dependencies>
         <!-- Start WatchMovieGN dependency -->
-        <dependency>
-            <groupId>watch.movie.gn</groupId>
-            <artifactId>${WatchMovieGN-Util-Module.name}</artifactId>
-        </dependency>
         <!-- End WatchMovieGN dependency -->
 
         <dependency>
@@ -78,8 +74,8 @@
         </dependency>
 
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>watch.movie.gn</groupId>
+            <artifactId>WatchMovieGN-Database-Module</artifactId>
         </dependency>
 
     </dependencies>

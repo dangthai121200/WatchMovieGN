@@ -11,29 +11,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.transaction.Transactional;
 import org.springframework.util.ResourceUtils;
-import watch.movie.gn.domain.movie.MovieDomain;
+import watch.movie.gn.domain.movie.CreateMovieListRequest;
+import watch.movie.gn.domain.movie.CreateMovieRequest;
 import watch.movie.gn.entity.Country;
 import watch.movie.gn.entity.Movie;
 import watch.movie.gn.entity.Producer;
 import watch.movie.gn.entity.Season;
 import watch.movie.gn.entity.Type;
-import watch.movie.gn.rabbitmq.domain.movie.CreateMovieRabbitMqSender;
-import watch.movie.gn.rabbitmq.sender.WatchMovieGnSenderSearch;
 import watch.movie.gn.repository.CountryRepository;
 import watch.movie.gn.repository.MovieRepository;
 import watch.movie.gn.repository.ProducerRepository;
 import watch.movie.gn.repository.SeasonRepository;
 import watch.movie.gn.repository.TypeRepository;
-import watch.movie.gn.util.ConvertUtil;
-import watch.movie.gn.util.DateUtil;
-import watch.movie.gn.util.NumberUtil;
+import watch.movie.gn.util.*;
 
 @Service
 public class TestServiceImpl implements TestService {
@@ -54,12 +49,12 @@ public class TestServiceImpl implements TestService {
     private TypeRepository typeRepository;
 
     @Autowired
-    private WatchMovieGnSenderSearch watchMovieGnSenderSearch;
+    private MovieServiceSendRequestTemplate movieServiceSendRequestTemplate;
 
     @SuppressWarnings({"deprecation", "unused"})
     @Override
     @Transactional(rollbackOn = Exception.class)
-    public List<MovieDomain> fakeDataMovie() throws StreamReadException, DatabindException, IOException {
+    public CreateMovieListRequest fakeDataMovie() throws IOException {
 
         List<Movie> movies = movieRepository.findAll();
         Set<Movie> movieSet = new HashSet<>();
@@ -102,11 +97,11 @@ public class TestServiceImpl implements TestService {
         } else {
             movieSet = Set.copyOf(movies);
         }
-        List<MovieDomain> movieDomains = ConvertUtil.convertMovieToListDomain(movieSet);
-        CreateMovieRabbitMqSender createMovieRabbitMqSender = new CreateMovieRabbitMqSender();
-        createMovieRabbitMqSender.setMovies(movieDomains);
-        watchMovieGnSenderSearch.createMovies(createMovieRabbitMqSender);
-        return movieDomains;
+        CreateMovieListRequest createMovieListRequest = new CreateMovieListRequest();
+        List<CreateMovieRequest> createMovieRequests = ConvertUtil.convertMovieToListCreateMovieRequest(movieSet);
+        createMovieListRequest.setMovies(createMovieRequests);
+        movieServiceSendRequestTemplate.sendPostRequestToSearchService(createMovieListRequest, Object.class);
+        return createMovieListRequest;
     }
 
     @Override

@@ -14,12 +14,6 @@
     <properties></properties>
     <dependencies>
         <!-- Start WatchMovieGN dependency -->
-
-        <dependency>
-            <groupId>watch.movie.gn</groupId>
-            <artifactId>${WatchMovieGN-Util-Module.name}</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>watch.movie.gn</groupId>
             <artifactId>WatchMovieGN-RabbitMq-Module</artifactId>

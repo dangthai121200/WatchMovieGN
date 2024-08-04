@@ -3,21 +3,9 @@ package watch.movie.gn.entity;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ForeignKey;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -67,25 +55,25 @@ public class Movie extends BaseEntity {
 	@Column(name = ConstantDatabase.COLUMN_MOVIE_FK_ID_COUNTRY, length = 10, nullable = true, insertable = false, updatable = false)
 	private Integer fkIdCountry;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = ConstantDatabase.COLUMN_MOVIE_FK_ID_COUNTRY, referencedColumnName = ConstantDatabase.COLUMN_COUNTRY_PK_ID_COUNTRY, foreignKey = @ForeignKey(name = ConstantDatabase.FOREIGN_MOVIE_FK_ID_COUNTRY))
 	private Country country;
 
 	@Column(name = ConstantDatabase.COLUMN_MOVIE_FK_ID_PRODUCER, length = 10, nullable = true, insertable = false, updatable = false)
 	private Integer fkIdProducer;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = ConstantDatabase.COLUMN_MOVIE_FK_ID_PRODUCER, referencedColumnName = ConstantDatabase.COLUMN_PRODUCER_PK_ID_PRODUCER, foreignKey = @ForeignKey(name = ConstantDatabase.FOREIGN_MOVIE_FK_ID_PRODUCER))
 	private Producer producer;
 
 	@Column(name = ConstantDatabase.COLUMN_MOVIE_FK_ID_SEASON, length = 10, nullable = true, insertable = false, updatable = false)
 	private Integer fkIdSeason;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = ConstantDatabase.COLUMN_MOVIE_FK_ID_SEASON, referencedColumnName = ConstantDatabase.COLUMN_SEASON_PK_ID_SEASON, foreignKey = @ForeignKey(name = ConstantDatabase.FOREIGN_MOVIE_FK_ID_SEASON))
 	private Season season;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = ConstantDatabase.COLUMN_MOVIE_FK_ID_TYPE, referencedColumnName = ConstantDatabase.COLUMN_TYPE_PK_ID_TYPE, foreignKey = @ForeignKey(name = ConstantDatabase.FOREIGN_MOVIE_FK_ID_TYPE))
 	private Type type;
 
