@@ -114,18 +114,18 @@ services:
       - elasticsearch
     ports:
       - 5601:5601
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
-    container_name: 'rabbitmq'
-    ports:
-        - 5672:5672
-        - 15672:15672
-    environment:
-        - RABBITMQ_DEFAULT_USER=watchmoviegn
-        - RABBITMQ_DEFAULT_PASS=watchmoviegn
-    volumes:
-        - volume-rabbitmq-data:/var/lib/rabbitmq/
-        - volume-rabbitmq-log:/var/log/rabbitmq
-    networks:
-        - local-nextwork
+#  rabbitmq:
+#    image: rabbitmq:3-management-alpine
+#    container_name: 'rabbitmq'
+#    ports:
+#        - 5672:5672
+#        - 15672:15672
+#    environment:
+#        - RABBITMQ_DEFAULT_USER=watchmoviegn
+#        - RABBITMQ_DEFAULT_PASS=watchmoviegn
+#    volumes:
+#        - volume-rabbitmq-data:/var/lib/rabbitmq/
+#        - volume-rabbitmq-log:/var/log/rabbitmq
+#    networks:
+#        - local-nextwork
   
