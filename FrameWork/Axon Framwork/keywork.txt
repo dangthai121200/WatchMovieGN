@@ -1,0 +1,18 @@
+Domain Drive Desgin - DDD
+ - Domain
+ - Model
+ - Domain model
+ - Entity
+ - Value Object
+ - Reponsitory
+ - Aggregate
+ - Event
+ - Bounded Context
+
+Command Query Responsitory Separation - CQRS
+ - Command
+ - Command Model
+ - Query
+ - Query Model
+ 
+
