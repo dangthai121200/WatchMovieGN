@@ -15,4 +15,19 @@ Command Query Responsitory Separation - CQRS
  - Query
  - Query Model
  
+Challenges CQRS
+ - Consistency
+	+ Consistency in the Command Model
+	+ Consistency in the Query Model
+	+ Consistency between the Command Model and the Query Model
+ - Behavior and sate
+ - Mixed Model Problem
+ - Complex Business Processes
+ - Model Dependencies
+ - Message Modeling
+  + Payload vs Metadata
+ - Event and Model Consistency
+Event Sourcing
+ - Reponsitory Context
+ 
 

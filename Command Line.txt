@@ -1,0 +1,57 @@
+Docker
+ - Xem logs : docker logs <conainer_id>
+	+ Xem realtime: -f hoăc --follow: docker logs -f <conainer_id>
+	+ Xem 10 dòng logs cuối: --tail : docker logs -f --tail 10 <conainer_id>
+	+ Hiển thị log từ thời điểm xác định: --since
+	+ Hiển thị log tới thời điểm xác định: --util
+	+ Hiển thị chi tiết log: --details
+ - Tra thông tin image, docker: docker inspect <conainer_id>
+ - Vào command line của container đang chạy: docker container attach <conainer_id>
+ - Chạy một lệnh trên container đang chạy: docker exec -it <conainer_id> <command>
+ - Lấy toàn bộ container: docker ps -account
+ - Chạy 1 container : docker start <conainer_id>
+ 
+K8s
+ Imperative commands
+	- kubectl create deployment <name> --image <image> : deploy new pod
+ Imperative object configuration
+ Declarative object configuration
+
+ 
+ - kubectl get pod -n <namespace> | grep <tên service> : Lấy danh sách các pod
+ - kubectl logs -f --tail=100 <mã pod> -n <namespace> : xem logs
+ - kubectl exec -it consul-o -n <namespace> sh : vào consul
+ - kubectl scale --replicas=0 deploy <tên service> -n icollect: tắt service
+ - kubectl scale --replicas=1 deploy <tên service> -n icollect: 1 là số instance cần chạy
+ - kubectl -n <namespace> describe pod <pod name> sử dụng để xem lỗi trong quá trình tạo pod
+ - kubectl delete pod <pod id> --force -n <namespace>
+
+
+Consul:
+ - Xem danh sách cách services: consul services exported-services
+	+ -format={pretty|json}
+	+ -filter 
+ - Hủy đăng ký 1 instance: consul services deregister -id={instance ID}
+ 
+ 
+consul services deregister -id=mcrusprofile-4987a096aad6373f10d620fde8c949e6
+SCP:
+ - scp root@{ip_server}:{path_file} . :download file
+ 
+Linux
+ - pwd -L : Lấy đường dẫn thư mực hiện tại
+ - service --status-all : get all service
+ - ssh -L 8085:localhost:8085 root@10.30.121.24: biding máy server với máy local
+ 
+ 
+Window
+ - netstat -ano | findStr "5701"
+ 
+Apche Nifi
+- nifi set-single-user-credentials <username> <password> : tạo mới account
+
+ 
+
+
+
+	

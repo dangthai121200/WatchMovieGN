@@ -1,0 +1,59 @@
+Search code
+	Hàm
+		Alt + 1: mở hàm main
+		Ctrl + b: nơi tao ra hàm
+		Alt + f7: nhưng nơi gọi hàm
+			- Shift + esc để ẩn
+			- Alt + 3 để hiện lại
+		Ctrl + shift + h: hiện gọi hàm theo dạng cây
+
+	Interface
+		Ctrl + alt + b: để xem nhưng nơi implement interface
+		Ctrl + u: để xem interface đang được implement
+	Class
+		Ctrl + h: Hiên danh sách class theo dạng cây
+	Code
+		Ctrl + f: tìm text
+			- enter: đi trước
+			- shift + f3: đi sau
+File
+	Ctrl + e: mở lại các file gần đây
+	Ctrl + shift + e: mở lại các vị trí trong file gần đây
+	Alt + shift + C: mở lại những chỗ thay đổy gần đây
+
+Debuger	
+	Shift + f9 để chạy debug
+	Ctrl + f8: để mở line nếu chạy lỗi	
+	Ctrl + shift + enter: để them biến vào Debuger watcher
+		- f7 để call hàm
+	Ctrl + f2: để dừng debug
+	f2 để set lai value biến
+	
+Inteliji
+	Nhấn giũ shift + chuột trái: để mở edit confi chạy source code
+	Nhấn giũ shift + chuột trái vào tab để tắt
+
+
+Code
+	Ctrl +  /: comment 1 line code
+	Ctrl + shift + /: comment 1 khối code
+	Ctrl + shift + mũi tên lên: di chuyển 1 khối code lên
+	Ctrl + shift + mũi tên xuống: di chuyển 1 khối code xuống
+	Ctrl + alt + T: Bao khối code
+	Ctrl + Shift + V: chọn lại đoạn text đã copy trước đó
+	Ctrl + D: Duplicate đoạn code
+	Ctrl + Q: hiện nhanh document
+	Ctrl + f12: di chuyển tới các hàm trong file
+	Ctrl + J: hiện suggestion code
+	shift + f6: rename
+	ctrl + shift + enter: để tạo nhanh các khối code
+		nhập if,  do -while,  try -catch, return
+
+Git
+	Ctrl + T: lấy code mới
+	Ctrl + alt + a: add to temp git
+	Ctrl + shift + N tạo mới branch
+	Ctrl + k để mở comit change
+	Ctrl + shift + k đẻ mở dialog push
+	Alt + 9 để mở history commit
+	
