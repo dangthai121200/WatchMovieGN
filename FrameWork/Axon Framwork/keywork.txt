@@ -1,5 +1,5 @@
-Domain Drive Desgin - DDD
- - Domain
+Domain Drive Desgin - DDD: là design pattern ở cấp độ kiến trúc
+ - Domain: lĩnh vực của app
  - Model
  - Domain model
  - Entity
