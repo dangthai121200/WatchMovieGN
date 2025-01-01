@@ -1,33 +1,71 @@
-Domain Drive Desgin - DDD: là design pattern ở cấp độ kiến trúc
- - Domain: lĩnh vực của app
- - Model
- - Domain model
- - Entity
- - Value Object
- - Reponsitory
- - Aggregate
- - Event
- - Bounded Context
+Domain (Miền)
+Một lĩnh vực kiến thức, ảnh hưởng, hoặc hoạt động cụ thể mà một chương trình phần mềm được áp dụng. Miền thể hiện vấn đề thực tế mà phần mềm cần giải quyết.
 
-Command Query Responsitory Separation - CQRS
- - Command
- - Command Model
- - Query
- - Query Model
- 
-Challenges CQRS
- - Consistency
-	+ Consistency in the Command Model
-	+ Consistency in the Query Model
-	+ Consistency between the Command Model and the Query Model
- - Behavior and sate
- - Mixed Model Problem
- - Complex Business Processes
- - Model Dependencies
- - Message Modeling
-  + Payload vs Metadata
- - Event and Model Consistency
-Event Sourcing
- - Reponsitory Context
- 
+Model (Mô hình)
+Hệ thống các khái niệm trừu tượng để mô tả một chủ đề, giúp con người hiểu, mô phỏng hoặc phân tích nó. Mô hình đơn giản hóa thực tế để tập trung vào những khía cạnh quan trọng cho vấn đề đang được giải quyết.
 
+Domain Model (Mô hình miền)
+Mô hình tối thiểu nhưng hữu ích của miền thực tế, mô tả các khái niệm, quy tắc và quy trình cốt lõi. Đây là cầu nối giữa logic nghiệp vụ và việc triển khai phần mềm.
+
+Command Model (Mô hình lệnh)
+Một loại mô hình miền được thiết kế và tối ưu hóa để thực thi các lệnh (những thao tác làm thay đổi trạng thái của hệ thống).
+
+Query Model (Mô hình truy vấn)
+Một loại mô hình miền được thiết kế và tối ưu hóa để thực thi các truy vấn (các thao tác chỉ đọc, truy xuất thông tin hoặc trạng thái).
+
+Bounded Context (Ngữ cảnh giới hạn)
+Một phần cụ thể của mô hình miền, nơi mà các đối tượng có ý nghĩa và đặc điểm nhất quán. Ngữ cảnh giới hạn giúp đảm bảo sự rõ ràng và tránh sự mơ hồ khi các khái niệm có thể mang ý nghĩa khác nhau ở các ngữ cảnh khác.
+
+Domain Service (Dịch vụ miền)
+Một thành phần không có trạng thái, triển khai logic nghiệp vụ và có thể được gọi từ nhiều nơi, chẳng hạn như từ bộ xử lý lệnh (Command Handler) hoặc bộ xử lý truy vấn (Query Handler).
+
+Location Transparency (Tính minh bạch vị trí)
+Thuộc tính cho phép các thành phần hệ thống giao tiếp với nhau mà không cần biết vị trí thực tế của các thành phần khác. Giao tiếp được thực hiện thông qua một message bus (hệ thống truyền thông điệp), giúp giảm phụ thuộc và tăng khả năng mở rộng.
+
+Event Storming (Phân tích sự kiện)
+Một phương pháp làm việc nhóm kết hợp tư duy theo hướng sự kiện và kỹ thuật brainstorming để khám phá và hiểu rõ miền. Phương pháp này giúp xác định các sự kiện, lệnh, và quy trình làm việc của hệ thống.
+
+Event Modeling (Mô hình hóa sự kiện)
+Phương pháp tập trung vào chi tiết hóa các quy trình làm việc và thay đổi trạng thái của hệ thống, nhằm xây dựng một giải pháp phần mềm hoàn chỉnh. Phương pháp này hỗ trợ triển khai thiết kế cụ thể từ các phân tích ban đầu.
+
+Entity (Thực thể)
+Một đối tượng trong mô hình miền được xác định bởi tính liên tục và danh tính duy nhất của nó, bất kể giá trị thuộc tính thay đổi. Ví dụ: Tài khoản người dùng được xác định bởi ID.
+
+Value Object (Đối tượng giá trị)
+Một đối tượng trong mô hình miền không có danh tính riêng, được xác định bởi giá trị của các thuộc tính. Ví dụ: Một đối tượng "Tiền" với loại tiền tệ và số lượng.
+
+Aggregate (Tập hợp)
+Một nhóm các thành phần liên quan, được coi là một đơn vị nhất quán với các thay đổi dữ liệu. Aggregate đảm bảo các quy tắc nghiệp vụ và ranh giới nhất quán.
+
+Event-Sourced Aggregate (Tập hợp dựa trên sự kiện)
+Một aggregate lưu trữ trạng thái thông qua chuỗi các sự kiện nghiệp vụ. Trạng thái được tái tạo bằng cách phát lại các sự kiện thay vì lưu trực tiếp trạng thái hiện tại.
+
+Command (Lệnh)
+Một thông điệp thể hiện ý định thực hiện một hành động hoặc thay đổi trạng thái trong miền. Ví dụ: "Tạo đơn hàng".
+
+Query (Truy vấn)
+Yêu cầu lấy thông tin hoặc trạng thái hiện tại mà không làm thay đổi chúng. Ví dụ: "Lấy thông tin đơn hàng".
+
+Event (Sự kiện)
+Một thông báo rằng một sự việc quan trọng đã xảy ra trong miền. Các sự kiện là bất biến và đại diện cho sự thật. Ví dụ: "Đơn hàng đã được tạo".
+
+Projection (Phép chiếu)
+Một thành phần chịu trách nhiệm duy trì dữ liệu dưới dạng và tại nơi được tối ưu hóa cho nhu cầu của người tiêu dùng cụ thể. Ví dụ: Mô hình đọc cho bảng báo cáo.
+
+Snapshot (Ảnh chụp nhanh)
+Trạng thái lưu trữ của một aggregate tại một thời điểm cụ thể. Snapshots cải thiện hiệu suất bằng cách giảm nhu cầu phát lại tất cả các sự kiện trong quá khứ để tái tạo trạng thái.
+
+Message (Thông điệp)
+Đơn vị giao tiếp giữa các thành phần, đảm bảo tính minh bạch vị trí. Thông điệp thường là lệnh, truy vấn hoặc sự kiện.
+
+Message Bus (Hệ thống truyền thông điệp)
+Một thành phần hạ tầng hỗ trợ gửi và nhận thông điệp giữa các thành phần miền. Nó trừu tượng hóa cơ chế truyền tải, đảm bảo giao tiếp không phụ thuộc.
+
+Repository (Kho lưu trữ)
+Thành phần hạ tầng chịu trách nhiệm lưu trữ, tìm kiếm và tải các đối tượng trạng thái trong mô hình miền.
+
+Event Store (Kho lưu trữ sự kiện)
+Thành phần hạ tầng lưu trữ các sự kiện trong miền. Đây là nguồn dữ liệu chính cho các aggregate sử dụng phương pháp dựa trên sự kiện.
+
+Upcaster (Chuyển đổi phiên bản dữ liệu)
+Thành phần hạ tầng chịu trách nhiệm chuyển đổi các thông điệp, sự kiện hoặc dữ liệu cũ sang định dạng mới khi mô hình miền thay đổi.
